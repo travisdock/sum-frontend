@@ -14,7 +14,12 @@ import Signup from './containers/signup'
 import Dashboard from './containers/dashboard'
 
 const history = createBrowserHistory()
-const initialState = {}
+const initialState = {
+  current_user: {
+    id: '',
+    categories: []
+  }
+}
 
 const store = createStore(
   connectRouter(history)(reducer),

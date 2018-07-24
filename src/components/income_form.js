@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { connect } from 'react-redux';
+
 class IncomeForm extends React.Component {
   state = {
     form: {
@@ -57,6 +59,7 @@ class IncomeForm extends React.Component {
         ...prevState,
         form: {
           ...prevState.form,
+          category: '',
           income: false,
           gift: false
         },
@@ -91,6 +94,7 @@ class IncomeForm extends React.Component {
 
 
   render() {
+    console.log(this.props);
     const newCategory = (<div className="ui field">
       <label>Category: </label>
       <input
@@ -120,12 +124,11 @@ class IncomeForm extends React.Component {
         value={this.state.form.category}
         onChange={this.handleChange}
         >
-        <option value="Rent">Rent</option>
-        <option value="Groceries">Groceries</option>
+        {this.props.current_user.categories.map(cat => <option value={cat.id} key={cat.id}>{cat.name}</option>)}
       </select>
       <button onClick={this.toggleCategory}>Create Category</button>
     </div>)
-    console.log("form", this.state);
+    // console.log("form", this.state);
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
@@ -166,4 +169,9 @@ class IncomeForm extends React.Component {
   }
 }
 
-export default IncomeForm;
+const mapStateToProps = state => ({
+
+  current_user: state.current_user
+});
+
+export default connect(mapStateToProps)(IncomeForm);
