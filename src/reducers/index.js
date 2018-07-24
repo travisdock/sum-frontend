@@ -1,13 +1,13 @@
 export default function reducer(
   state = {
-    default: ''
+    current_user: ''
   },
   action
 ) {
   switch (action.type) {
-    case "DO_SOMETHING":
+    case "LOGIN":
       return {
-        state
+        ...state, current_user: action.payload
       }
     default:
       return state;

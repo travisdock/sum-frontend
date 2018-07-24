@@ -11,6 +11,7 @@ import reducer from './reducers/index';
 import Navbar from './components/navbar'
 import Login from './containers/login'
 import Signup from './containers/signup'
+import Dashboard from './containers/dashboard'
 
 const history = createBrowserHistory()
 const initialState = {}
@@ -35,9 +36,12 @@ class App extends Component {
             <Switch>
               <Route exact path="/login" render={() => <Login />} />
               <Route exact path="/about" render={() => (<div>Match about</div>)} />
-              <Route exact path="/dashboard" render={() => (<div>Match dash</div>)} />
+              <Route exact path="/dashboard" render={() => <Dashboard />} />
               <Route exact path="/signup" render={() => <Signup />} />
-              <Route path="/" render={() => <Login />} />
+              <Route path="/" render={() => {
+                console.log("home", this.props);
+                return <Login />
+                }} />
             </Switch>
           </div>
         </ConnectedRouter>
