@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router';
+import { withRouter, Redirect } from 'react-router';
 
 import { login } from '../actions/index'
 
@@ -44,34 +44,15 @@ class Login extends React.Component {
         })
       } else {
         localStorage.setItem('jwt', resp.jwt);
-        this.props.login(resp.id);
-        this.props.history.push('/dashboard')
+        this.props.login(resp.id, resp.categories);
       }
     })
   }
 
   render() {
-
-    const token = localStorage.getItem('jwt')
-
-    if (token) {
-      const url = 'http://localhost:3001/api/v1/current_user'
-      const options = {
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json',
-          'Authorization': token
-        }
-      }
-      console.log("props", this.props)
-      fetch(url, options)
-        .then(resp => resp.json())
-        .then(resp => this.props.login(resp.id, resp.categories))
-        .then(this.props.history.push('/dashboard'))
-    }
-
     return (
       <div>
+        {this.props.current_user.user_id ? <Redirect to='/dashboard' /> : null}
         <form onSubmit={this.handleSubmit}>
           <div className="ui field">
             <label>Username: </label>

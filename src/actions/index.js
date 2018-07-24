@@ -10,6 +10,12 @@ export function login(user_id, categories) {
   }
 }
 
+export function logout() {
+  return {
+    type: 'LOGOUT',
+  }
+}
+
 // const url = 'http://localhost:3001/api/v1/categories/${user_id}'
 // return
 //   fetch(url)

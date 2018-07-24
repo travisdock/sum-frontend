@@ -3,17 +3,21 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 class IncomeForm extends React.Component {
-  state = {
-    form: {
-      category: '',
-      date: '',
-      amount: '',
-      notes: '',
-      income: false,
-      gift: false
-    },
-    new_category: false
-  };
+  constructor(props) {
+    super(props)
+    this.state = {
+      form: {
+        category: '',
+        date: '',
+        amount: '',
+        notes: '',
+        income: false,
+        gift: false
+      },
+      new_category: false
+    };
+  }
+
 
   handleChange = (e) => {
     const target = e.target;
@@ -91,10 +95,8 @@ class IncomeForm extends React.Component {
     })
   }
 
-
-
   render() {
-    console.log(this.props);
+
     const newCategory = (<div className="ui field">
       <label>Category: </label>
       <input
@@ -118,18 +120,20 @@ class IncomeForm extends React.Component {
     </div>)
 
     const selectCategory = (<div className="ui field">
-      <label>Category: </label>
+      {/* <label>Category: </label> */}
       <select
         name="category"
         value={this.state.form.category}
         onChange={this.handleChange}
         >
-        {this.props.current_user.categories.map(cat => <option value={cat.id} key={cat.id}>{cat.name}</option>)}
+        <option>Select Category</option>
+        {!!this.props.current_user.categories ? this.props.current_user.categories.map(cat => <option value={cat.id} key={cat.id}>{cat.name}</option>) : null}
       </select>
       <button onClick={this.toggleCategory}>Create Category</button>
     </div>)
-    // console.log("form", this.state);
+    console.log(this.state);
     return (
+
       <div>
         <form onSubmit={this.handleSubmit}>
           {(this.state.new_category ? newCategory : selectCategory)}
