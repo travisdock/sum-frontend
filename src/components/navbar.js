@@ -12,12 +12,14 @@ class Navbar extends React.Component {
   }
 
   render() {
+    console.log("navbar")
     return (
       <div>
         { !!this.props.current_user.user_id
           ?
           <div>
-            <Link to="/dashboard" className="nav" >Dashboard</Link>
+            <Link to="/dashboard/form" className="nav" >Input</Link>
+            <Link to="/dashboard/analysis" className="nav" >Analysis</Link>
             <button onClick={this.handleLogOut}>Logout</button>
           </div>
           :

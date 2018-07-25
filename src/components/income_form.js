@@ -37,24 +37,44 @@ class IncomeForm extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    // const url = 'http://localhost:3001/api/v1/users'
-    // const options = {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //     'Accept': 'application/json'
-    //   },
-    //   body: JSON.stringify(this.state)
-    // }
-    // fetch(url, options)
-    //   .then(res => res.json())
-    //   .then(resp => {
-    //     if (resp.errors) {
-    //       alert(resp.errors)
-    //     } else {
-    //       alert("Success!")
-    //     }
-    //   })
+    const url = 'http://localhost:3001/api/v1/entries'
+    const formData = {
+      ...this.state.form,
+      user_id: this.props.current_user.user_id
+    }
+    const options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify(formData)
+    }
+    fetch(url, options)
+      .then(res => res.json())
+      .then(resp => {
+        if (resp.errors) {
+          console.log(resp)
+          alert(resp.errors)
+        } else if (resp.error) {
+          console.log(resp)
+          alert(resp.error)
+        } else {
+          console.log(resp)
+          alert("Success!")
+        }
+      })
+      .then(this.setState({
+        form: {
+          category: '',
+          date: '',
+          amount: '',
+          notes: '',
+          income: false,
+          gift: false
+        },
+        new_category: false
+      }))
   }
 
   toggleCategory = () => {
@@ -127,13 +147,12 @@ class IncomeForm extends React.Component {
         onChange={this.handleChange}
         >
         <option>Select Category</option>
-        {!!this.props.current_user.categories ? this.props.current_user.categories.map(cat => <option value={cat.id} key={cat.id}>{cat.name}</option>) : null}
+        {!!this.props.current_user.categories ? this.props.current_user.categories.map(cat => <option value={cat.name} key={cat.id}>{cat.name}</option>) : null}
       </select>
       <button onClick={this.toggleCategory}>Create Category</button>
     </div>)
     console.log(this.state);
     return (
-
       <div>
         <form onSubmit={this.handleSubmit}>
           {(this.state.new_category ? newCategory : selectCategory)}
@@ -174,7 +193,6 @@ class IncomeForm extends React.Component {
 }
 
 const mapStateToProps = state => ({
-
   current_user: state.current_user
 });
 

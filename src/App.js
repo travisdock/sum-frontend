@@ -10,6 +10,7 @@ import Login from './containers/login'
 import Signup from './containers/signup'
 import Dashboard from './containers/dashboard'
 
+
 import { withRouter } from 'react-router';
 
 class App extends Component {
@@ -20,6 +21,7 @@ class App extends Component {
 
   loggedin() {
     const token = localStorage.getItem('jwt')
+
     if (token) {
       const url = 'http://localhost:3001/api/v1/current_user'
       const options = {
@@ -33,23 +35,19 @@ class App extends Component {
         .then(resp => resp.json())
         .then(resp => this.props.login(resp.id, resp.categories))
         .then(console.log(this.props))
-        .then(this.props.history.push('/dashboard'))
     }
   }
 
   render() {
+    console.log("app")
     return (
       <div>
         <Navbar />
         <Switch>
-          <Route exact path="/login" render={() => <Login /> } />
+          <Route exact path="/login" component={Login} />
           <Route exact path="/about" render={() => (<div>Match about</div>)} />
-          <Route exact path="/dashboard" render={() => <Dashboard />} />
-          <Route exact path="/signup" render={() => <Signup />} />
-          <Route path="/" render={() => {
-            console.log("home", this.props);
-            return <Login />
-            }} />
+          <Route path="/dashboard" component={Dashboard} />
+          <Route exact path="/signup" component={Signup} />
         </Switch>
       </div>
     );

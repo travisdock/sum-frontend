@@ -50,9 +50,10 @@ class Login extends React.Component {
   }
 
   render() {
+    console.log("login")
     return (
       <div>
-        {this.props.current_user.user_id ? <Redirect to='/dashboard' /> : null}
+        {this.props.current_user.user_id ? <Redirect to='/dashboard/form' /> : null}
         <form onSubmit={this.handleSubmit}>
           <div className="ui field">
             <label>Username: </label>
