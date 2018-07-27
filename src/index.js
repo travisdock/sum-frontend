@@ -16,7 +16,7 @@ import reducer from './reducers/index';
 const history = createBrowserHistory()
 const initialState = {
   current_user: {
-    id: '',
+    user_id: '',
     categories: []
   }
 }

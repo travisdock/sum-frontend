@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+import Chart from './chart';
+
 class Analysis extends React.Component {
   state = {
     userEntries: []
@@ -13,10 +15,13 @@ class Analysis extends React.Component {
       .then(resp => this.setState({userData: resp}))
   }
   render(){
-    console.log(this.state)
 
     return(
-      <div>sick yeah</div>
+      <div>{this.state.userData ?
+        <div><Chart /></div>
+        :
+        <div>Loading...</div>
+      }</div>
     )
   }
 }

@@ -4,15 +4,18 @@ import { connect } from 'react-redux';
 
 import { logout } from '../actions/index'
 
+import { withRouter } from 'react-router';
+
 class Navbar extends React.Component {
 
   handleLogOut = () => {
     localStorage.clear()
     this.props.logout()
+    this.props.history.push('/login')
   }
 
   render() {
-    console.log("navbar")
+    console.log("navbar",this.props)
     return (
       <div>
         { !!this.props.current_user.user_id
@@ -38,4 +41,4 @@ const mapStateToProps = state => ({
   current_user: state.current_user
 });
 
-export default connect(mapStateToProps, { logout })(Navbar)
+export default withRouter(connect(mapStateToProps, { logout })(Navbar))

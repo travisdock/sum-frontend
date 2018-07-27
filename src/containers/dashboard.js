@@ -8,14 +8,11 @@ import IncomeForm from '../components/income_form';
 import Analysis from '../components/analysis';
 
 class Dashboard extends React.Component {
-  // constructor(props) {
-  //   super(props)
-  // }
   render() {
-    console.log(this.props)
+    console.log("dashboard")
     return (
       <div>
-        {/* { !this.props.current_user.user_id ? <Redirect to='/login' /> : null } */}
+        { !this.props.current_user.user_id ? <Redirect to='/login' /> : null }
         <Route path={`${this.props.match.url}/form`} component={IncomeForm} />
         <Route path={`${this.props.match.url}/analysis`} component={Analysis} />
       </div>

@@ -14,7 +14,9 @@ import Dashboard from './containers/dashboard'
 import { withRouter } from 'react-router';
 
 class App extends Component {
-
+  state = {
+    load: false
+  }
   componentDidMount = () => {
     this.loggedin()
   }
@@ -34,22 +36,33 @@ class App extends Component {
       fetch(url, options)
         .then(resp => resp.json())
         .then(resp => this.props.login(resp.id, resp.categories))
-        .then(console.log(this.props))
+        .then(console.log("token found"))
+    } else {
+      this.setState({load: true})
+      console.log("no token")
     }
   }
 
   render() {
     console.log("app")
+    console.log(this.props.current_user)
     return (
       <div>
-        <Navbar />
-        <Switch>
-          <Route exact path="/login" component={Login} />
-          <Route exact path="/about" render={() => (<div>Match about</div>)} />
-          <Route path="/dashboard" component={Dashboard} />
-          <Route exact path="/signup" component={Signup} />
-        </Switch>
+        {this.state.load || this.props.current_user.user_id ?
+          <div>
+            <Navbar />
+            <Switch>
+              <Route exact path="/login" component={Login} />
+              <Route exact path="/about" render={() => (<div>Match about</div>)} />
+              <Route path="/dashboard" component={Dashboard} />
+              <Route exact path="/signup" component={Signup} />
+            </Switch>
+          </div>
+          :
+          null
+        }
       </div>
+
     );
   }
 }
