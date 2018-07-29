@@ -6,10 +6,44 @@ import ReactTable from "react-table";
 import "react-table/react-table.css";
 import matchSorter from 'match-sorter';
 
+// Import React Popup
+import Popup from "reactjs-popup";
+
 class Table extends React.Component {
 
   state = {
-    entries: []
+    entries: [],
+    open: false,
+    data: {}
+  }
+
+  openModal = (entry, entry_index) => {
+    this.setState({ open: true, data: {...entry, user_id: this.props.current_user.user_id, index: entry_index} });
+  };
+  closeModal = () => {
+    this.setState({ open: false });
+  };
+  handleDelete = () => {
+    const index = this.state.data.index
+    const options = {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      },
+      body: JSON.stringify(this.state.data)
+    };
+    fetch('http://localhost:3001/api/v1/entries', options)
+    .then(resp => resp.json())
+    .then(resp => {
+      this.setState((prevState) => {
+        let newEntries = prevState.entries
+        newEntries.splice(index, 1)
+        return {
+          entries: newEntries
+        }
+      })
+    }, this.closeModal())
   }
 
   componentDidMount() {
@@ -28,6 +62,18 @@ class Table extends React.Component {
         <ReactTable
           data={data}
           filterable
+          getTdProps={(state, rowInfo, column, instance) => {
+            return {
+              onClick: (e, handleOriginal) => {
+                console.log("A Td Element was clicked!");
+                console.log("it produced this event:", e);
+                console.log("It was in this column:", column);
+                console.log("It was in this row:", rowInfo);
+                console.log("It was in this table instance:", instance);
+                this.openModal(rowInfo.original, rowInfo.index)
+              }
+            };
+          }}
           columns={[
             {
               Header: "Entries",
@@ -79,6 +125,15 @@ class Table extends React.Component {
           style={{height: "500px"}}
           className="-striped -highlight"
         />
+        <Popup
+          open={this.state.open}
+          closeOnDocumentClick
+          onClose={this.closeModal}
+        >
+          <div>
+            <button onClick={this.handleDelete}>Delete Entry</button>
+          </div>
+        </Popup>
       </div>
     );
   }
