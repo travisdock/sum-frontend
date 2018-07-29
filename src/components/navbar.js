@@ -22,7 +22,8 @@ class Navbar extends React.Component {
           ?
           <div>
             <Link to="/dashboard/form" className="nav" >Input</Link>
-            <Link to="/dashboard/analysis" className="nav" >Analysis</Link>
+            <Link to="/dashboard/charts" className="nav" >Charts</Link>
+            <Link to="/dashboard/entries" className="nav" >Entries</Link>
             <button onClick={this.handleLogOut}>Logout</button>
           </div>
           :
