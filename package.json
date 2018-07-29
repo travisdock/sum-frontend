@@ -5,6 +5,7 @@
   "dependencies": {
     "billboard.js": "^1.5.1",
     "connected-react-router": "^4.3.0",
+    "match-sorter": "^2.2.3",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-redux": "^5.0.7",
