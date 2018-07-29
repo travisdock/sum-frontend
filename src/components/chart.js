@@ -16,7 +16,7 @@ class Chart extends React.Component {
 
     fetch(`http://localhost:3001/api/v1/charts/${id}`)
       .then(resp => resp.json())
-      .then(resp => this.setState({charts: resp, load: true }, this.renderPieChart))
+      .then(resp => this.setState({charts: resp, load: true, currentChart: resp.pie_data.length - 2 }, this.renderPieChart))
   }
 
   changePieChart = () => {
@@ -34,10 +34,13 @@ class Chart extends React.Component {
   }
 
   renderPieChart() {
-    let month = Object.keys(this.state.charts.pie_data[this.state.currentChart])[0]
+    const { currentChart } = this.state
+    const { pie_data } = this.state.charts
+    const month = Object.keys(pie_data[currentChart])[0]
+
     bb.generate({
       data: {
-        columns: this.state.charts.pie_data[this.state.currentChart][month],
+        columns: pie_data[currentChart][month],
         type: "pie"
       },
       title: {
@@ -46,6 +49,7 @@ class Chart extends React.Component {
       bindto: "#chart"
     });
   }
+
   renderPLChart() {
     bb.generate({
       data: {
@@ -66,7 +70,6 @@ class Chart extends React.Component {
   }
 
   render() {
-    console.log(this.state)
     return (
       <div>
         {this.state.load ?
@@ -77,8 +80,8 @@ class Chart extends React.Component {
                 null :
                 <button onClick={this.changePieChart}>Next</button>
               }
-            </div>
-          : <div>Loading...</div>
+            </div> :
+            <div>Loading...</div>
         }
       </div>
     )
