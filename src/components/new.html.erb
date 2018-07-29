@@ -1,0 +1,13 @@
+<h1>New Cohort</h1>
+
+<%= form_for @cohort do |f| %>
+
+  <%= f.label :name %>
+  <%= f.text_field :name %><br>
+
+  <%= f.label :motto %>
+  <%= f.text_area :motto %>
+
+  <%= f.submit %>
+
+<% end %>

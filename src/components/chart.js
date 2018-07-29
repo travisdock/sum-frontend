@@ -5,36 +5,61 @@ import { connect } from 'react-redux';
 class Chart extends React.Component {
 
   state = {
-    columns: [],
+    charts: {},
     load: false,
+    toggleChart: false,
     currentChart: 0
   }
+
   componentDidMount() {
     const id = this.props.current_user.user_id
 
-    fetch(`http://localhost:3001/api/v1/month_category/${id}`)
+    fetch(`http://localhost:3001/api/v1/charts/${id}`)
       .then(resp => resp.json())
-      .then(resp => this.setState({columns: resp, load: true }, this.renderChart))
+      .then(resp => this.setState({charts: resp, load: true }, this.renderPieChart))
   }
 
-  changeChart = () => {
-    const max = this.state.columns.length
+  changePieChart = () => {
+    const max = this.state.charts.pie_data.length
     this.setState((prevState) => {
       return {
         currentChart: (prevState.currentChart === (max - 1) ? 0 : prevState.currentChart + 1)
       }
-    }, this.renderChart)
+    }, this.renderPieChart)
   }
-  renderChart() {
-    console.log(this.state)
-    let month = Object.keys(this.state.columns[this.state.currentChart])[0]
+
+  changeChart = () => {
+    (this.state.toggleChart ? this.renderPieChart() : this.renderPLChart());
+    this.setState((prevState) => {return {toggleChart: !prevState.toggleChart}})
+  }
+
+  renderPieChart() {
+    let month = Object.keys(this.state.charts.pie_data[this.state.currentChart])[0]
     bb.generate({
       data: {
-        columns: this.state.columns[this.state.currentChart][month],
+        columns: this.state.charts.pie_data[this.state.currentChart][month],
         type: "pie"
       },
       title: {
         text: month
+      },
+      bindto: "#chart"
+    });
+  }
+  renderPLChart() {
+    bb.generate({
+      data: {
+        x: "x",
+        columns: this.state.charts.p_l,
+      type: "area-spline"
+      },
+      axis: {
+        x: {
+          type: "timeseries",
+          tick: {
+            format: "%b"
+          }
+        }
       },
       bindto: "#chart"
     });
@@ -46,10 +71,14 @@ class Chart extends React.Component {
       <div>
         {this.state.load ?
             <div>
+              <button onClick={this.changeChart}>Change Chart</button>
               <div id="chart" />
-              <button onClick={this.changeChart}>Next</button>
+              {this.state.toggleChart ?
+                null :
+                <button onClick={this.changePieChart}>Next</button>
+              }
             </div>
-          : null
+          : <div>Loading...</div>
         }
       </div>
     )

@@ -56,6 +56,7 @@ class App extends Component {
               <Route exact path="/about" render={() => (<div>Match about</div>)} />
               <Route path="/dashboard" component={Dashboard} />
               <Route exact path="/signup" component={Signup} />
+              <Route path="/" component={Login} />
             </Switch>
           </div>
           :
