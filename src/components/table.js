@@ -107,6 +107,14 @@ class Table extends React.Component {
                   Header: "Amount",
                   accessor: "amount",
                   maxWidth: 100,
+                  sortMethod: (a, b) => {
+                    if (a === b) {
+                      return 0;
+                    }
+                    const aInteger = Number(a.replace(/[^0-9\.-]+/g,""));
+                    const bInteger = Number(b.replace(/[^0-9\.-]+/g,""));
+                    return aInteger > bInteger ? 1 : -1;
+                  },
                   filterMethod: (filter, rows) =>
                     matchSorter(rows, filter.value, { keys: ["amount"] }),
                     filterAll: true

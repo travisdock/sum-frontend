@@ -19,7 +19,6 @@ class Navbar extends React.Component {
   render() {
     const { activeItem } = this.state
     console.log("navbar")
-    debugger;
     return (
       <div>
         { !!this.props.current_user.user_id
