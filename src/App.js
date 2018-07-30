@@ -2,16 +2,16 @@ import React, { Component } from 'react';
 import './App.css';
 
 import { Route, Switch } from 'react-router';
+import { withRouter } from 'react-router';
 import { connect } from 'react-redux';
+
+////////////////ACTIONS/////////////////////////
 import { login } from './actions/index'
 
+//////////////CONTAINER COMPONENTS//////////////
 import Navbar from './components/navbar'
-import Login from './containers/login'
-import Signup from './containers/signup'
+import Home from './containers/home'
 import Dashboard from './containers/dashboard'
-
-
-import { withRouter } from 'react-router';
 
 class App extends Component {
   state = {
@@ -52,11 +52,8 @@ class App extends Component {
           <div>
             <Navbar />
             <Switch>
-              <Route exact path="/login" component={Login} />
-              <Route exact path="/about" render={() => (<div>Match about</div>)} />
               <Route path="/dashboard" component={Dashboard} />
-              <Route exact path="/signup" component={Signup} />
-              <Route path="/" component={Login} />
+              <Route path="/" component={Home} />
             </Switch>
           </div>
           :
