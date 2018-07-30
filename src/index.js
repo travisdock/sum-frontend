@@ -13,6 +13,8 @@ import { ConnectedRouter, connectRouter, routerMiddleware } from 'connected-reac
 
 import reducer from './reducers/index';
 
+import 'semantic-ui-css/semantic.min.css';
+
 const history = createBrowserHistory()
 const initialState = {
   current_user: {
