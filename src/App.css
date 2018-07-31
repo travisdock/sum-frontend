@@ -30,6 +30,12 @@ div a.active {
 
 .navbar .logout {
   float: right;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  padding: 10px 12px;
+  text-decoration: none;
+  font-size: 15px;
+  margin: 10px 5px;
 }
 
 .content {
@@ -59,9 +65,26 @@ form {
   justify-content: space-around;
   align-items: center;
   flex-direction: column;
+
 }
 
-.field {
-  padding: 5px 5px;
-  
+select {
+  font-size: 14px;
+  padding: 12px 20px;
+  margin: 8px 0;
+  border: 2px solid #ccc;
+}
+textarea, input {
+  padding: 12px 20px;
+  margin: 8px 0;
+  border: 2px solid #ccc;
+  font-size: 14px;
+  border-radius: 4px;
+}
+.content button {
+  border: 2px solid #ccc;
+  font-size: 14px;
+  padding: 12px 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 3px 0 rgba(0,0,0,0.2), 0 2px 3px 0 rgba(0,0,0,0.19);
 }
