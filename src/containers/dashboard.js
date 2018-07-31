@@ -12,7 +12,7 @@ class Dashboard extends React.Component {
   render() {
     console.log("dashboard")
     return (
-      <div>
+      <div className="content">
         { !this.props.current_user.user_id ? <Redirect to='/login' /> : null }
         <Route path={`${this.props.match.url}/form`} component={IncomeForm} />
         <Route path={`${this.props.match.url}/charts`} component={Chart} />

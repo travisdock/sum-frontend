@@ -1,31 +1,67 @@
-.App {
+div a.active {
+  background-color: #6D8586;
+  color: #E2E2E2;
+}
+
+.navbar {
+  display: flex;
+  width: 100%;
+}
+
+.navbar .navlinks {
+  width: 100%;
+}
+
+.navbar a {
+  float: left;
+  color: #3F4D4E;
   text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+  border-radius: 20px;
+  margin: 10px 5px;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+.navbar a:hover {
+    background-color: #ddd;
+    color: black;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+.navbar .logout {
+  float: right;
 }
 
-.App-title {
-  font-size: 1.5em;
+.content {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
-.App-intro {
-  font-size: large;
+.content .income_form {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.content .chart-content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+form {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
 }
-a.nav {
-  margin: 5px 5px 5px 5px;
+
+.field {
+  padding: 5px 5px;
+  
 }

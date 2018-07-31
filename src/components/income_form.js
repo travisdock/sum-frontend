@@ -1,7 +1,6 @@
 import React from 'react';
 
 import { connect } from 'react-redux';
-import { Input } from 'semantic-ui-react'
 
 class IncomeForm extends React.Component {
   constructor(props) {
@@ -154,7 +153,7 @@ class IncomeForm extends React.Component {
       <button onClick={this.toggleCategory}>Create Category</button>
     </div>)
     return (
-      <div>
+      <div className="income_form">
         <form onSubmit={this.handleSubmit}>
           {(this.state.new_category ? newCategory : selectCategory)}
           <div className="ui field">
@@ -169,14 +168,15 @@ class IncomeForm extends React.Component {
           <div className="ui field">
             <input
               name="amount"
+              placeholder="0.00"
               value={this.state.form.amount}
               onChange={this.handleChange}
             />
           </div>
           <div className="ui field">
-            <label>Notes: </label><br></br>
             <textarea
               name="notes"
+              placeholder="Entry details..."
               rows="5"
               cols="55"
               value={this.state.form.notes}

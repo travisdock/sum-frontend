@@ -1,14 +1,11 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { Menu } from 'semantic-ui-react'
 import { logout } from '../actions/index'
 
 import { withRouter } from 'react-router';
 
 class Navbar extends React.Component {
-  state = { activeItem: ''}
-  handleItemClick = (e, { name }) => this.setState({ activeItem: name })
 
   handleLogOut = () => {
     localStorage.clear()
@@ -17,65 +14,38 @@ class Navbar extends React.Component {
   }
 
   render() {
-    const { activeItem } = this.state
     console.log("navbar")
     return (
-      <div>
+      <div className="navbar">
         { !!this.props.current_user.user_id
           ?
-          <Menu secondary>
-            <Menu.Item
-              as={ Link }
+          <div className="navlinks">
+            <NavLink
               to='/dashboard/form'
-              name='input'
-              active={activeItem === 'input'}
-              onClick={this.handleItemClick}
-            />
-            <Menu.Item
-              as={ Link }
+            >Input</NavLink>
+            <NavLink
               to='/dashboard/charts'
-              name='charts'
-              active={activeItem === 'charts'}
-              onClick={this.handleItemClick}
-            />
-            <Menu.Item
-              as={ Link }
+            >Charts</NavLink>
+            <NavLink
               to='/dashboard/entries'
-              name='entries'
-              active={activeItem === 'entries'}
-              onClick={this.handleItemClick}
-            />
-            <Menu.Menu position='right'>
-              <Menu.Item
-                name='logout'
-                onClick={this.handleLogOut}
-              />
-            </Menu.Menu>
-          </Menu>
+            >Entries</NavLink>
+            <button
+              className="logout"
+              onClick={this.handleLogOut}
+            >Logout</button>
+          </div>
           :
-          <Menu secondary>
-            <Menu.Item
-              as={ Link }
+          <div className="navlinks">
+            <NavLink
               to='/login'
-              name='login'
-              active={activeItem === 'login'}
-              onClick={this.handleItemClick}
-            />
-            <Menu.Item
-              as={ Link }
+            >Login</NavLink>
+            <NavLink
               to='/about'
-              name='about'
-              active={activeItem === 'about'}
-              onClick={this.handleItemClick}
-            />
-            <Menu.Item
-              as={ Link }
+            >About</NavLink>
+            <NavLink
               to='/signup'
-              name='signup'
-              active={activeItem === 'signup'}
-              onClick={this.handleItemClick}
-            />
-          </Menu>
+            >Signup</NavLink>
+          </div>
         }
         </div>
       )

@@ -55,17 +55,18 @@ class Login extends React.Component {
         {this.props.current_user.user_id ? <Redirect to='/dashboard/form' /> : null}
         <form onSubmit={this.handleSubmit}>
           <div className="ui field">
-            <label>Username: </label>
             <input
               name="username"
+              placeholder="Username"
+              type="text"
               value={this.state.username}
               onChange={this.handleChange}
             />
           </div>
           <div className="ui field">
-            <label>Password: </label>
             <input
               name="password"
+              placeholder="Password"
               type="password"
               value={this.state.password}
               onChange={this.handleChange}

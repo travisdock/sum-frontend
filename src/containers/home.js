@@ -12,7 +12,7 @@ class Home extends React.Component {
     console.log("home")
     console.log(this.props.match.url)
     return (
-      <div>
+      <div className="content">
         { this.props.current_user.user_id ? <Redirect to='/dashboard' /> : null }
         <Route exact path={`${this.props.match.url}login`} component={Login} />
         <Route exact path={`${this.props.match.url}signup`} component={Signup} />

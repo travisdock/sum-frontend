@@ -48,26 +48,26 @@ class Signup extends React.Component {
         {this.props.current_user.user_id ? <Redirect to='/dashboard' /> : null}
         <form onSubmit={this.handleSubmit}>
           <div className="ui field">
-            <label>Username: </label>
             <input
               name="username"
+              placeholder="Username..."
               value={this.state.username}
               onChange={this.handleChange}
             />
           </div>
           <div className="ui field">
-            <label>Password: </label>
             <input
               name="password"
               type="password"
+              placeholder="Password..."
               value={this.state.password}
               onChange={this.handleChange}
             />
           </div>
           <div className="ui field">
-            <label>Email: </label>
             <input
               name="email"
+              placeholder="Email..."
               value={this.state.email}
               onChange={this.handleChange}
             />

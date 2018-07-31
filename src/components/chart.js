@@ -71,9 +71,9 @@ class Chart extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="chart-content">
         {this.state.load ?
-            <div>
+            <div className="chart-content">
               <button onClick={this.changeChart}>Change Chart</button>
               <div id="chart" />
               {this.state.toggleChart ?
