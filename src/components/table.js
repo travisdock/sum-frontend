@@ -139,7 +139,11 @@ class Table extends React.Component {
           closeOnDocumentClick
           onClose={this.closeModal}
         >
-          <div>
+          <div className="table-popup">
+            <p>Amount: {this.state.data.amount}</p>
+            <p>Category: {this.state.data.category}</p>
+            <p>Date: {this.state.data.date}</p>
+            <p>Notes: {this.state.data.notes}</p>
             <button onClick={this.handleDelete}>Delete Entry</button>
           </div>
         </Popup>

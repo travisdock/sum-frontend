@@ -1,5 +1,5 @@
 div a.active {
-  background-color: #6D8586;
+  background-color: #3A5199;
   color: #E2E2E2;
 }
 
@@ -30,6 +30,7 @@ div a.active {
 
 .navbar .logout {
   float: right;
+  background-color: #DEDCE4;
   border: 2px solid #ccc;
   border-radius: 5px;
   padding: 10px 12px;
@@ -83,8 +84,26 @@ textarea, input {
 }
 .content button {
   border: 2px solid #ccc;
+  background-color: #DEDCE4;
+  margin: 3px 3px;
   font-size: 14px;
   padding: 12px 20px;
   border-radius: 5px;
   box-shadow: 0 2px 3px 0 rgba(0,0,0,0.2), 0 2px 3px 0 rgba(0,0,0,0.19);
+}
+
+div.table-popup {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+  border: 3px solid #000406;
+  padding: 12px 5px;
+  border-radius: 6px;
+}
+
+div.content div.popup-content {
+  padding: 0px !important;
+  border: none !important;
+  border-radius: 6px;
 }
