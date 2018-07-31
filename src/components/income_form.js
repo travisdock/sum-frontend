@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { connect } from 'react-redux';
+import { Input } from 'semantic-ui-react'
 
 class IncomeForm extends React.Component {
   constructor(props) {
@@ -23,6 +24,7 @@ class IncomeForm extends React.Component {
     const target = e.target;
     const value = target.value;
     const name = target.name;
+
 
     this.setState((prevState) => {
       return {
@@ -62,19 +64,20 @@ class IncomeForm extends React.Component {
         } else {
           console.log(resp)
           alert("Success!")
+          this.setState({
+            form: {
+              category: '',
+              date: '',
+              amount: '',
+              notes: '',
+              income: false,
+              gift: false
+            },
+            new_category: false
+          })
         }
       })
-      .then(this.setState({
-        form: {
-          category: '',
-          date: '',
-          amount: '',
-          notes: '',
-          income: false,
-          gift: false
-        },
-        new_category: false
-      }))
+
   }
 
   toggleCategory = () => {
@@ -116,12 +119,12 @@ class IncomeForm extends React.Component {
   }
 
   render() {
-
+    console.log(this.state)
     const newCategory = (<div className="ui field">
-      <label>Category: </label>
       <input
         name="category"
         value={this.state.form.category}
+        placeholder='Category Name'
         onChange={this.handleChange}
       />
       <label>income:</label>
@@ -140,7 +143,6 @@ class IncomeForm extends React.Component {
     </div>)
 
     const selectCategory = (<div className="ui field">
-      {/* <label>Category: </label> */}
       <select
         name="category"
         value={this.state.form.category}
@@ -151,22 +153,20 @@ class IncomeForm extends React.Component {
       </select>
       <button onClick={this.toggleCategory}>Create Category</button>
     </div>)
-    console.log(this.state);
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
           {(this.state.new_category ? newCategory : selectCategory)}
           <div className="ui field">
-            <label>Date: </label>
             <input
               name="date"
               type="date"
+              placeholder="Date"
               value={this.state.form.date}
               onChange={this.handleChange}
             />
           </div>
           <div className="ui field">
-            <label>Amount: </label>
             <input
               name="amount"
               value={this.state.form.amount}

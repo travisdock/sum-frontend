@@ -18,13 +18,14 @@ class Table extends React.Component {
   }
 
   openModal = (entry, entry_index) => {
-    this.setState({ open: true, data: {...entry, user_id: this.props.current_user.user_id, index: entry_index} });
+    this.setState({ open: true, data: entry, index: entry_index});
   };
   closeModal = () => {
     this.setState({ open: false });
   };
   handleDelete = () => {
-    const index = this.state.data.index
+    const index = this.state.index
+    console.log(this.state)
     const options = {
       method: "DELETE",
       headers: {
@@ -35,15 +36,18 @@ class Table extends React.Component {
     };
     fetch('http://localhost:3001/api/v1/entries', options)
     .then(resp => resp.json())
-    .then(resp => {
+    .then(resp => { if (resp.error) {
+      alert(resp.exception)
+    } else {
       this.setState((prevState) => {
-        let newEntries = prevState.entries
+        // Deep clone entries array from prevState
+        let newEntries = prevState.entries.slice(0)
         newEntries.splice(index, 1)
         return {
           entries: newEntries
         }
       })
-    }, this.closeModal())
+    }}, this.closeModal())
   }
 
   componentDidMount() {
@@ -56,7 +60,6 @@ class Table extends React.Component {
 
   render() {
     const data = this.state.entries;
-    console.log(this.props)
     return (
       <div>
         <ReactTable
@@ -90,7 +93,9 @@ class Table extends React.Component {
                       >
                       <option value="">All</option>
                       {this.props.current_user.categories.map( category =>
-                        <option value={category.name}>{category.name}</option>
+                        <option
+                          key={category.id}
+                         value={category.name}>{category.name}</option>
                         )
                       }
                     </select>
@@ -111,8 +116,9 @@ class Table extends React.Component {
                     if (a === b) {
                       return 0;
                     }
-                    const aInteger = Number(a.replace(/[^0-9\.-]+/g,""));
-                    const bInteger = Number(b.replace(/[^0-9\.-]+/g,""));
+                    const aInteger = Number(a.replace(/[^0-9\\.-]+/g,""));
+                    const bInteger = Number(b.replace(/[^0-9\\.-]+/g,""));
+                    // Originally this ^ was .replace(/[^0-9\.-]+/g,"") but the linter was throwing a "unnecessary escape character" error so I escaped it. Not sure if this is cool or not.
                     return aInteger > bInteger ? 1 : -1;
                   },
                   filterMethod: (filter, rows) =>
