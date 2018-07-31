@@ -40,7 +40,7 @@ class Table extends React.Component {
       alert(resp.exception)
     } else {
       this.setState((prevState) => {
-        // Deep clone entries array from prevState
+        // Not a deep clone of the objects, just a copy of the array
         let newEntries = prevState.entries.slice(0)
         newEntries.splice(index, 1)
         return {
@@ -68,11 +68,6 @@ class Table extends React.Component {
           getTdProps={(state, rowInfo, column, instance) => {
             return {
               onClick: (e, handleOriginal) => {
-                console.log("A Td Element was clicked!");
-                console.log("it produced this event:", e);
-                console.log("It was in this column:", column);
-                console.log("It was in this row:", rowInfo);
-                console.log("It was in this table instance:", instance);
                 this.openModal(rowInfo.original, rowInfo.index)
               }
             };
