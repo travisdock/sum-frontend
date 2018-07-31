@@ -106,4 +106,10 @@ div.content div.popup-content {
   padding: 0px !important;
   border: none !important;
   border-radius: 6px;
+  font-size: 21px;
+}
+
+div.content div.table-content {
+  width: 100%;
+  margin: 0 8px 0 8px;
 }

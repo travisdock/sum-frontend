@@ -125,19 +125,21 @@ class IncomeForm extends React.Component {
         value={this.state.form.category}
         placeholder='Category Name'
         onChange={this.handleChange}
-      />
-      <label>income:</label>
+      /><br></br>
       <input
         name="income"
         type="checkbox"
         onChange={this.toggleIncome}
       />
-      <label>gift:</label>
+      <label> income</label>
+      <br></br>
       <input
         name="gift"
         type="checkbox"
         onChange={this.toggleGift}
       />
+      <label> gift</label>
+      <br></br>
       <button onClick={this.toggleCategory}>Select Category</button>
     </div>)
 

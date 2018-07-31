@@ -61,7 +61,7 @@ class Table extends React.Component {
   render() {
     const data = this.state.entries;
     return (
-      <div>
+      <div className="table-content">
         <ReactTable
           data={data}
           filterable
