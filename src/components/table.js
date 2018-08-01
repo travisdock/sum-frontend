@@ -60,6 +60,7 @@ class Table extends React.Component {
 
   render() {
     const data = this.state.entries;
+    console.log(data)
     return (
       <div className="table-content">
         <ReactTable
@@ -78,7 +79,7 @@ class Table extends React.Component {
               columns: [
                 {
                   Header: "Category",
-                  accessor: "category",
+                  accessor: "category_name",
                   maxWidth: 200,
                   Filter: ({filter, onChange}) =>
                     <select

@@ -3,4 +3,5 @@ Things to do:
 -Untracked categories
 -Sorting table by income and expense
 -Edit entry
--Add are you sure to 
+-Add are you sure to
+-Forward backward buttons/scrolling for charts
