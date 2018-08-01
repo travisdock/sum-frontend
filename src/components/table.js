@@ -105,7 +105,10 @@ class Table extends React.Component {
                 },
                 {
                   Header: "Amount",
-                  accessor: "amount",
+                  id: "amount",
+                  accessor: d => {
+                    return "$" + Number(d.amount).toFixed(2)
+                  },
                   maxWidth: 100,
                   sortMethod: (a, b) => {
                     if (a === b) {
