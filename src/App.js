@@ -18,10 +18,12 @@ class App extends Component {
     load: false
   }
   componentDidMount = () => {
+    console.log("did mount")
     this.loggedin()
   }
 
   loggedin() {
+    console.log("checking token")
     const token = localStorage.getItem('jwt')
 
     if (token) {
