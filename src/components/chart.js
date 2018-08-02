@@ -92,20 +92,3 @@ const mapStateToProps = state => ({
 });
 
 export default connect(mapStateToProps)(Chart)
-
-
-
-// WORKING BAR CHART
-// data: {
-//   x: "x",
-//   columns: this.state.columns,
-// type: "bar"
-// },
-// axis: {
-//   x: {
-//     type: "timeseries",
-//     tick: {
-//       format: "%b"
-//     }
-//   }
-// }

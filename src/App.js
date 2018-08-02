@@ -6,7 +6,7 @@ import { withRouter } from 'react-router';
 import { connect } from 'react-redux';
 
 ////////////////ACTIONS/////////////////////////
-import { login } from './actions/index'
+import { login, logout } from './actions/index'
 
 //////////////CONTAINER COMPONENTS//////////////
 import Navbar from './components/navbar'
@@ -14,11 +14,9 @@ import Home from './containers/home'
 import Dashboard from './containers/dashboard'
 
 class App extends Component {
-  state = {
-    load: false
-  }
+
   componentDidMount = () => {
-    console.log("did mount")
+    console.log("app did mount")
     this.loggedin()
   }
 
@@ -38,19 +36,19 @@ class App extends Component {
       fetch(url, options)
         .then(resp => resp.json())
         .then(resp => this.props.login(resp.id, resp.categories))
-        .then(console.log("token found"))
     } else {
-      this.setState({load: true})
       console.log("no token")
+      this.props.logout()
     }
   }
 
   render() {
-    console.log("app")
-    console.log(this.props.current_user)
+    console.log("app render")
+    console.log("load:", this.props.load)
+    console.log("id:", !!this.props.current_user.user_id)
     return (
       <div>
-        {this.state.load || this.props.current_user.user_id ?
+        {this.props.load || !!this.props.current_user.user_id ?
           <div>
             <Navbar />
             <Switch>
@@ -68,7 +66,8 @@ class App extends Component {
 }
 
 const mapStateToProps = state => ({
-  current_user: state.current_user
+  current_user: state.current_user,
+  load: state.load
 });
 
-export default withRouter(connect(mapStateToProps, { login })(App));
+export default withRouter(connect(mapStateToProps, { login, logout })(App));

@@ -81,6 +81,7 @@ div a.active {
   justify-content: space-around;
   align-items: center;
   flex-direction: column;
+  margin: 0px 10px;
 }
 
 form {

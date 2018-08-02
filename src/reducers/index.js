@@ -8,11 +8,11 @@ export default function reducer(
     case "LOGIN":
       console.log("current user set")
       return {
-        ...state, current_user: action.payload
+        ...state, current_user: action.payload, load: false
       }
     case "LOGOUT":
       return {
-        ...state, current_user: ''
+        ...state, current_user: '', load: true
       }
     default:
       return state;

@@ -18,7 +18,8 @@ const initialState = {
   current_user: {
     user_id: '',
     categories: []
-  }
+  },
+  load: false
 }
 
 const store = createStore(

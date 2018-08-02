@@ -8,7 +8,7 @@ class IncomeForm extends React.Component {
     this.state = {
       form: {
         category: '',
-        date: '',
+        date: new Date().toISOString().substr(0, 10),
         amount: '',
         notes: '',
         income: false,
@@ -66,7 +66,7 @@ class IncomeForm extends React.Component {
           this.setState({
             form: {
               category: '',
-              date: '',
+              date: new Date().toISOString().substr(0, 10),
               amount: '',
               notes: '',
               income: false,
@@ -162,7 +162,6 @@ class IncomeForm extends React.Component {
             <input
               name="date"
               type="date"
-              placeholder="Date"
               value={this.state.form.date}
               onChange={this.handleChange}
             />
