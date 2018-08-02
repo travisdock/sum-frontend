@@ -47,6 +47,7 @@ class Signup extends React.Component {
       <div>
         {this.props.current_user.user_id ? <Redirect to='/dashboard' /> : null}
         <form onSubmit={this.handleSubmit}>
+          <h1 className="logo">Sum.</h1>
           <div className="ui field">
             <input
               name="username"

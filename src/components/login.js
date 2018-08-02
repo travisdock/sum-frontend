@@ -53,7 +53,9 @@ class Login extends React.Component {
     return (
       <div>
         {this.props.current_user.user_id ? <Redirect to='/dashboard/form' /> : null}
+
         <form onSubmit={this.handleSubmit}>
+          <h1 className="logo">Sum.</h1>
           <div className="ui field">
             <input
               name="username"
