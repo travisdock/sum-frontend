@@ -135,8 +135,15 @@ class Table extends React.Component {
             }
           ]}
           defaultPageSize={50}
-          style={{height: "500px"}}
+          defaultSorted={[
+            {
+              id: "date",
+              desc: true
+            }
+          ]}
+          style={{height: "86vh"}}
           className="-striped -highlight"
+          noDataText="No Entries"
         />
         <Popup
           open={this.state.open}
@@ -144,7 +151,7 @@ class Table extends React.Component {
           onClose={this.closeModal}
         >
           <div className="table-popup">
-            <p>Amount: {this.state.data.amount}</p>
+            <p>Amount: {"$" + Number(this.state.data.amount).toFixed(2)}</p>
             <p>Category: {this.state.data.category}</p>
             <p>Date: {this.state.data.date}</p>
             <p>Notes: {this.state.data.notes}</p>

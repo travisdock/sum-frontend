@@ -99,7 +99,7 @@ select {
 }
 textarea, input {
   padding: 12px 20px;
-  margin: 8px 0;
+  margin: 8px 5px;
   border: 2px solid #ccc;
   font-size: 14px;
   border-radius: 4px;

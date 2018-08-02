@@ -36,6 +36,7 @@ class Login extends React.Component {
     .then(resp => resp.json())
     .then(resp => {
       if (resp.error) {
+        console.log(resp)
         alert(resp.error)
         this.setState({
           username: '',

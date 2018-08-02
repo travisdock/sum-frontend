@@ -133,13 +133,14 @@ class IncomeForm extends React.Component {
       />
       <label> income</label>
       <br></br>
-      <input
+      {/* <input
         name="gift"
         type="checkbox"
         onChange={this.toggleGift}
-      />
-      <label> gift</label>
-      <br></br>
+      /> */}
+      {/* <label> gift</label> */}
+      {/* <br></br> */}
+      {/* ADD GIFT FUNCTIONALITY */}
       <button onClick={this.toggleCategory}>Select Category</button>
     </div>)
 

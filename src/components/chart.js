@@ -16,7 +16,12 @@ class Chart extends React.Component {
 
     fetch(`http://localhost:3001/api/v1/charts/${id}`)
       .then(resp => resp.json())
-      .then(resp => this.setState({charts: resp, load: true, currentChart: resp.pie_data.length - 2 }, this.renderPieChart))
+      .then(resp => {if (resp.error) {
+        this.setState({error: true})
+      } else {
+        this.setState({charts: resp, load: true, currentChart: resp.pie_data.length - 2 }, this.renderPieChart)
+      }}
+        )
   }
 
   changePieChart = () => {
@@ -81,7 +86,7 @@ class Chart extends React.Component {
                 <button onClick={this.changePieChart}>Next</button>
               }
             </div> :
-            <div>Loading...</div>
+            this.state.error ? <div>No Entries</div> : <div>Loading...</div>
         }
       </div>
     )
