@@ -40,7 +40,7 @@ class IncomeForm extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    const url = 'http://localhost:3001/api/v1/entries'
+    const url = 'https://sumfinance.herokuapp.com/api/v1/entries'
     const formData = {
       ...this.state.form,
       user_id: this.props.current_user.user_id
@@ -64,7 +64,9 @@ class IncomeForm extends React.Component {
           alert(resp.error)
         } else {
           console.log(resp)
-          this.props.updateCategories(resp)
+          if ( Object.prototype.toString.call( resp ) === '[object Array]' ) {
+            this.props.updateCategories(resp)
+          }
           alert("Success!")
           this.setState({
             form: {
@@ -146,7 +148,7 @@ class IncomeForm extends React.Component {
       {/* ADD GIFT FUNCTIONALITY */}
       <button onClick={this.toggleCategory}>Select Category</button>
     </div>)
-
+    console.log(this.props.current_user.categories)
     const selectCategory = (<div className="ui field">
       <select
         name="category"

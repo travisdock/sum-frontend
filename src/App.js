@@ -25,7 +25,7 @@ class App extends Component {
     const token = localStorage.getItem('jwt')
 
     if (token) {
-      const url = 'http://localhost:3001/api/v1/current_user'
+      const url = 'https://sumfinance.herokuapp.com/api/v1/current_user'
       const options = {
         headers: {
           'Content-Type': 'application/json',
@@ -35,7 +35,14 @@ class App extends Component {
       }
       fetch(url, options)
         .then(resp => resp.json())
-        .then(resp => this.props.login(resp.id, resp.categories))
+        .then(resp => {
+          if (resp.error) {
+            localStorage.clear()
+            this.props.logout()
+          } else {
+            this.props.login(resp.id, resp.categories)
+          }
+        })
     } else {
       console.log("no token")
       this.props.logout()

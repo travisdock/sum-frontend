@@ -14,7 +14,7 @@ class Chart extends React.Component {
   componentDidMount() {
     const id = this.props.current_user.user_id
 
-    fetch(`http://localhost:3001/api/v1/charts/${id}`)
+    fetch(`https://sumfinance.herokuapp.com/api/v1/charts/${id}`)
       .then(resp => resp.json())
       .then(resp => {if (resp.error) {
         this.setState({error: true})
@@ -49,7 +49,14 @@ class Chart extends React.Component {
         type: "pie"
       },
       title: {
-        text: month
+        text: month,
+        position: "top-center",
+        padding: {
+            top: 10,
+           right: 10,
+            bottom: 10,
+            left: 10
+        }
       },
       bindto: "#chart"
     });

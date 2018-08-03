@@ -34,7 +34,7 @@ class Table extends React.Component {
       },
       body: JSON.stringify(this.state.data)
     };
-    fetch('http://localhost:3001/api/v1/entries', options)
+    fetch('https://sumfinance.herokuapp.com/api/v1/entries', options)
     .then(resp => resp.json())
     .then(resp => { if (resp.error) {
       alert(resp.exception)
@@ -52,7 +52,7 @@ class Table extends React.Component {
 
   componentDidMount() {
     const id = this.props.current_user.user_id
-    const url = `http://localhost:3001/api/v1/entries/${id}`
+    const url = `https://sumfinance.herokuapp.com/api/v1/entries/${id}`
     fetch(url)
     .then(res => res.json())
     .then(res => this.setState({entries: res}))

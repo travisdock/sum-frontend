@@ -135,3 +135,10 @@ div.content div.table-content {
   width: 100%;
   margin: 0 8px 0 8px;
 }
+
+.bb-title {
+  font-size: 40px;
+  /* display: flex;
+  justify-content: space-around;
+  align-self: center; */
+}

@@ -21,7 +21,7 @@ class Signup extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    const url = 'http://localhost:3001/api/v1/users'
+    const url = 'https://sumfinance.herokuapp.com/api/v1/users'
     const options = {
       method: 'POST',
       headers: {
