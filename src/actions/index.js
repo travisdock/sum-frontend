@@ -15,3 +15,12 @@ export function logout() {
     type: 'LOGOUT',
   }
 }
+
+export function updateCategories(categories) {
+  return {
+    type: 'UPDATECATS',
+    payload: {
+      categories: categories
+    }
+  }
+}

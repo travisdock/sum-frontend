@@ -9,3 +9,5 @@ Edit Category
 -Forward backward buttons/scrolling for charts
 -Percent of income saved, spent, donated?
 -Savings and goals
+-Categories update after creation
+-Sum by filtered table results

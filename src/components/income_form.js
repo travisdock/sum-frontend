@@ -2,6 +2,8 @@ import React from 'react';
 
 import { connect } from 'react-redux';
 
+import { updateCategories } from '../actions/index';
+
 class IncomeForm extends React.Component {
   constructor(props) {
     super(props)
@@ -62,6 +64,7 @@ class IncomeForm extends React.Component {
           alert(resp.error)
         } else {
           console.log(resp)
+          this.props.updateCategories(resp)
           alert("Success!")
           this.setState({
             form: {
@@ -198,4 +201,4 @@ const mapStateToProps = state => ({
   current_user: state.current_user
 });
 
-export default connect(mapStateToProps)(IncomeForm);
+export default connect(mapStateToProps, { updateCategories })(IncomeForm);
