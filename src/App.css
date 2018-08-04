@@ -133,12 +133,19 @@ textarea, input {
 
 div.table-popup {
   display: flex;
-  justify-content: space-around;
+  /* justify-content: space-around; */
   align-items: center;
   flex-direction: column;
   border: 3px solid #000406;
   padding: 12px 5px;
   border-radius: 6px;
+  background-color: white;
+}
+
+@media only screen and (max-width: 500px) {
+    div.content div.popup-content {
+      width: 80% !important;
+    }
 }
 
 div.content div.popup-content {
@@ -146,6 +153,7 @@ div.content div.popup-content {
   border: none !important;
   border-radius: 6px;
   font-size: 21px;
+  background-color: transparent !important;
 }
 
 div.content div.table-content {

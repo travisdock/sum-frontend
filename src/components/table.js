@@ -58,9 +58,127 @@ class Table extends React.Component {
     .then(res => this.setState({entries: res}))
   }
 
+
+
   render() {
     const data = this.state.entries;
     console.log(data)
+    let mobileColumns = [
+      {
+        Header: "Entries",
+        columns: [
+          {
+            Header: "Category",
+            accessor: "category_name",
+            maxWidth: 200,
+            Filter: ({filter, onChange}) =>
+              <select
+                onChange={event => onChange(event.target.value)}
+                style={{ width: "100%" }}
+                value={filter ? filter.value : ""}
+                >
+                <option value="">All</option>
+                {this.props.current_user.categories.map( category =>
+                  <option
+                    key={category.id}
+                   value={category.name}>{category.name}</option>
+                  )
+                }
+              </select>
+          },
+          {
+            Header: "Date",
+            accessor: "date",
+            maxWidth: 110,
+            filterMethod: (filter, rows) =>
+              matchSorter(rows, filter.value, { keys: ["date"] }),
+              filterAll: true
+          },
+          {
+            Header: "Amount",
+            id: "amount",
+            accessor: d => {
+              return "$" + Number(d.amount).toFixed(2)
+            },
+            maxWidth: 100,
+            sortMethod: (a, b) => {
+              if (a === b) {
+                return 0;
+              }
+              const aInteger = Number(a.replace(/[^0-9\\.-]+/g,""));
+              const bInteger = Number(b.replace(/[^0-9\\.-]+/g,""));
+              // Originally this ^ was .replace(/[^0-9\.-]+/g,"") but the linter was throwing a "unnecessary escape character" error so I escaped it. Not sure if this is cool or not.
+              return aInteger > bInteger ? 1 : -1;
+            },
+            filterMethod: (filter, rows) =>
+              matchSorter(rows, filter.value, { keys: ["amount"] }),
+              filterAll: true
+          }
+        ]
+      }
+    ]
+    let desktopColumns = [
+      {
+        Header: "Entries",
+        columns: [
+          {
+            Header: "Category",
+            accessor: "category_name",
+            maxWidth: 200,
+            Filter: ({filter, onChange}) =>
+              <select
+                onChange={event => onChange(event.target.value)}
+                style={{ width: "100%" }}
+                value={filter ? filter.value : ""}
+                >
+                <option value="">All</option>
+                {this.props.current_user.categories.map( category =>
+                  <option
+                    key={category.id}
+                   value={category.name}>{category.name}</option>
+                  )
+                }
+              </select>
+          },
+          {
+            Header: "Date",
+            accessor: "date",
+            maxWidth: 110,
+            filterMethod: (filter, rows) =>
+              matchSorter(rows, filter.value, { keys: ["date"] }),
+              filterAll: true
+          },
+          {
+            Header: "Amount",
+            id: "amount",
+            accessor: d => {
+              return "$" + Number(d.amount).toFixed(2)
+            },
+            maxWidth: 100,
+            sortMethod: (a, b) => {
+              if (a === b) {
+                return 0;
+              }
+              const aInteger = Number(a.replace(/[^0-9\\.-]+/g,""));
+              const bInteger = Number(b.replace(/[^0-9\\.-]+/g,""));
+              // Originally this ^ was .replace(/[^0-9\.-]+/g,"") but the linter was throwing a "unnecessary escape character" error so I escaped it. Not sure if this is cool or not.
+              return aInteger > bInteger ? 1 : -1;
+            },
+            filterMethod: (filter, rows) =>
+              matchSorter(rows, filter.value, { keys: ["amount"] }),
+              filterAll: true
+          },
+          {
+            Header: "Notes",
+            accessor: "notes",
+            filterMethod: (filter, rows) =>
+              matchSorter(rows, filter.value, { keys: ["notes"] }),
+              filterAll: true
+          }
+        ]
+      }
+    ]
+    const windowWidth = document.documentElement.offsetWidth
     return (
       <div className="table-content">
         <ReactTable
@@ -73,67 +191,7 @@ class Table extends React.Component {
               }
             };
           }}
-          columns={[
-            {
-              Header: "Entries",
-              columns: [
-                {
-                  Header: "Category",
-                  accessor: "category_name",
-                  maxWidth: 200,
-                  Filter: ({filter, onChange}) =>
-                    <select
-                      onChange={event => onChange(event.target.value)}
-                      style={{ width: "100%" }}
-                      value={filter ? filter.value : ""}
-                      >
-                      <option value="">All</option>
-                      {this.props.current_user.categories.map( category =>
-                        <option
-                          key={category.id}
-                         value={category.name}>{category.name}</option>
-                        )
-                      }
-                    </select>
-                },
-                {
-                  Header: "Date",
-                  accessor: "date",
-                  maxWidth: 110,
-                  filterMethod: (filter, rows) =>
-                    matchSorter(rows, filter.value, { keys: ["date"] }),
-                    filterAll: true
-                },
-                {
-                  Header: "Amount",
-                  id: "amount",
-                  accessor: d => {
-                    return "$" + Number(d.amount).toFixed(2)
-                  },
-                  maxWidth: 100,
-                  sortMethod: (a, b) => {
-                    if (a === b) {
-                      return 0;
-                    }
-                    const aInteger = Number(a.replace(/[^0-9\\.-]+/g,""));
-                    const bInteger = Number(b.replace(/[^0-9\\.-]+/g,""));
-                    // Originally this ^ was .replace(/[^0-9\.-]+/g,"") but the linter was throwing a "unnecessary escape character" error so I escaped it. Not sure if this is cool or not.
-                    return aInteger > bInteger ? 1 : -1;
-                  },
-                  filterMethod: (filter, rows) =>
-                    matchSorter(rows, filter.value, { keys: ["amount"] }),
-                    filterAll: true
-                },
-                {
-                  Header: "Notes",
-                  accessor: "notes",
-                  filterMethod: (filter, rows) =>
-                    matchSorter(rows, filter.value, { keys: ["notes"] }),
-                    filterAll: true
-                }
-              ]
-            }
-          ]}
+          columns={ windowWidth < 500 ? mobileColumns : desktopColumns }
           defaultPageSize={50}
           defaultSorted={[
             {
