@@ -1,5 +1,6 @@
 div {
   font-family: 'Roboto Condensed', sans-serif;
+  max-width: 100%;
 }
 
 button {
@@ -42,7 +43,7 @@ div a.active {
   text-decoration: none;
   font-size: 17px;
   border-radius: 20px;
-  margin: 10px 5px;
+  margin: 10px 4px;
 }
 
 .navbar a:hover {
@@ -58,7 +59,7 @@ div a.active {
   padding: 10px 12px;
   text-decoration: none;
   font-size: 15px;
-  margin: 10px 5px;
+  margin: 10px 3px 10px 0px;
 }
 
 .content {
@@ -68,12 +69,25 @@ div a.active {
   align-items: center;
 }
 
+div.ui {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
 .content .income_form {
   width: 100%;
   display: flex;
   justify-content: space-around;
   align-items: center;
 }
+
+.income_form form {
+  max-width: 100%;
+}
+
 .content .chart-content {
   width: 100%;
   height: 100%;
@@ -89,6 +103,7 @@ form {
   justify-content: space-around;
   align-items: center;
   flex-direction: column;
+  max-width: 100%;
 }
 
 select {
@@ -103,6 +118,8 @@ textarea, input {
   border: 2px solid #ccc;
   font-size: 14px;
   border-radius: 4px;
+  resize: vertical;
+  max-width: 80%;
 }
 .content button {
   border: 2px solid #ccc;

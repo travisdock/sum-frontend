@@ -164,23 +164,18 @@ class IncomeForm extends React.Component {
       <div className="income_form">
         <form onSubmit={this.handleSubmit}>
           {(this.state.new_category ? newCategory : selectCategory)}
-          <div className="ui field">
             <input
               name="date"
               type="date"
               value={this.state.form.date}
               onChange={this.handleChange}
             />
-          </div>
-          <div className="ui field">
             <input
               name="amount"
               placeholder="0.00"
               value={this.state.form.amount}
               onChange={this.handleChange}
             />
-          </div>
-          <div className="ui field">
             <textarea
               name="notes"
               placeholder="Entry details..."
@@ -189,7 +184,6 @@ class IncomeForm extends React.Component {
               value={this.state.form.notes}
               onChange={this.handleChange}
             />
-          </div>
           <button type="submit" className="button">
             Submit
           </button>
