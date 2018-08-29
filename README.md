@@ -1,6 +1,6 @@
 Things to do:
 -Add extra calculations to a dashboard-like page
--Table filterable by month (instead of just date)
+<del>-Table filterable by month (instead of just date)</del> decided not to do this because you can simply type in the year and month in the search bar and it will filter. If I wanted to make it look better or more obvious I could add a dropdown for month and day but that seems overcomplicated.
 -Sorting table by income and expense (Currently table is only expenses)
 -Edit entry
 -Edit Category
