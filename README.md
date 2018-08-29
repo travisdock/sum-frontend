@@ -1,12 +1,14 @@
 Things to do:
--Recurring payments
--Untracked categories
--Sorting table by income and expense
+-Add extra calculations to a dashboard-like page
+-Table filterable by month (instead of just date)
+-Sorting table by income and expense (Currently table is only expenses)
 -Edit entry
 -Edit Category
+-Untracked categories
 -Delete category (asks to recategorize or delete existing entries)
 -Add "are you sure?" to delete buttons
 -Forward backward buttons/scrolling for charts
 -Percent of income saved, spent, donated?
--Savings and goals
 -Sum by filtered table results
+-Recurring payments
+-Savings and goals
