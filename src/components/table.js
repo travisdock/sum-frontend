@@ -9,6 +9,9 @@ import matchSorter from 'match-sorter';
 // Import React Popup
 import Popup from "reactjs-popup";
 
+// Import Dinero
+import Dinero from "dinero.js";
+
 class Table extends React.Component {
 
   state = {
@@ -202,7 +205,20 @@ class Table extends React.Component {
           style={{height: "86vh"}}
           className="-striped -highlight"
           noDataText="No Entries"
-        />
+        >
+          {(state, makeTable, instance) => {
+            return (
+              <div>
+                <pre>
+                  <code>
+                    "This is where the calculations will go"
+                  </code>
+                </pre>
+                {makeTable()}
+              </div>
+            );
+          }}
+        </ReactTable>
         <Popup
           open={this.state.open}
           closeOnDocumentClick
