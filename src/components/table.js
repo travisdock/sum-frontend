@@ -53,6 +53,17 @@ class Table extends React.Component {
     }}, this.closeModal())
   }
 
+/////////////////////Manipulate filtered data///////////////////
+
+  averageEntries = (entriesArray) => {
+    entriesArray
+  }
+
+  sumEntries = (entriesArray) => {
+    entriesArray
+  }
+
+//////////////////////////////////////////////////////////////
   componentDidMount() {
     const id = this.props.current_user.user_id
     const url = `https://sumfinance.herokuapp.com/api/v1/entries/${id}`
