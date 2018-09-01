@@ -16,5 +16,6 @@ https://sumfinance-b89c6.firebaseapp.com/
 - [ ]Forward backward buttons/scrolling for charts
 - [ ]Percent of income saved, spent, donated?
 - [ ]Sum by filtered table results
+- [ ]Add tests
 - [ ]Recurring payments
 - [ ]Savings and goals
