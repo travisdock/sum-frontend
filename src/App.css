@@ -1,6 +1,12 @@
+#home2 {
+  height:100vh;
+  display: flex;
+  flex-direction: column;
+}
 div {
   font-family: 'Roboto Condensed', sans-serif;
   max-width: 100%;
+  max-height: 100%;
 }
 
 button {
@@ -67,6 +73,7 @@ div a.active {
   display: flex;
   justify-content: space-around;
   align-items: center;
+  height: 100%;
 }
 
 div.ui {
@@ -159,7 +166,20 @@ div.content div.popup-content {
 div.content div.table-content {
   width: 100%;
   margin: 0 8px 0 8px;
+  height: 100%;
+  display: flex;
 }
+
+#table {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.ReactTable {
+  height: 100%;
+}
+
 
 .bb-title {
   font-size: 40px;

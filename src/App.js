@@ -54,9 +54,9 @@ class App extends Component {
     console.log("load:", this.props.load)
     console.log("id:", !!this.props.current_user.user_id)
     return (
-      <div>
+      <div id="home">
         {this.props.load || !!this.props.current_user.user_id ?
-          <div>
+          <div id="home2">
             <Navbar />
             <Switch>
               <Route path="/dashboard" component={Dashboard} />

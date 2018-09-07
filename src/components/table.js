@@ -79,7 +79,7 @@ class Table extends React.Component {
     console.log(data)
     let mobileColumns = [
       {
-        Header: "Entries",
+        // Header: "Entries",
         columns: [
           {
             Header: "Category",
@@ -198,6 +198,8 @@ class Table extends React.Component {
         <ReactTable
           data={data}
           filterable
+          pageSize={data.length}
+          showPagination={false}
           getTdProps={(state, rowInfo, column, instance) => {
             return {
               onClick: (e, handleOriginal) => {
@@ -219,13 +221,14 @@ class Table extends React.Component {
         >
           {(state, makeTable, instance) => {
             return (
-              <div>
+              <div id="table">
+              {makeTable()}
                 <pre>
                   <code>
                     "This is where the calculations will go"
                   </code>
                 </pre>
-                {makeTable()}
+                
               </div>
             );
           }}
