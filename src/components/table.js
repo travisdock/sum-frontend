@@ -9,9 +9,6 @@ import matchSorter from 'match-sorter';
 // Import React Popup
 import Popup from "reactjs-popup";
 
-// Import Dinero
-import Dinero from "dinero.js";
-
 class Table extends React.Component {
 
   state = {
