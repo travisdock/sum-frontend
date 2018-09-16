@@ -15,7 +15,7 @@ https://sumfinance-b89c6.firebaseapp.com/
 - [ ]Add "are you sure?" to delete buttons
 - [ ]Forward backward buttons/scrolling for charts
 - [ ]Percent of income saved, spent, donated?
-- [ ]Sum by filtered table results
+- [X]Sum by filtered table results
 - [ ]Add tests
 - [ ]Recurring payments
 - [ ]Savings and goals
