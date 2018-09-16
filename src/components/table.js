@@ -17,9 +17,12 @@ class Table extends React.Component {
   state = {
     entries: [],
     open: false,
-    data: {}
+    data: {},
+    filterSum: 0
   }
 
+
+//////////////////Popup Modal Functions////////////////////////////////////
   openModal = (entry, entry_index) => {
     this.setState({ open: true, data: entry, index: entry_index});
   };
@@ -52,18 +55,42 @@ class Table extends React.Component {
       })
     }}, this.closeModal())
   }
+////////////////////////////////////////////////////////////////
 
-/////////////////////Manipulate filtered data///////////////////
 
-  averageEntries = (entriesArray) => {
-    entriesArray
+////////unfinished manipulate filtered data fucntions///////////
+  formatMoney = (number, places, symbol, thousand, decimal) => {
+    number = number || 0;
+    places = !isNaN(places = Math.abs(places)) ? places : 2;
+    symbol = symbol !== undefined ? symbol : "$";
+    thousand = thousand || ",";
+    decimal = decimal || ".";
+    var negative = number < 0 ? "-" : "",
+        i = parseInt(number = Math.abs(+number || 0).toFixed(places), 10) + "",
+        j = (j = i.length) > 3 ? j % 3 : 0;
+    return symbol + negative + (j ? i.substr(0, j) + thousand : "") + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + thousand) + (places ? decimal + Math.abs(number - i).toFixed(places).slice(2) : "");
   }
 
-  sumEntries = (entriesArray) => {
-    entriesArray
+  unformatMoney = (dollars) => {
+    return Number(dollars.replace(/[^0-9\\.-]+/g,""));
+  }
+
+  averageEntries = (data) => {
+    let sum = data.reduce((prev, cur) => {
+      return prev + this.unformatMoney(cur.amount)
+    }, 0);
+    return this.formatMoney(sum/data.length)
+  }
+
+  sumEntries = (data) => {
+    let sum = data.reduce((prev, cur) => {
+      return prev + this.unformatMoney(cur.amount)
+    }, 0);
+    return this.formatMoney(sum)
   }
 
 //////////////////////////////////////////////////////////////
+
   componentDidMount() {
     const id = this.props.current_user.user_id
     const url = `https://sumfinance.herokuapp.com/api/v1/entries/${id}`
@@ -76,112 +103,67 @@ class Table extends React.Component {
 
   render() {
     const data = this.state.entries;
-    console.log(data)
+    const windowWidth = document.documentElement.offsetWidth
     let mobileColumns = [
-      {
-        // Header: "Entries",
-        columns: [
-          {
-            Header: "Category",
-            accessor: "category_name",
-            maxWidth: 200,
-            Filter: ({filter, onChange}) =>
-              <select
-                onChange={event => onChange(event.target.value)}
-                style={{ width: "100%" }}
-                value={filter ? filter.value : ""}
-                >
-                <option value="">All</option>
-                {this.props.current_user.categories.map( category =>
-                  <option
-                    key={category.id}
-                   value={category.name}>{category.name}</option>
-                  )
-                }
-              </select>
-          },
-          {
-            Header: "Date",
-            accessor: "date",
-            maxWidth: 110,
-            filterMethod: (filter, rows) =>
-              matchSorter(rows, filter.value, { keys: ["date"] }),
-              filterAll: true
-          },
-          {
-            Header: "Amount",
-            id: "amount",
-            accessor: d => {
-              return "$" + Number(d.amount).toFixed(2)
-            },
-            maxWidth: 100,
-            sortMethod: (a, b) => {
-              if (a === b) {
-                return 0;
+        {
+          Header: "Category",
+          accessor: "category_name",
+          maxWidth: 200,
+          Filter: ({filter, onChange}) =>
+            <select
+              onChange={event => onChange(event.target.value)}
+              style={{ width: "100%" }}
+              value={filter ? filter.value : ""}
+              >
+              <option value="">All</option>
+              {this.props.current_user.categories.map( category =>
+                <option
+                  key={category.id}
+                  value={category.name}>{category.name}</option>
+                )
               }
-              const aInteger = Number(a.replace(/[^0-9\\.-]+/g,""));
-              const bInteger = Number(b.replace(/[^0-9\\.-]+/g,""));
-              // Originally this ^ was .replace(/[^0-9\.-]+/g,"") but the linter was throwing a "unnecessary escape character" error so I escaped it. Not sure if this is cool or not.
-              return aInteger > bInteger ? 1 : -1;
-            },
-            filterMethod: (filter, rows) =>
-              matchSorter(rows, filter.value, { keys: ["amount"] }),
-              filterAll: true
-          }
-        ]
-      }
-    ]
+            </select>
+        },
+        {
+          Header: "Date",
+          accessor: "date",
+          Footer: (<span><strong>Sum:<br></br>Average:</strong></span>),
+          maxWidth: 110,
+          filterMethod: (filter, rows) =>
+            matchSorter(rows, filter.value, { keys: ["date"] }),
+            filterAll: true
+        },
+        {
+          Header: "Amount",
+          id: "amount",
+          accessor: d => {
+            return "$" + Number(d.amount).toFixed(2)
+          },
+          Footer: columnProps => {
+            return(
+              <span>
+              {columnProps.data.length > 0 ? this.sumEntries(columnProps.data) : 0}<br></br>
+              {columnProps.data.length > 0 ? this.averageEntries(columnProps.data) : 0}
+            </span>
+            )
+          },
+          maxWidth: 100,
+          sortMethod: (a, b) => {
+            if (a === b) {
+              return 0;
+            }
+            const aInteger = Number(a.replace(/[^0-9\\.-]+/g,""));
+            const bInteger = Number(b.replace(/[^0-9\\.-]+/g,""));
+            // Originally this ^ was .replace(/[^0-9\.-]+/g,"") but the linter was throwing a "unnecessary escape character" error so I escaped it. Not sure if this is cool or not.
+            return aInteger > bInteger ? 1 : -1;
+          },
+          filterMethod: (filter, rows) =>
+            matchSorter(rows, filter.value, { keys: ["amount"] }),
+            filterAll: true
+        }
+      ]
     let desktopColumns = [
-      {
-        Header: "Entries",
-        columns: [
-          {
-            Header: "Category",
-            accessor: "category_name",
-            maxWidth: 200,
-            Filter: ({filter, onChange}) =>
-              <select
-                onChange={event => onChange(event.target.value)}
-                style={{ width: "100%" }}
-                value={filter ? filter.value : ""}
-                >
-                <option value="">All</option>
-                {this.props.current_user.categories.map( category =>
-                  <option
-                    key={category.id}
-                   value={category.name}>{category.name}</option>
-                  )
-                }
-              </select>
-          },
-          {
-            Header: "Date",
-            accessor: "date",
-            maxWidth: 110,
-            filterMethod: (filter, rows) =>
-              matchSorter(rows, filter.value, { keys: ["date"] }),
-              filterAll: true
-          },
-          {
-            Header: "Amount",
-            id: "amount",
-            accessor: d => {
-              return "$" + Number(d.amount).toFixed(2)
-            },
-            maxWidth: 100,
-            sortMethod: (a, b) => {
-              if (a === b) {
-                return 0;
-              }
-              const aInteger = Number(a.replace(/[^0-9\\.-]+/g,""));
-              const bInteger = Number(b.replace(/[^0-9\\.-]+/g,""));
-              // Originally this ^ was .replace(/[^0-9\.-]+/g,"") but the linter was throwing a "unnecessary escape character" error so I escaped it. Not sure if this is cool or not.
-              return aInteger > bInteger ? 1 : -1;
-            },
-            filterMethod: (filter, rows) =>
-              matchSorter(rows, filter.value, { keys: ["amount"] }),
-              filterAll: true
-          },
+          ...mobileColumns,
           {
             Header: "Notes",
             accessor: "notes",
@@ -190,16 +172,11 @@ class Table extends React.Component {
               filterAll: true
           }
         ]
-      }
-    ]
-    const windowWidth = document.documentElement.offsetWidth
     return (
       <div className="table-content">
         <ReactTable
           data={data}
           filterable
-          pageSize={data.length}
-          showPagination={false}
           getTdProps={(state, rowInfo, column, instance) => {
             return {
               onClick: (e, handleOriginal) => {
@@ -207,28 +184,26 @@ class Table extends React.Component {
               }
             };
           }}
-          columns={ windowWidth < 500 ? mobileColumns : desktopColumns }
-          defaultPageSize={50}
+          columns={windowWidth > 500 ? [{columns: desktopColumns}] : [{columns: mobileColumns}]}
+          defaultPageSize={10}
           defaultSorted={[
             {
               id: "date",
               desc: true
             }
           ]}
-          style={{height: "86vh"}}
           className="-striped -highlight"
           noDataText="No Entries"
         >
           {(state, makeTable, instance) => {
             return (
               <div id="table">
-              {makeTable()}
                 <pre>
                   <code>
-                    "This is where the calculations will go"
+                    {/* custom styling, extra stuff */}
                   </code>
                 </pre>
-                
+                {makeTable()}
               </div>
             );
           }}
