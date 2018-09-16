@@ -139,9 +139,9 @@ class Table extends React.Component {
           Footer: columnProps => {
             return(
               <span>
-              {columnProps.data.length > 0 ? this.sumEntries(columnProps.data) : 0}<br></br>
-              {columnProps.data.length > 0 ? this.averageEntries(columnProps.data) : 0}
-            </span>
+                {columnProps.data.length > 0 ? this.sumEntries(columnProps.data) : 0}<br></br>
+                {columnProps.data.length > 0 ? this.averageEntries(columnProps.data) : 0}
+              </span>
             )
           },
           maxWidth: 100,
