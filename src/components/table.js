@@ -71,17 +71,22 @@ class Table extends React.Component {
     return symbol + negative + (j ? i.substr(0, j) + thousand : "") + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + thousand) + (places ? decimal + Math.abs(number - i).toFixed(places).slice(2) : "");
   }
 
-  averageEntries = (entriesArray) => {
-    entriesArray
+  unformatMoney = (dollars) => {
+    return Number(dollars.replace(/[^0-9\\.-]+/g,""));
+  }
+
+  averageEntries = (data) => {
+    let sum = data.reduce((prev, cur) => {
+      return prev + this.unformatMoney(cur.amount)
+    }, 0);
+    return this.formatMoney(sum/data.length)
   }
 
   sumEntries = (data) => {
-    // debugger;
-    if (data == 0) {
-      return 0
-    } else {
-      return 5
-    }
+    let sum = data.reduce((prev, cur) => {
+      return prev + this.unformatMoney(cur.amount)
+    }, 0);
+    return this.formatMoney(sum)
   }
 
 //////////////////////////////////////////////////////////////
@@ -122,6 +127,7 @@ class Table extends React.Component {
         {
           Header: "Date",
           accessor: "date",
+          Footer: (<span><strong>Sum:<br></br>Average:</strong></span>),
           maxWidth: 110,
           filterMethod: (filter, rows) =>
             matchSorter(rows, filter.value, { keys: ["date"] }),
@@ -133,12 +139,14 @@ class Table extends React.Component {
           accessor: d => {
             return "$" + Number(d.amount).toFixed(2)
           },
-          Footer: (
-            <span>
-              <strong>Sum:</strong>{" "}
-              {this.state.filterSum}
+          Footer: columnProps => {
+            return(
+              <span>
+              {columnProps.data.length > 0 ? this.sumEntries(columnProps.data) : 0}<br></br>
+              {columnProps.data.length > 0 ? this.averageEntries(columnProps.data) : 0}
             </span>
-          ),
+            )
+          },
           maxWidth: 100,
           sortMethod: (a, b) => {
             if (a === b) {
@@ -164,7 +172,6 @@ class Table extends React.Component {
               filterAll: true
           }
         ]
-
     return (
       <div className="table-content">
         <ReactTable
@@ -189,10 +196,6 @@ class Table extends React.Component {
           noDataText="No Entries"
         >
           {(state, makeTable, instance) => {
-            console.log("table load")
-            console.log(this.state)
-            // debugger;
-            this.state.filterSum = this.sumEntries(state.sortedData)
             return (
               <div id="table">
                 <pre>
