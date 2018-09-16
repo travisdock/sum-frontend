@@ -9,9 +9,6 @@ import matchSorter from 'match-sorter';
 // Import React Popup
 import Popup from "reactjs-popup";
 
-// Import Dinero
-import Dinero from "dinero.js";
-
 class Table extends React.Component {
 
   state = {
@@ -142,9 +139,9 @@ class Table extends React.Component {
           Footer: columnProps => {
             return(
               <span>
-              {columnProps.data.length > 0 ? this.sumEntries(columnProps.data) : 0}<br></br>
-              {columnProps.data.length > 0 ? this.averageEntries(columnProps.data) : 0}
-            </span>
+                {columnProps.data.length > 0 ? this.sumEntries(columnProps.data) : 0}<br></br>
+                {columnProps.data.length > 0 ? this.averageEntries(columnProps.data) : 0}
+              </span>
             )
           },
           maxWidth: 100,
