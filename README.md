@@ -10,10 +10,12 @@ https://sumfinance-b89c6.firebaseapp.com/
 - [ ]Sorting table by income and expense (Currently table is only expenses)
 - [ ]Edit entry
 - [ ]Edit Category
+- [ ]Handle data by year, switch between years that user is viewing
 - [ ]Untracked categories
 - [ ]Delete category (asks to recategorize or delete existing entries)
 - [ ]Add "are you sure?" to delete buttons
 - [ ]Forward backward buttons/scrolling for charts
+- [ ]Improve charts in general, they are horrible
 - [ ]Percent of income saved, spent, donated?
 - [X]Sum by filtered table results
 - [ ]Add tests
