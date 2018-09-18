@@ -130,7 +130,7 @@ class IncomeForm extends React.Component {
         value={this.state.form.category}
         placeholder='Category Name'
         onChange={this.handleChange}
-      /><br></br>
+      />
       <input
         name="income"
         type="checkbox"

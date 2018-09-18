@@ -25,6 +25,10 @@ textarea, input {
   font-family: 'Roboto Condensed', sans-serif;
 }
 
+.ReactTable .-pagination .-pageJump input {
+  margin: 0px;
+}
+
 div.about {
   padding: 0px 20px;
 }
