@@ -57,7 +57,7 @@ div a.active {
   float: left;
   color: #3F4D4E;
   text-align: center;
-  padding: 14px 16px;
+  padding: 12px 14px;
   text-decoration: none;
   font-size: 17px;
   border-radius: 20px;
@@ -74,10 +74,10 @@ div a.active {
   background-color: #DEDCE4;
   border: 2px solid #ccc;
   border-radius: 5px;
-  padding: 10px 12px;
+  padding: 12px 14px;
   text-decoration: none;
   font-size: 15px;
-  margin: 10px 3px 10px 0px;
+  margin: 10px 4px 10px 0px;
 }
 
 .content {
