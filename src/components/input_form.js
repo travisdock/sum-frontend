@@ -161,7 +161,7 @@ class InputForm extends React.Component {
       <button onClick={this.toggleCategory}>Create Category</button>
     </div>)
     return (
-      <div className="income_form">
+      <div className="input_form">
         <form onSubmit={this.handleSubmit}>
           {(this.state.new_category ? newCategory : selectCategory)}
             <input

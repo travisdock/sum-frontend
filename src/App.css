@@ -1,3 +1,4 @@
+
 #home2 {
   height:100vh;
   display: flex;
@@ -96,14 +97,14 @@ div.ui {
   align-items: center;
 }
 
-.content .income_form {
+.content .input_form {
   width: 100%;
   display: flex;
   justify-content: space-around;
   align-items: center;
 }
 
-.income_form form {
+.input_form form {
   max-width: 100%;
 }
 
