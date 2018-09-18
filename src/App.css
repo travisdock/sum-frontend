@@ -1,4 +1,7 @@
-
+html, body {
+  position: fixed;
+  overflow: hidden;
+}
 #home2 {
   height:100vh;
   display: flex;
