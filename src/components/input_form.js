@@ -2,9 +2,9 @@ import React from 'react';
 
 import { connect } from 'react-redux';
 
-import { updateCategories } from '../actions/index';
+import { updateCategories } from '../actions';
 
-class IncomeForm extends React.Component {
+class InputForm extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -197,4 +197,4 @@ const mapStateToProps = state => ({
   current_user: state.current_user
 });
 
-export default connect(mapStateToProps, { updateCategories })(IncomeForm);
+export default connect(mapStateToProps, { updateCategories })(InputForm);
