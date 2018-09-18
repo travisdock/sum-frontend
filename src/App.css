@@ -13,6 +13,14 @@ button {
   font-family: 'Roboto Condensed', sans-serif;
 }
 
+.ReactTable .-pagination .-btn {
+  margin: 0px !important;
+}
+
+pre {
+  margin: 0px;
+}
+
 textarea, input {
   font-family: 'Roboto Condensed', sans-serif;
 }
