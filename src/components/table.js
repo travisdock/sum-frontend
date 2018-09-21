@@ -108,6 +108,7 @@ updateWindowDimensions() {
     const url = `https://sumfinance.herokuapp.com/api/v1/entries/${id}`
     this.updateWindowDimensions();
     window.addEventListener('resize', this.updateWindowDimensions);
+    window.addEventListener('orientationchange', this.updateWindowDimensions);
     fetch(url)
     .then(res => res.json())
     .then(res => this.setState({entries: res}))
@@ -115,6 +116,7 @@ updateWindowDimensions() {
   
   componentWillUnmount() {
     window.removeEventListener('resize', this.updateWindowDimensions);
+    window.removeEventListener('orientationchange', this.updateWindowDimensions);
   }
 
 
