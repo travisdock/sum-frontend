@@ -10,13 +10,18 @@ import matchSorter from 'match-sorter';
 import Popup from "reactjs-popup";
 
 class Table extends React.Component {
-
-  state = {
-    entries: [],
-    open: false,
-    data: {},
-    filterSum: 0
+  constructor() {
+    super();
+    this.state = {
+      entries: [],
+      open: false,
+      data: {},
+      filterSum: 0,
+      windowWidth: 0
+    };
+    this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
   }
+  
 
 
 //////////////////Popup Modal Functions////////////////////////////////////
@@ -54,6 +59,16 @@ class Table extends React.Component {
   }
 ////////////////////////////////////////////////////////////////
 
+//////////////////Window Resize Stuff//////////////////////////
+
+updateWindowDimensions() {
+  this.setState((state) => {
+    return {windowWidth: window.innerWidth}
+  });
+}
+
+
+////////////////////////////////////////////////////////////////
 
 ////////unfinished manipulate filtered data fucntions///////////
   formatMoney = (number, places, symbol, thousand, decimal) => {
@@ -91,16 +106,21 @@ class Table extends React.Component {
   componentDidMount() {
     const id = this.props.current_user.user_id
     const url = `https://sumfinance.herokuapp.com/api/v1/entries/${id}`
+    this.updateWindowDimensions();
+    window.addEventListener('resize', this.updateWindowDimensions);
     fetch(url)
     .then(res => res.json())
     .then(res => this.setState({entries: res}))
   }
-
+  
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.updateWindowDimensions);
+  }
 
 
   render() {
     const data = this.state.entries;
-    const windowWidth = document.documentElement.offsetWidth
+    const windowWidth = this.state.windowWidth
     let mobileColumns = [
         {
           Header: "Category",
@@ -124,7 +144,7 @@ class Table extends React.Component {
         {
           Header: "Date",
           accessor: "date",
-          Footer: (<span><strong>Sum:<br></br>Average:</strong></span>),
+          Footer: (<span><strong>Sum:</strong></span>),
           maxWidth: 110,
           filterMethod: (filter, rows) =>
             matchSorter(rows, filter.value, { keys: ["date"] }),
@@ -139,8 +159,7 @@ class Table extends React.Component {
           Footer: columnProps => {
             return(
               <span>
-                {columnProps.data.length > 0 ? this.sumEntries(columnProps.data) : 0}<br></br>
-                {columnProps.data.length > 0 ? this.averageEntries(columnProps.data) : 0}
+                {columnProps.data.length > 0 ? this.sumEntries(columnProps.data) : 0}
               </span>
             )
           },
