@@ -46,7 +46,8 @@ class Chart extends React.Component {
     bb.generate({
       data: {
         columns: pie_data[currentChart][month],
-        type: "pie"
+        type: "pie",
+        // onclick: function(d, element) { debugger }
       },
       title: {
         text: month,
@@ -56,6 +57,34 @@ class Chart extends React.Component {
            right: 10,
             bottom: 10,
             left: 10
+        },
+      },
+      legend: {
+        show: true,
+        // contents: {
+        //     bindto: "#legend",   // <ul id='legend'></ul>
+        //     template: "<li style='background-color:#1f77b4'>data1</li>"
+        //     or using function
+        //     template: function(id, color, data) {
+        //          // if you want omit some legend, return falsy value
+        //          if (title !== "data1") {
+        //               return "<li style='background-color:"+ color +">"+ title +"</li>";
+        //          }
+        //     }
+        // },
+        position: "bottom",  // bottom, right, inset
+        equally: false,
+        padding: 10,
+        item: {
+            // onclick: function(id) { debugger },
+            // onover: function(id) { debugger },
+            // onout: function(id) { debugger },
+    
+            // set tile's size
+            tile: {
+                width: 20,
+                height: 15
+            }
         }
       },
       bindto: "#chart"
