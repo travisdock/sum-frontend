@@ -59,12 +59,23 @@ class Table extends React.Component {
   }
 ////////////////////////////////////////////////////////////////
 
-//////////////////Window Resize Stuff//////////////////////////
+//////////////////Mobile Orientation Change//////////////////////////
+
+////This is a bit of a hack. There is probably a better solution but I will figure it out later.
 
 updateWindowDimensions() {
-  this.setState((state) => {
-    return {windowWidth: window.innerWidth}
-  });
+  switch(window.orientation) {  
+    case -90 || 90:
+      this.setState((state) => {
+        return {windowWidth: window.innerHeight}
+      });
+      break; 
+    default:
+      this.setState((state) => {
+        return {windowWidth: window.innerWidth}
+      });
+      break; 
+  }
 }
 
 
