@@ -5,20 +5,21 @@ I tracked my own personal income and expenses in a google sheet for years and th
 https://sumfinance-b89c6.firebaseapp.com/
 
 ## Things to do:
-- [ ]Add extra calculations to a dashboard-like page
-- [ ]Fix table to add notes column when mobile switches to landscape
-- [ ]Sorting table by income and expense (Currently table is only expenses)
-- [ ]Edit entry
-- [ ]Edit Category
-- [ ]Handle data by year, switch between years that user is viewing
-- [ ]Untracked categories?
-- [ ]Delete category (asks to recategorize or delete existing entries)
+- [ ]Setup dev environment for enhanced testing of frontend and backend
+- [ ]Add select box to charts page instead of "next button"
+- [ ]Add stats to charts page
+- [ ]Sorting table by income and expense (Currently table is only expense categories)
+- [ ]Add ability to edit entry
+- [ ]Add ability to edit Category
+- [ ]Add ability to view app by year, entire app changes when year is changed somehow
+- [ ]Add ability to delete category (asks to recategorize or delete existing entries)
+- [ ]Add tests
 - [ ]Add "are you sure?" to delete buttons
-- [ ]Forward backward buttons/scrolling for charts
+- [ ]Add separate components for mobile and desktop viewing
 - [ ]Improve charts in general, they are horrible
 - [ ]Percent of income saved, spent, donated?
-- [X]Sum by filtered table results
-- [ ]Add tests
 - [ ]Recurring payments
 - [ ]Savings and goals
-- [ ]Add separate components for mobile and desktop viewing
+- [ ]Untracked categories?
+- [X]Sum by filtered table results (added 9/16/18)
+- [X]Fix table to add notes column when mobile switches to landscape (added 9/23/18)
