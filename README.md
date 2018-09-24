@@ -5,7 +5,6 @@ I tracked my own personal income and expenses in a google sheet for years and th
 https://sumfinance-b89c6.firebaseapp.com/
 
 ## Things to do:
-- [ ]Setup dev environment for enhanced testing of frontend and backend
 - [ ]Fix bug: when only one entry is available and it is an income the charts page breaks
 - [ ]Add select box to charts page instead of "next button"
 - [ ]Add stats to charts page
@@ -24,3 +23,4 @@ https://sumfinance-b89c6.firebaseapp.com/
 - [ ]Untracked categories?
 - [X]Sum by filtered table results (added 9/16/18)
 - [X]Fix table to add notes column when mobile switches to landscape (added 9/23/18)
+- [X]Setup dev environment for enhanced testing of frontend and backend (added 9/24/18)
