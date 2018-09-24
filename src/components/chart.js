@@ -14,7 +14,7 @@ class Chart extends React.Component {
   componentDidMount() {
     const id = this.props.current_user.user_id
 
-    fetch(`https://sumfinance.herokuapp.com/api/v1/charts/${id}`)
+    fetch(`${process.env.REACT_APP_API}/api/v1/charts/${id}`)
       .then(resp => resp.json())
       .then(resp => {if (resp.error) {
         this.setState({error: true})

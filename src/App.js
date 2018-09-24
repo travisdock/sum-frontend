@@ -25,7 +25,7 @@ class App extends Component {
     const token = localStorage.getItem('jwt')
 
     if (token) {
-      const url = 'https://sumfinance.herokuapp.com/api/v1/current_user'
+      const url = `${process.env.REACT_APP_API}/api/v1/current_user`
       const options = {
         headers: {
           'Content-Type': 'application/json',

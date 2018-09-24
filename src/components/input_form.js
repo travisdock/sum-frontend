@@ -40,7 +40,7 @@ class InputForm extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    const url = 'https://sumfinance.herokuapp.com/api/v1/entries'
+    const url = `${process.env.REACT_APP_API}/api/v1/entries`
     const formData = {
       ...this.state.form,
       user_id: this.props.current_user.user_id

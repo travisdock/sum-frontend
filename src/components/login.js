@@ -32,7 +32,7 @@ class Login extends React.Component {
       },
       body: JSON.stringify(this.state)
     };
-    fetch('https://sumfinance.herokuapp.com/api/v1/login', options)
+    fetch(`${process.env.REACT_APP_API}/api/v1/login`, options)
     .then(resp => resp.json())
     .then(resp => {
       if (resp.error) {

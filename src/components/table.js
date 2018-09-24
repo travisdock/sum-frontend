@@ -42,7 +42,7 @@ class Table extends React.Component {
       },
       body: JSON.stringify(this.state.data)
     };
-    fetch('https://sumfinance.herokuapp.com/api/v1/entries', options)
+    fetch(`${process.env.REACT_APP_API}/api/v1/entries`, options)
     .then(resp => resp.json())
     .then(resp => { if (resp.error) {
       alert(resp.exception)
@@ -116,7 +116,7 @@ updateWindowDimensions() {
 
   componentDidMount() {
     const id = this.props.current_user.user_id
-    const url = `https://sumfinance.herokuapp.com/api/v1/entries/${id}`
+    const url = `${process.env.REACT_APP_API}/api/v1/entries/${id}`
     this.updateWindowDimensions();
     window.addEventListener('resize', this.updateWindowDimensions);
     window.addEventListener('orientationchange', this.updateWindowDimensions);
