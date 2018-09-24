@@ -16,7 +16,7 @@ https://sumfinance-b89c6.firebaseapp.com/
 - [ ]Add tests
 - [ ]Add "are you sure?" to delete buttons
 - [ ]Add separate components for mobile and desktop viewing
-- [ ]Improve charts in general, they are horrible
+- [ ]Improve charts in general
 - [ ]Percent of income saved, spent, donated?
 - [ ]Recurring payments
 - [ ]Savings and goals
