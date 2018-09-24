@@ -73,6 +73,7 @@ class Signup extends React.Component {
               onChange={this.handleChange}
             />
           </div>
+          <p>(this does not have to be a real email)</p>
           <button type="submit" className="button">
             Sign up
           </button>

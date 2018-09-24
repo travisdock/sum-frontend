@@ -6,9 +6,10 @@ https://sumfinance-b89c6.firebaseapp.com/
 
 ## Things to do:
 - [ ]Setup dev environment for enhanced testing of frontend and backend
+- [ ]Fix bug: when only one entry is available and it is an income the charts page breaks
 - [ ]Add select box to charts page instead of "next button"
 - [ ]Add stats to charts page
-- [ ]Sorting table by income and expense (Currently table is only expense categories)
+- [ ]Sorting table by income and expense
 - [ ]Add ability to edit entry
 - [ ]Add ability to edit Category
 - [ ]Add ability to view app by year, entire app changes when year is changed somehow
