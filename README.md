@@ -6,6 +6,7 @@ https://sumfinance-b89c6.firebaseapp.com/
 
 ## Things to do:
 - [ ]Fix bug: when only one entry is available and it is an income the charts page breaks
+    [ ]Add staging environment to test new backend on
 - [ ]Add select box to charts page instead of "next button"
 - [ ]Add stats to charts page
 - [ ]Sorting table by income and expense
