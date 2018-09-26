@@ -15,12 +15,14 @@ https://sumfinance-b89c6.firebaseapp.com/
 - [ ]Add ability to delete category (asks to recategorize or delete existing entries)
 - [ ]Add tests
 - [ ]Add "are you sure?" to delete buttons
+- [ ]Test and improve accessibility
 - [ ]Add separate components for mobile and desktop viewing
 - [ ]Improve charts in general
 - [ ]Percent of income saved, spent, donated?
 - [ ]Recurring payments
 - [ ]Savings and goals
 - [ ]Untracked categories?
+- [ ]React Native Version?
 - [X]Sum by filtered table results (added 9/16/18)
 - [X]Fix table to add notes column when mobile switches to landscape (added 9/23/18)
 - [X]Setup dev environment for enhanced testing of frontend and backend (added 9/24/18)
