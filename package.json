@@ -17,8 +17,9 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "dev": "REACT_APP_API=https://sumfinance.herokuapp.com react-scripts start",
     "local": "REACT_APP_API=http://localhost:3005 react-scripts start",
+    "staging": "REACT_APP_API=https://sumfinance-staging.herokuapp.com/ react-scripts start",
+    "dev": "REACT_APP_API=https://sumfinance.herokuapp.com react-scripts start",
     "build": "REACT_APP_API=https://sumfinance.herokuapp.com react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
