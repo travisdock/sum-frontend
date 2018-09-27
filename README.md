@@ -26,4 +26,4 @@ https://sumfinance-b89c6.firebaseapp.com/
 - [X]Fix table to add notes column when mobile switches to landscape (added 9/23/18)
 - [X]Setup dev environment for enhanced testing of frontend and backend (added 9/24/18)
 - [X]Fix bug: when only one entry is available and it is an income the charts page breaks (fixed 9/27/18)
-    [X]Add staging environment to test new backend on(added 9/27/18)
+. . . - [X]Add staging environment to test new backend on(added 9/27/18)
