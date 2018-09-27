@@ -33,6 +33,10 @@ class Chart extends React.Component {
     }, this.renderPieChart)
   }
 
+  selectChangePieChart = () => {
+    console.log("select change!")
+  }
+
   changeChart = () => {
     (this.state.toggleChart ? this.renderPieChart() : this.renderPLChart());
     this.setState((prevState) => {return {toggleChart: !prevState.toggleChart}})
@@ -111,11 +115,20 @@ class Chart extends React.Component {
   }
 
   render() {
+    // debugger;
     return (
       <div className="chart-content">
         {this.state.load ?
             <div className="chart-content">
               <button onClick={this.changeChart}>Change Chart</button>
+              <select
+                name="chart"
+                value={"hello"} //this.state.currentChart.??
+                onChange={this.selectChangePieChart}
+                >
+                <option>Select Chart</option>
+                {this.state.charts.pie_data.map(chart => <option value={Object.keys(chart)[0]} key={Object.keys(chart)[0]} > {Object.keys(chart)[0]} </option>) }
+              </select>
               <div id="chart" />
               {this.state.toggleChart ?
                 null :
