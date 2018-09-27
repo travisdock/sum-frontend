@@ -148,7 +148,6 @@ class InputForm extends React.Component {
       {/* ADD GIFT FUNCTIONALITY(maybe make this untracked categories?) */}
       <button onClick={this.toggleCategory}>Select Category</button>
     </div>)
-    console.log(this.props.current_user.categories)
     const selectCategory = (<div className="ui field">
       <select
         name="category"
