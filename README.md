@@ -13,6 +13,7 @@ https://sumfinance-b89c6.firebaseapp.com/
 - [ ]Add ability to edit Category
 - [ ]Add ability to view app by year, entire app changes when year is changed somehow
 - [ ]Add ability to delete category (asks to recategorize or delete existing entries)
+- [ ]Add pwa icon image
 - [ ]Add tests
 - [ ]Add "are you sure?" to delete buttons
 - [ ]Test and improve accessibility
