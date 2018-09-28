@@ -82,6 +82,10 @@ updateWindowDimensions() {
 ////////////////////////////////////////////////////////////////
 
 ///////////////manipulate filtered data functions//////////////
+
+//https://gist.github.com/hengkiardo/3760884
+//I took this function from ^this gist but changed the j declaration
+//we will see if it breaks
   formatMoney = (number, places, symbol, thousand, decimal) => {
     number = number || 0;
     places = !isNaN(places = Math.abs(places)) ? places : 2;
