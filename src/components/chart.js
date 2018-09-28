@@ -24,17 +24,13 @@ class Chart extends React.Component {
         )
   }
 
-  changePieChart = () => {
-    const max = this.state.charts.pie_data.length
+  selectChangePieChart = (e) => {
+    const month = e.target.value
     this.setState((prevState) => {
       return {
-        currentChart: (prevState.currentChart === (max - 1) ? 0 : prevState.currentChart + 1)
+        currentChart: this.state.charts.pie_data.findIndex(chart => Object.keys(chart)[0] === month)
       }
     }, this.renderPieChart)
-  }
-
-  selectChangePieChart = () => {
-    console.log("select change!")
   }
 
   changeChart = () => {
@@ -115,24 +111,22 @@ class Chart extends React.Component {
   }
 
   render() {
-    // debugger;
     return (
       <div className="chart-content">
         {this.state.load ?
             <div className="chart-content">
               <button onClick={this.changeChart}>Change Chart</button>
-              <select
-                name="chart"
-                value={"hello"} //this.state.currentChart.??
-                onChange={this.selectChangePieChart}
-                >
-                <option>Select Chart</option>
-                {this.state.charts.pie_data.map(chart => <option value={Object.keys(chart)[0]} key={Object.keys(chart)[0]} > {Object.keys(chart)[0]} </option>) }
-              </select>
+              
               <div id="chart" />
               {this.state.toggleChart ?
                 null :
-                <button onClick={this.changePieChart}>Next</button>
+                <select
+                  name="chart"
+                  value={Object.keys(this.state.charts.pie_data[this.state.currentChart])[0]} //current chart month
+                  onChange={this.selectChangePieChart}
+                  >
+                  {this.state.charts.pie_data.map(chart => <option value={Object.keys(chart)[0]} key={Object.keys(chart)[0]} > {Object.keys(chart)[0]} </option>) }
+                </select>
               }
             </div> :
             this.state.error ? <div>{this.state.error}</div> : <div>Loading...</div>
