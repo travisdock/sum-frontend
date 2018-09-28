@@ -25,10 +25,10 @@ class Chart extends React.Component {
   }
 
   selectChangePieChart = (e) => {
-    const month = e.target.value
+    const title = e.target.value
     this.setState((prevState) => {
       return {
-        currentChart: this.state.charts.pie_data.findIndex(chart => Object.keys(chart)[0] === month)
+        currentChart: this.state.charts.pie_data.findIndex(chart => Object.keys(chart)[0] === title)
       }
     }, this.renderPieChart)
   }
