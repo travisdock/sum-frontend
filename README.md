@@ -7,6 +7,7 @@ https://sumfinance-b89c6.firebaseapp.com/
 ## Things to do:
 - [X]Add select box to charts page instead of "next" button (added 9/28/18)
   - [ ]Add PL chart to the select instead of "change chart" button
+- [ ]Add untracked categories
 - [ ]Add stats to charts page
 - [ ]Sorting table by income and expense
 - [ ]Add ability to edit entry
@@ -22,7 +23,6 @@ https://sumfinance-b89c6.firebaseapp.com/
 - [ ]Percent of income saved, spent, donated?
 - [ ]Recurring payments
 - [ ]Savings and goals
-- [ ]Untracked categories?
 - [ ]React Native Version?
 - [X]Sum by filtered table results (added 9/16/18)
 - [X]Fix table to add notes column when mobile switches to landscape (added 9/23/18)
