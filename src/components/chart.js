@@ -19,7 +19,9 @@ class Chart extends React.Component {
       .then(resp => {if (resp.error) {
         this.setState({error: resp.error})
       } else {
-        this.setState({charts: resp, load: true, currentChart: resp[resp.length - 3] }, this.renderPieChart)
+        const titles = Object.keys(resp)
+        const lastMonth = titles[titles.length - 2]
+        this.setState({charts: resp, load: true, currentChart: resp[lastMonth], currentTitle: lastMonth }, this.renderPieChart)
       }}
         )
   }
@@ -28,23 +30,24 @@ class Chart extends React.Component {
     const title = e.target.value
     this.setState( () => {
       return {
-        currentChart: this.state.charts.find(chart => Object.keys(chart)[0] === title)
+        currentChart: this.state.charts[title],
+        currentTitle: title
       }
     }, (title === 'Profit & Loss' ? this.renderPLChart : this.renderPieChart) ) //ternary: after state is set it triggers a chart renderd depending on the title
   }
 
   renderPieChart() {
-    const { currentChart } = this.state
-    const month = Object.keys(currentChart)[0]
+    const { currentChart, currentTitle } = this.state
+    // const { currentTitle } = Object.keys(currentChart)[0]
 
     bb.generate({
       data: {
-        columns: currentChart[month],
+        columns: currentChart,
         type: "pie",
         // onclick: function(d, element) { debugger }
       },
       title: {
-        text: month,
+        text: currentTitle,
         position: "top-center",
         padding: {
             top: 10,
@@ -87,11 +90,10 @@ class Chart extends React.Component {
 
   renderPLChart() {
     const { currentChart } = this.state
-    const title = Object.keys(currentChart)[0]
     bb.generate({
       data: {
         x: "x",
-        columns: currentChart[title],
+        columns: currentChart,
       type: "area-spline"
       },
       axis: {
@@ -113,10 +115,10 @@ class Chart extends React.Component {
             <div className="chart-content">
               <select
                 name="chart"
-                value={Object.keys(this.state.currentChart)[0]} //current chart month
+                value={this.state.currentTitle} //current chart month
                 onChange={this.selectChangePieChart}
                 >
-                {this.state.charts.map(chart => <option value={Object.keys(chart)[0]} key={Object.keys(chart)[0]} > {Object.keys(chart)[0]} </option>) }
+                {Object.keys(this.state.charts).map(title => <option value={title} key={title} > {title} </option>) }
               </select>
               <div id="chart" />
             </div> :
