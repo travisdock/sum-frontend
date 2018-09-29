@@ -19,33 +19,27 @@ class Chart extends React.Component {
       .then(resp => {if (resp.error) {
         this.setState({error: resp.error})
       } else {
-        this.setState({charts: resp, load: true, currentChart: resp.pie_data.length - 2 }, this.renderPieChart)
+        this.setState({charts: resp, load: true, currentChart: resp[resp.length - 3] }, this.renderPieChart)
       }}
         )
   }
 
   selectChangePieChart = (e) => {
     const title = e.target.value
-    this.setState((prevState) => {
+    this.setState( () => {
       return {
-        currentChart: this.state.charts.pie_data.findIndex(chart => Object.keys(chart)[0] === title)
+        currentChart: this.state.charts.find(chart => Object.keys(chart)[0] === title)
       }
-    }, this.renderPieChart)
-  }
-
-  changeChart = () => {
-    (this.state.toggleChart ? this.renderPieChart() : this.renderPLChart());
-    this.setState((prevState) => {return {toggleChart: !prevState.toggleChart}})
+    }, (title === 'Profit & Loss' ? this.renderPLChart : this.renderPieChart) ) //ternary: after state is set it triggers a chart renderd depending on the title
   }
 
   renderPieChart() {
     const { currentChart } = this.state
-    const { pie_data } = this.state.charts
-    const month = Object.keys(pie_data[currentChart])[0]
+    const month = Object.keys(currentChart)[0]
 
     bb.generate({
       data: {
-        columns: pie_data[currentChart][month],
+        columns: currentChart[month],
         type: "pie",
         // onclick: function(d, element) { debugger }
       },
@@ -92,10 +86,12 @@ class Chart extends React.Component {
   }
 
   renderPLChart() {
+    const { currentChart } = this.state
+    const title = Object.keys(currentChart)[0]
     bb.generate({
       data: {
         x: "x",
-        columns: this.state.charts.p_l,
+        columns: currentChart[title],
       type: "area-spline"
       },
       axis: {
@@ -115,19 +111,14 @@ class Chart extends React.Component {
       <div className="chart-content">
         {this.state.load ?
             <div className="chart-content">
-              <button onClick={this.changeChart}>Change Chart</button>
-              
+              <select
+                name="chart"
+                value={Object.keys(this.state.currentChart)[0]} //current chart month
+                onChange={this.selectChangePieChart}
+                >
+                {this.state.charts.map(chart => <option value={Object.keys(chart)[0]} key={Object.keys(chart)[0]} > {Object.keys(chart)[0]} </option>) }
+              </select>
               <div id="chart" />
-              {this.state.toggleChart ?
-                null :
-                <select
-                  name="chart"
-                  value={Object.keys(this.state.charts.pie_data[this.state.currentChart])[0]} //current chart month
-                  onChange={this.selectChangePieChart}
-                  >
-                  {this.state.charts.pie_data.map(chart => <option value={Object.keys(chart)[0]} key={Object.keys(chart)[0]} > {Object.keys(chart)[0]} </option>) }
-                </select>
-              }
             </div> :
             this.state.error ? <div>{this.state.error}</div> : <div>Loading...</div>
         }
