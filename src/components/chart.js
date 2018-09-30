@@ -6,9 +6,10 @@ class Chart extends React.Component {
 
   state = {
     charts: {},
-    load: false,
-    toggleChart: false,
-    currentChart: 0
+    currentChart: 0,
+    stats: {},
+    extraMonthInfo: {},
+    load: false
   }
 
   componentDidMount() {
@@ -20,8 +21,12 @@ class Chart extends React.Component {
         this.setState({error: resp.error})
       } else {
         const titles = Object.keys(resp)
-        const lastMonth = titles[titles.length - 2]
-        this.setState({charts: resp, load: true, currentChart: resp[lastMonth], currentTitle: lastMonth }, this.renderPieChart)
+        const lastMonth = titles[titles.length - 1]
+        this.setState({
+          charts: resp,
+          load: true,
+          currentChart: resp[lastMonth], currentTitle: lastMonth
+        }, this.renderPieChart)
       }}
         )
   }
@@ -33,13 +38,13 @@ class Chart extends React.Component {
         currentChart: this.state.charts[title],
         currentTitle: title
       }
-    }, (title === 'Profit & Loss' ? this.renderPLChart : this.renderPieChart) ) //ternary: after state is set it triggers a chart renderd depending on the title
+    }, this.renderPieChart)
   }
 
   renderPieChart() {
     const { currentChart, currentTitle } = this.state
     // const { currentTitle } = Object.keys(currentChart)[0]
-
+    // debugger;
     bb.generate({
       data: {
         columns: currentChart,
@@ -88,29 +93,9 @@ class Chart extends React.Component {
     });
   }
 
-  renderPLChart() {
-    const { currentChart } = this.state
-    bb.generate({
-      data: {
-        x: "x",
-        columns: currentChart,
-      type: "area-spline"
-      },
-      axis: {
-        x: {
-          type: "timeseries",
-          tick: {
-            format: "%b"
-          }
-        }
-      },
-      bindto: "#chart"
-    });
-  }
-
   render() {
     return (
-      <div className="chart-content">
+      <div className="content">
         {this.state.load ?
             <div className="chart-content">
               <select
@@ -133,3 +118,26 @@ const mapStateToProps = state => ({
 });
 
 export default connect(mapStateToProps)(Chart)
+
+
+
+// This is the profit loss chart. I got rid of it because it was ugly but I may want to remake it one day so here is the code.
+// renderPLChart() {
+//   const { currentChart } = this.state
+//   bb.generate({
+//     data: {
+//       x: "x",
+//       columns: currentChart,
+//     type: "area-spline"
+//     },
+//     axis: {
+//       x: {
+//         type: "timeseries",
+//         tick: {
+//           format: "%b"
+//         }
+//       }
+//     },
+//     bindto: "#chart"
+//   });
+// }
