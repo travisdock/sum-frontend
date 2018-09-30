@@ -20,12 +20,13 @@ class Chart extends React.Component {
       .then(resp => {if (resp.error) {
         this.setState({error: resp.error})
       } else {
-        const titles = Object.keys(resp)
+        const titles = Object.keys(resp.charts)
         const lastMonth = titles[titles.length - 1]
         this.setState({
-          charts: resp,
+          charts: resp.charts,
+          stats: resp.stats,
           load: true,
-          currentChart: resp[lastMonth], currentTitle: lastMonth
+          currentChart: resp.charts[lastMonth], currentTitle: lastMonth
         }, this.renderPieChart)
       }}
         )
