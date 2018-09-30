@@ -9,6 +9,8 @@ import matchSorter from 'match-sorter';
 // Import React Popup
 import Popup from "reactjs-popup";
 
+import { formatMoney } from './formatMoney.js';
+
 class Table extends React.Component {
   constructor() {
     super();
@@ -81,23 +83,7 @@ updateWindowDimensions() {
 
 ////////////////////////////////////////////////////////////////
 
-///////////////manipulate filtered data functions//////////////
-
-//https://gist.github.com/hengkiardo/3760884
-//I took this function from ^this gist but changed the j declaration
-//we will see if it breaks
-  formatMoney = (number, places, symbol, thousand, decimal) => {
-    number = number || 0;
-    places = !isNaN(places = Math.abs(places)) ? places : 2;
-    symbol = symbol !== undefined ? symbol : "$";
-    thousand = thousand || ",";
-    decimal = decimal || ".";
-    var negative = number < 0 ? "-" : "",
-        i = parseInt(number = Math.abs(+number || 0).toFixed(places), 10) + "",
-        j = i.length > 3 ? i.length % 3 : 0;
-    return symbol + negative + (j ? i.substr(0, j) + thousand : "") + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + thousand) + (places ? decimal + Math.abs(number - i).toFixed(places).slice(2) : "");
-  }
-
+///////////////manipulate filtered data functions///////////////
   unformatMoney = (dollars) => {
     return Number(dollars.replace(/[^0-9\\.-]+/g,""));
   }
@@ -106,14 +92,14 @@ updateWindowDimensions() {
     let sum = data.reduce((prev, cur) => {
       return prev + this.unformatMoney(cur.amount)
     }, 0);
-    return this.formatMoney(sum/data.length)
+    return formatMoney(sum/data.length)
   }
 
   sumEntries = (data) => {
     let sum = data.reduce((prev, cur) => {
       return prev + this.unformatMoney(cur.amount)
     }, 0);
-    return this.formatMoney(sum)
+    return formatMoney(sum)
   }
 
 //////////////////////////////////////////////////////////////

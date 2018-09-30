@@ -96,7 +96,6 @@ class Chart extends React.Component {
   }
 
   render() {
-    // debugger;
     console.log(this.state.stats)
     const { stats } = this.state
     return (
