@@ -45,8 +45,6 @@ class Chart extends React.Component {
 
   renderPieChart() {
     const { currentChart, currentTitle } = this.state
-    // const { currentTitle } = Object.keys(currentChart)[0]
-    // debugger;
     bb.generate({
       data: {
         columns: currentChart,
