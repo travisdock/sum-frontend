@@ -115,6 +115,8 @@ div.ui {
   justify-content: center;
   flex-direction: column;
   margin: 0px 10px;
+  flex-flow: wrap;
+  overflow-y: scroll;
 }
 
 form {
