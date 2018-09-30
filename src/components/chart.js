@@ -109,13 +109,11 @@ class Chart extends React.Component {
               </select>
               <div id="chart" />
               <div>
-                <h2>Total Income: {formatMoney(stats.total_income)}</h2>
-                <h2>Total Expense: {formatMoney(stats.total_expense)}</h2>
-                <h2>Average Expense per Month: {formatMoney(stats.avg_exp_per_month)}</h2>
-                <h2>Average Income per Month: {formatMoney(stats.avg_inc_per_month)}</h2>
-                <h2>Annual Profit/Loss: {formatMoney(stats.annual_p_l)}</h2>
-                <h2>Estimated Annual Income: {formatMoney(stats.est_annual_inc)}</h2>
-                <h2>Estimated Annual Expense: {formatMoney(stats.est_annual_exp)}</h2>
+                {Object.keys(this.state.stats).map( title => {
+                      return(<h3 key={title}>{title}: {formatMoney(stats[title])}</h3>)
+                    }
+                  )
+                }
               </div>
             </div> :
             this.state.error ? <div>{this.state.error}</div> : <div>Loading...</div>
