@@ -109,12 +109,12 @@ class Chart extends React.Component {
               </select>
               <div id="chart" />
               <div>
-                <h2>Annual Stats</h2>
-                {Object.keys(stats).map( title => {
+                <h2>Stats</h2>
+                {Object.keys(stats[this.state.currentTitle]).map( title => {
                   if (title === "avg_cat_month") {
-                    return <div><h2>Monthly Averages</h2>{Object.keys(stats[title]).map( title => <h3 key={title}>{title}: {formatMoney(stats["avg_cat_month"][title])}</h3>)}</div>
+                    return <div key={title}><h2>Monthly Averages</h2>{Object.keys(stats[this.state.currentTitle][title]).map( title => <h3 key={title}>{title}: {formatMoney(stats[this.state.currentTitle]["avg_cat_month"][title])}</h3>)}</div>
                   } else {
-                    return (<h3 key={title}>{title}: {formatMoney(stats[title])}</h3> )
+                    return ( <h3 key={title}>{title}: {formatMoney(stats[this.state.currentTitle][title])}</h3> )
                   }
                 })
                 }
