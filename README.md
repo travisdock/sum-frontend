@@ -6,7 +6,6 @@ https://sumfinance-b89c6.firebaseapp.com/
 
 ## Things to do:
 - [ ]Add untracked categories
-- [ ]Add stats to charts page
 - [ ]Sorting table by income and expense
 - [ ]Add ability to edit entry
 - [ ]Add ability to edit Category
@@ -29,3 +28,4 @@ https://sumfinance-b89c6.firebaseapp.com/
   - [X]Add staging environment to test new backend on(added 9/27/18)
 - [X]Add select box to charts page instead of "next" button (added 9/28/18)
   - [X]Add PL chart to the select instead of "change chart" button (added 9/29/18)
+- [X]Add stats to charts page (added 10/1/18)
