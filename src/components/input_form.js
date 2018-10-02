@@ -57,13 +57,10 @@ class InputForm extends React.Component {
       .then(res => res.json())
       .then(resp => {
         if (resp.errors) {
-          console.log(resp)
           alert(resp.errors)
         } else if (resp.error) {
-          console.log(resp)
           alert(resp.error)
         } else {
-          console.log(resp)
           if ( Object.prototype.toString.call( resp ) === '[object Array]' ) {
             this.props.updateCategories(resp)
           }
@@ -123,7 +120,6 @@ class InputForm extends React.Component {
   }
 
   render() {
-    console.log(this.state)
     const newCategory = (<div className="ui field">
       <input
         name="category"
@@ -161,7 +157,7 @@ class InputForm extends React.Component {
     </div>)
     return (
       <div className="input_form">
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={this.handleSubmit} className="form">
           {(this.state.new_category ? newCategory : selectCategory)}
             <input
               name="date"
