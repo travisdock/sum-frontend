@@ -14,7 +14,7 @@ class InputForm extends React.Component {
         amount: '',
         notes: '',
         income: false,
-        gift: false
+        untracked: false
       },
       new_category: false
     };
@@ -72,7 +72,7 @@ class InputForm extends React.Component {
               amount: '',
               notes: '',
               income: false,
-              gift: false
+              untracked: false
             },
             new_category: false
           })
@@ -89,7 +89,7 @@ class InputForm extends React.Component {
           ...prevState.form,
           category: '',
           income: false,
-          gift: false
+          untracked: false
         },
         new_category: !prevState.new_category
       }
@@ -107,13 +107,14 @@ class InputForm extends React.Component {
       }
     })
   }
-  toggleGift = () => {
+  toggleUntracked = () => {
     this.setState((prevState) => {
       return {
         ...prevState,
         form: {
           ...prevState.form,
-          gift: !prevState.form.gift
+          untracked: !prevState.form.untracked,
+          income: false
         }
       }
     })
@@ -127,20 +128,23 @@ class InputForm extends React.Component {
         placeholder='Category Name'
         onChange={this.handleChange}
       />
-      <input
-        name="income"
-        type="checkbox"
-        onChange={this.toggleIncome}
-      />
-      <label> income</label>
-      <br></br>
-      {/* <input
-        name="gift"
-        type="checkbox"
-        onChange={this.toggleGift}
-      /> */}
-      {/* <label> gift</label> */}
-      {/* <br></br> */}
+      <div className="checkbox_wrapper">
+        <label className="checkboxes">
+        <input
+          name="income"
+          type="checkbox"
+          checked={this.state.form.income}
+          onChange={this.toggleIncome}
+          disabled={this.state.form.untracked}
+        />income</label>
+
+        <label className="checkboxes">
+        <input
+          name="untracked"
+          type="checkbox"
+          onChange={this.toggleUntracked}
+        />untracked</label>
+      </div>
       {/* ADD GIFT FUNCTIONALITY(maybe make this untracked categories?) */}
       <button onClick={this.toggleCategory}>Select Category</button>
     </div>)

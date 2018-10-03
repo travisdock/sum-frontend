@@ -94,6 +94,7 @@ div.ui {
   justify-content: center;
   flex-wrap: wrap;
   align-items: center;
+  flex-direction: column;
 }
 
 .content .input_form {
@@ -138,6 +139,18 @@ textarea, input {
   resize: vertical;
   max-width: 80%;
 }
+
+.checkboxes {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin: 8px;
+}
+
+.checkbox_wrapper {
+  display: flex;
+}
+
 .content button {
   border: 2px solid #ccc;
   background-color: #DEDCE4;
