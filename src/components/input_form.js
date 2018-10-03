@@ -157,7 +157,7 @@ class InputForm extends React.Component {
     </div>)
     return (
       <div className="input_form">
-        <form onSubmit={this.handleSubmit} className="form">
+        <form onSubmit={this.handleSubmit}>
           {(this.state.new_category ? newCategory : selectCategory)}
             <input
               name="date"

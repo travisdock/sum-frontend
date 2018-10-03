@@ -103,9 +103,6 @@ div.ui {
   align-items: center;
 }
 
-.input_form .form {
-  max-width: 100%;
-}
 
 .content .chart-content {
   width: 100%;
@@ -119,7 +116,7 @@ div.ui {
   overflow-y: scroll;
 }
 
-.form {
+div form {
   display: flex;
   justify-content: space-around;
   align-items: center;
