@@ -234,7 +234,7 @@ updateWindowDimensions() {
         >
           <div className="table-popup">
             <p>Amount: {"$" + Number(this.state.data.amount).toFixed(2)}</p>
-            <p>Category: {this.state.data.category}</p>
+            <p>Category: {this.state.data.category_name}</p>
             <p>Date: {this.state.data.date}</p>
             <p>Notes: {this.state.data.notes}</p>
             <button onClick={this.handleDelete}>Delete Entry</button>
