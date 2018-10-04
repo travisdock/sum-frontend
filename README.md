@@ -5,7 +5,7 @@ I tracked my own personal income and expenses in a google sheet for years and th
 https://sumfinance-b89c6.firebaseapp.com/
 
 ## Things to do:
-- [ ]Add untracked categories
+- [ ]Color code stats for readability?
 - [ ]Sorting table by income and expense
 - [ ]Add ability to edit entry
 - [ ]Add ability to edit Category
@@ -29,3 +29,4 @@ https://sumfinance-b89c6.firebaseapp.com/
 - [X]Add select box to charts page instead of "next" button (added 9/28/18)
   - [X]Add PL chart to the select instead of "change chart" button (added 9/29/18)
 - [X]Add stats to charts page (added 10/1/18)
+- [X]Add untracked categories (added 10/3/18)
