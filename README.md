@@ -13,6 +13,7 @@ https://sumfinance-b89c6.firebaseapp.com/
 - [ ]Add ability to delete category (asks to recategorize or delete existing entries)
 - [ ]Add pwa icon image
 - [ ]Add tests
+- [ ]Add CSV Conversion Option
 - [ ]Add "are you sure?" to delete buttons
 - [ ]Test and improve accessibility
 - [ ]Add separate components for mobile and desktop viewing
