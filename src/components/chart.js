@@ -15,8 +15,16 @@ class Chart extends React.Component {
 
   componentDidMount() {
     const id = this.props.current_user.user_id
+    const token = localStorage.getItem('jwt')
+    const options = {
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'Authorization': token
+      }
+    }
 
-    fetch(`${process.env.REACT_APP_API}/api/v1/charts/${id}`)
+    fetch(`${process.env.REACT_APP_API}/api/v1/charts/${id}`, options)
       .then(resp => resp.json())
       .then(resp => {if (resp.error) {
         this.setState({error: resp.error})

@@ -107,10 +107,19 @@ updateWindowDimensions() {
   componentDidMount() {
     const id = this.props.current_user.user_id
     const url = `${process.env.REACT_APP_API}/api/v1/entries/${id}`
+    const token = localStorage.getItem('jwt')
+    const options = {
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'Authorization': token
+      }
+    }
+
     this.updateWindowDimensions();
     window.addEventListener('resize', this.updateWindowDimensions);
     window.addEventListener('orientationchange', this.updateWindowDimensions);
-    fetch(url)
+    fetch(url, options)
     .then(res => res.json())
     .then(res => this.setState({entries: res}))
   }
