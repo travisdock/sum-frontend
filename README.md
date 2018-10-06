@@ -8,7 +8,8 @@
 I tracked my own personal income and expenses in a google sheet for years and the only drawback was the user interface. I would only ever update it from my computer because editing a google sheet on a phone was more trouble than it was worth so I had to wait until I got home each day and try to remember my expenses or save my receipts. This wasn't impossible and even turned out to be a good practice, but I thought it would be fun to recreate the google sheet's functionality in a progressive web app that I could run on my phone.  The front end is a React PWA hosted on Firebase.  The back end is a Rails API hosted on Heroku.
 
 ## Try It Out
-https://sumfinance-b89c6.firebaseapp.com/
+<a href="https://sumfinance-b89c6.firebaseapp.com/" target="_blank">https://sumfinance-b89c6.firebaseapp.com/</a> 
+
 
 ## Things to do:
 - [ ]Add tests
@@ -20,7 +21,6 @@ https://sumfinance-b89c6.firebaseapp.com/
 - [ ]Add ability to view app by year, entire app changes when year is changed somehow
 - [ ]Add ability to delete category (asks to recategorize or delete existing entries)
 - [ ]Add pwa icon image
-- [ ]Add CSV Conversion Option
 - [ ]Add "are you sure?" to delete buttons
 - [ ]Test and improve accessibility
 - [ ]Add separate components for mobile and desktop viewing
