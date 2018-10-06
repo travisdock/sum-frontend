@@ -14,6 +14,7 @@ https://sumfinance-b89c6.firebaseapp.com/
 - [ ]Add tests
 - [ ]Color code stats for readability?
 - [ ]Sorting table by income and expense
+- [ ]Add google sheets connection for uploading data
 - [ ]Add ability to edit entry
 - [ ]Add ability to edit Category
 - [ ]Add ability to view app by year, entire app changes when year is changed somehow
@@ -23,7 +24,7 @@ https://sumfinance-b89c6.firebaseapp.com/
 - [ ]Add "are you sure?" to delete buttons
 - [ ]Test and improve accessibility
 - [ ]Add separate components for mobile and desktop viewing
-- [ ]Improve charts in general
+- [ ]Change charts to D3?
 - [ ]Percent of income saved, spent, donated?
 - [ ]Recurring payments
 - [ ]Savings and goals
