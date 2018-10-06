@@ -5,6 +5,7 @@ I tracked my own personal income and expenses in a google sheet for years and th
 https://sumfinance-b89c6.firebaseapp.com/
 
 ## Things to do:
+- [ ]Add tests
 - [ ]Color code stats for readability?
 - [ ]Sorting table by income and expense
 - [ ]Add ability to edit entry
@@ -12,7 +13,6 @@ https://sumfinance-b89c6.firebaseapp.com/
 - [ ]Add ability to view app by year, entire app changes when year is changed somehow
 - [ ]Add ability to delete category (asks to recategorize or delete existing entries)
 - [ ]Add pwa icon image
-- [ ]Add tests
 - [ ]Add CSV Conversion Option
 - [ ]Add "are you sure?" to delete buttons
 - [ ]Test and improve accessibility
