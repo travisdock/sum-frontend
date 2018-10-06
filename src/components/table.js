@@ -35,12 +35,13 @@ class Table extends React.Component {
   };
   handleDelete = () => {
     const index = this.state.index
-    console.log(this.state)
+    const token = localStorage.getItem('jwt')
     const options = {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
-        "Accept": "application/json"
+        "Accept": "application/json",
+        'Authorization': token
       },
       body: JSON.stringify(this.state.data)
     };

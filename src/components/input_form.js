@@ -41,6 +41,7 @@ class InputForm extends React.Component {
   handleSubmit = (e) => {
     e.preventDefault();
     const url = `${process.env.REACT_APP_API}/api/v1/entries`
+    const token = localStorage.getItem('jwt')
     const formData = {
       ...this.state.form,
       user_id: this.props.current_user.user_id
@@ -49,7 +50,8 @@ class InputForm extends React.Component {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Accept': 'application/json'
+        'Accept': 'application/json',
+        'Authorization': token
       },
       body: JSON.stringify(formData)
     }
