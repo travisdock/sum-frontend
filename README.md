@@ -2,7 +2,7 @@
 <img src="https://user-images.githubusercontent.com/36681963/46574152-56d1ac00-c96d-11e8-90ca-54e9047a0620.png" alt="javascript">
 <img src="https://user-images.githubusercontent.com/36681963/46574153-5a653300-c96d-11e8-92be-113930d0a4e4.png" alt="react">
 <img src="https://user-images.githubusercontent.com/36681963/46574151-520cf800-c96d-11e8-9753-3948f3f4508a.jpg" alt="redux">
-<img src="https://user-images.githubusercontent.com/36681963/46583298-b63dc380-ca22-11e8-8d35-e77738726561.jpg" alt="firebase">
+<img src="https://user-images.githubusercontent.com/36681963/46583298-b63dc380-ca22-11e8-8d35-e77738726561.jpg" alt="firebase" title="Firebase">
 </p>
 
 ## Description
