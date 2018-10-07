@@ -5,7 +5,8 @@
 </p>
 
 ## Description
-I tracked my own personal income and expenses in a google sheet for years and the only drawback was the user interface. I would only ever update it from my computer because editing a google sheet on a phone was more trouble than it was worth so I had to wait until I got home each day and try to remember my expenses or save my receipts. This wasn't impossible and even turned out to be a good practice, but I thought it would be fun to recreate the google sheet's functionality in a progressive web app that I could run on my phone.  The front end is a React PWA hosted on Firebase.  The back end is a Rails API hosted on Heroku.
+This is a learning and working project, by which I mean I actually use it and I also use it to learn. I built it to track my personal finances and I use it as such, but I also use it whenever I want to learn something.  When I wanted to learn RSpec I added it to the backend. When I started I wanted to learn Redux so I used it here. I am constantly tweaking it and I hope to continue that for years to come as my knowledge and experience evolve.
+The front end is a React PWA hosted on Firebase.  The back end is a Rails API hosted on Heroku.
 
 ## Try It Out
 https://sumfinance-b89c6.firebaseapp.com/
@@ -14,6 +15,7 @@ https://sumfinance-b89c6.firebaseapp.com/
 ## Things to do:
 - [ ]Add tests
 - [ ]Color code stats for readability?
+- [ ]Add seed for example user for people who want to see it with data
 - [ ]Sorting table by income and expense
 - [ ]Add google sheets connection for uploading data
 - [ ]Add ability to edit entry
