@@ -1,7 +1,7 @@
 <p align="center">
-<img src="https://user-images.githubusercontent.com/36681963/46574152-56d1ac00-c96d-11e8-90ca-54e9047a0620.png" alt="javascript" title="Javascript">
-<img src="https://user-images.githubusercontent.com/36681963/46574153-5a653300-c96d-11e8-92be-113930d0a4e4.png" alt="react" title="React">
-<img src="https://user-images.githubusercontent.com/36681963/46574151-520cf800-c96d-11e8-9753-3948f3f4508a.jpg" alt="redux" title="Redux">
+<img src="https://user-images.githubusercontent.com/36681963/46574152-56d1ac00-c96d-11e8-90ca-54e9047a0620.png" alt="javascript" title="Written in Javascript">
+<img src="https://user-images.githubusercontent.com/36681963/46574153-5a653300-c96d-11e8-92be-113930d0a4e4.png" alt="react" title="Built with React">
+<img src="https://user-images.githubusercontent.com/36681963/46574151-520cf800-c96d-11e8-9753-3948f3f4508a.jpg" alt="redux" title="State managed by Redux">
 <img src="https://user-images.githubusercontent.com/36681963/46583298-b63dc380-ca22-11e8-8d35-e77738726561.jpg" alt="firebase" title="Deployed using Firebase">
 </p>
 
