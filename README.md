@@ -15,6 +15,7 @@ https://sumfinance-b89c6.firebaseapp.com/
 
 ## Things to do:
 - [ ] Add tests
+- [ ] Add Travis CI with staging and production (master) branches
 - [ ] Color code stats for readability?
 - [ ] Add seed for example user for people who want to see it with data
 - [ ] Sorting table by income and expense
