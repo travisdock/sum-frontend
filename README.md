@@ -14,33 +14,33 @@ https://sumfinance-b89c6.firebaseapp.com/
 
 
 ## Things to do:
-- [ ]Add tests
-- [ ]Color code stats for readability?
-- [ ]Add seed for example user for people who want to see it with data
-- [ ]Sorting table by income and expense
-- [ ]Add google sheets connection for uploading data
-- [ ]Add ability to edit entry
-- [ ]Add ability to edit Category
-- [ ]Add ability to view app by year, entire app changes when year is changed somehow
-- [ ]Add ability to delete category (asks to recategorize or delete existing entries)
-- [ ]Add pwa icon image
-- [ ]Add "are you sure?" to delete buttons
-- [ ]Test and improve accessibility
-- [ ]Add separate components for mobile and desktop viewing
-- [ ]Change charts to D3?
-- [ ]Percent of income saved, spent, donated?
-- [ ]Recurring payments
-- [ ]Savings and goals
-- [ ]React Native Version?
-- [X]Sum by filtered table results (added 9/16/18)
-- [X]Fix table to add notes column when mobile switches to landscape (added 9/23/18)
-- [X]Setup dev environment for enhanced testing of frontend and backend (added 9/24/18)
-- [X]Fix bug: when only one entry is available and it is an income the charts page breaks (fixed 9/27/18)
-  - [X]Add staging environment to test new backend on(added 9/27/18)
-- [X]Add select box to charts page instead of "next" button (added 9/28/18)
-  - [X]Add PL chart to the select instead of "change chart" button (added 9/29/18)
-- [X]Add stats to charts page (added 10/1/18)
-- [X]Add untracked categories (added 10/3/18)
+- [ ] Add tests
+- [ ] Color code stats for readability?
+- [ ] Add seed for example user for people who want to see it with data
+- [ ] Sorting table by income and expense
+- [ ] Add google sheets connection for uploading data
+- [ ] Add ability to edit entry
+- [ ] Add ability to edit Category
+- [ ] Add ability to view app by year, entire app changes when year is changed somehow
+- [ ] Add ability to delete category (asks to recategorize or delete existing entries)
+- [ ] Add pwa icon image
+- [ ] Add "are you sure?" to delete buttons
+- [ ] Test and improve accessibility
+- [ ] Add separate components for mobile and desktop viewing
+- [ ] Change charts to D3?
+- [ ] Percent of income saved, spent, donated?
+- [ ] Recurring payments
+- [ ] Savings and goals
+- [ ] React Native Version?
+- [X] Sum by filtered table results (added 9/16/18)
+- [X] Fix table to add notes column when mobile switches to landscape (added 9/23/18)
+- [X] Setup dev environment for enhanced testing of frontend and backend (added 9/24/18)
+- [X] Fix bug: when only one entry is available and it is an income the charts page breaks (fixed 9/27/18)
+  - [X] Add staging environment to test new backend on(added 9/27/18)
+- [X] Add select box to charts page instead of "next" button (added 9/28/18)
+  - [X] Add PL chart to the select instead of "change chart" button (added 9/29/18)
+- [X] Add stats to charts page (added 10/1/18)
+- [X] Add untracked categories (added 10/3/18)
 
 
 ## Research Resources for Accessibility that I need to look at
