@@ -20,14 +20,7 @@ class Table extends React.Component {
       data: {},
       filterSum: 0,
       windowWidth: 0,
-      form: {
-        category: '',
-        date: '',
-        amount: '',
-        notes: '',
-        income: '',
-        untracked: ''
-      },
+      form: {},
     };
     this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
   }
@@ -36,10 +29,20 @@ class Table extends React.Component {
 
 //////////////////Popup Modal Functions////////////////////////////////////
   openModal = (entry, entry_index) => {
-    this.setState({ open: "info", data: entry, index: entry_index});
+    this.setState({
+      open: "info",
+      data: entry,
+      index: entry_index,
+      form: {
+        category: entry.category_name,
+        date: entry.date,
+        amount: entry.amount,
+        notes: entry.notes
+      }
+    });
   };
   closeModal = () => {
-    // this.setState({ open: false });
+    this.setState({ open: false, form: {} });
   };
   switchToUpdateModal = () => {
     this.setState({ open: "update" });
@@ -84,12 +87,13 @@ class Table extends React.Component {
           [name]: value
         }
       }
-    });
+    }, console.log(this.state.form));
+
   };
   handleUpdate = () => {
     const index = this.state.index
     const token = localStorage.getItem('jwt')
-    const updatedEntry = {} //taken from form
+    const updatedEntry = { id: this.state.data.id, ...this.state.form}
     const options = {
       method: "PATCH",
       headers: {
@@ -97,7 +101,7 @@ class Table extends React.Component {
         "Accept": "application/json",
         'Authorization': token
       },
-      body: updatedEntry
+      body: JSON.stringify(updatedEntry)
     };
     fetch(`${process.env.REACT_APP_API}/api/v1/entries`, options)
     .then(resp => resp.json())
@@ -107,11 +111,15 @@ class Table extends React.Component {
       this.setState((prevState) => {
         // Not a deep clone of the objects, just a copy of the array
         let newEntries = prevState.entries.slice(0)
-        newEntries[index] = updatedEntry
+        let newEntry = newEntries[index]
+        let newValues = updatedEntry
+        Object.keys(updatedEntry).forEach( (key) => {
+          newEntry[key] = newValues[key]
+        })
         return {
           entries: newEntries
         }
-      })
+      }, alert("success!"))
     }}, this.closeModal())
   };
 ////////////////////////////////////////////////////////////////
@@ -316,7 +324,7 @@ updateWindowDimensions() {
         >
           <div className="table-popup">
             <p>Update Entry</p>
-            <form onSubmit={this.handleSubmit}>
+            <form onSubmit={this.handleUpdate}>
                 <select
                   name="category"
                   value={this.state.form.category}
