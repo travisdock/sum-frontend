@@ -19,7 +19,15 @@ class Table extends React.Component {
       open: false,
       data: {},
       filterSum: 0,
-      windowWidth: 0
+      windowWidth: 0,
+      form: {
+        category: '',
+        date: '',
+        amount: '',
+        notes: '',
+        income: '',
+        untracked: ''
+      },
     };
     this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
   }
@@ -28,10 +36,13 @@ class Table extends React.Component {
 
 //////////////////Popup Modal Functions////////////////////////////////////
   openModal = (entry, entry_index) => {
-    this.setState({ open: true, data: entry, index: entry_index});
+    this.setState({ open: "info", data: entry, index: entry_index});
   };
   closeModal = () => {
-    this.setState({ open: false });
+    // this.setState({ open: false });
+  };
+  switchToUpdateModal = () => {
+    this.setState({ open: "update" });
   };
   handleDelete = () => {
     const index = this.state.index
@@ -59,7 +70,50 @@ class Table extends React.Component {
         }
       })
     }}, this.closeModal())
-  }
+  };
+  handleChange = (e) => {
+    const target = e.target;
+    const value = target.value;
+    const name = target.name;
+
+    this.setState((prevState) => {
+      return {
+        ...prevState,
+        form: {
+          ...prevState.form,
+          [name]: value
+        }
+      }
+    });
+  };
+  handleUpdate = () => {
+    const index = this.state.index
+    const token = localStorage.getItem('jwt')
+    const updatedEntry = {} //taken from form
+    const options = {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json",
+        'Authorization': token
+      },
+      body: updatedEntry
+    };
+    fetch(`${process.env.REACT_APP_API}/api/v1/entries`, options)
+    .then(resp => resp.json())
+    .then(resp => { if (resp.error) {
+      alert(resp.exception)
+    } else {
+      this.setState((prevState) => {
+        // Not a deep clone of the objects, just a copy of the array
+        let newEntries = prevState.entries.slice(0)
+        newEntries[index] = updatedEntry
+        return {
+          entries: newEntries
+        }
+      })
+    }}, this.closeModal())
+  };
 ////////////////////////////////////////////////////////////////
 
 //////////////////Mobile Orientation Change//////////////////////////
@@ -237,8 +291,9 @@ updateWindowDimensions() {
             );
           }}
         </ReactTable>
+        {/* INFO MODAL */}
         <Popup
-          open={this.state.open}
+          open={this.state.open === "info"}
           closeOnDocumentClick
           onClose={this.closeModal}
         >
@@ -248,6 +303,52 @@ updateWindowDimensions() {
             <p>Date: {this.state.data.date}</p>
             <p>Notes: {this.state.data.notes}</p>
             <button onClick={this.handleDelete}>Delete Entry</button>
+            <button onClick={this.switchToUpdateModal}>Update Entry</button>
+            {console.log(this.state)}
+          </div>
+        </Popup>
+        {/* UPDATE MODAL */}
+        <Popup
+          open={this.state.open === "update"}
+          closeOnDocumentClick
+          onClose={this.closeModal}
+          onOpen={this.switchToUpdateModal}
+        >
+          <div className="table-popup">
+            <p>Update Entry</p>
+            <form onSubmit={this.handleSubmit}>
+                <select
+                  name="category"
+                  value={this.state.form.category}
+                  onChange={this.handleChange}
+                  >
+                  {!!this.props.current_user.categories ? this.props.current_user.categories.map(cat => <option value={cat.name} key={cat.id}>{cat.name}</option>) : null}
+                </select>
+                <input
+                  name="date"
+                  type="date"
+                  value={this.state.form.date}
+                  onChange={this.handleChange}
+                />
+                <input
+                  name="amount"
+                  placeholder="0.00"
+                  value={this.state.form.amount}
+                  onChange={this.handleChange}
+                />
+                <textarea
+                  name="notes"
+                  placeholder="Entry details..."
+                  rows="5"
+                  cols="55"
+                  value={this.state.form.notes}
+                  onChange={this.handleChange}
+                />
+              <button type="submit" className="button">
+                Submit
+              </button>
+            </form>
+
           </div>
         </Popup>
       </div>
