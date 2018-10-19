@@ -4,12 +4,19 @@ import { connect } from 'react-redux';
 // Import React Table
 import ReactTable from "react-table";
 import "react-table/react-table.css";
-import matchSorter from 'match-sorter';
 
 // Import React Popup
 import Popup from "reactjs-popup";
 
-import { formatMoney } from './formatMoney.js';
+// Imported Functions
+import {
+  openModal, closeModal, switchToUpdateModal,
+  askIfSure, handleDelete, handleChange, handleUpdate
+} from './modal_helpers.js'
+import {
+  updateWindowDimensions, unformatMoney, sumEntries,
+  mobileColumns, desktopColumns
+} from './table_helpers.js'
 
 class Table extends React.Component {
   constructor() {
@@ -22,156 +29,21 @@ class Table extends React.Component {
       windowWidth: 0,
       form: {},
     };
-    this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
+    // Imported functions
+    this.openModal = openModal.bind(this);
+    this.closeModal = closeModal.bind(this);
+    this.switchToUpdateModal = switchToUpdateModal.bind(this);
+    this.askIfSure = askIfSure.bind(this);
+    this.handleDelete = handleDelete.bind(this);
+    this.handleChange = handleChange.bind(this);
+    this.handleUpdate = handleUpdate.bind(this);
+    this.updateWindowDimensions = updateWindowDimensions.bind(this);
+    this.unformatMoney = unformatMoney.bind(this);
+    this.sumEntries = sumEntries.bind(this);
+    this.mobileColumns = mobileColumns.bind(this)
+    this.desktopColumns = desktopColumns.bind(this)
   }
   
-
-
-//////////////////Popup Modal Functions////////////////////////////////////
-  openModal = (entry, entry_index) => {
-    this.setState({
-      open: "info",
-      data: entry,
-      index: entry_index,
-      form: entry
-    });
-  };
-  closeModal = () => {
-    this.setState({ open: false });
-  };
-  switchToUpdateModal = () => {
-    this.setState({ open: "update" });
-  };
-  askIfSure = () => {
-    this.setState({ open: "ask" });
-  };
-  handleDelete = () => {
-    const index = this.state.index
-    const token = localStorage.getItem('jwt')
-    const options = {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-        "Accept": "application/json",
-        'Authorization': token
-      },
-      body: JSON.stringify(this.state.data)
-    };
-    fetch(`${process.env.REACT_APP_API}/api/v1/entries`, options)
-    .then(resp => resp.json())
-    .then(resp => { if (resp.error) {
-      alert(resp.exception)
-    } else {
-      this.setState((prevState) => {
-        // Not a deep clone of the objects, just a copy of the array
-        let newEntries = prevState.entries.slice(0)
-        newEntries.splice(index, 1)
-        return {
-          entries: newEntries
-        }
-      })
-    }}, this.closeModal())
-  };
-  handleChange = (e) => {
-    const target = e.target;
-    const value = target.value;
-    const name = target.name;
-
-    this.setState((prevState) => {
-      return {
-        ...prevState,
-        form: {
-          ...prevState.form,
-          [name]: value
-        }
-      }
-    });
-
-  };
-  handleUpdate = () => {
-    if (this.state.form === this.state.data) {
-      alert("No changes were made")
-      this.closeModal();
-      this.setState({ form: {} })
-    } else {
-      const index = this.state.index
-      const token = localStorage.getItem('jwt')
-      const updatedEntry = { id: this.state.data.id, ...this.state.form}
-      const options = {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-          "Accept": "application/json",
-          'Authorization': token
-        },
-        body: JSON.stringify(updatedEntry)
-      };
-      fetch(`${process.env.REACT_APP_API}/api/v1/entries`, options)
-      .then(resp => resp.json())
-      .then(resp => { if (resp.error) {
-        alert(resp.exception)
-      } else {
-        this.setState((prevState) => {
-          // Not a deep clone of the objects, just a copy of the array
-          let newEntries = prevState.entries.slice(0)
-          let newEntry = newEntries[index]
-          let newValues = updatedEntry
-          Object.keys(updatedEntry).forEach( (key) => {
-            newEntry[key] = newValues[key]
-          })
-          return {
-            entries: newEntries,
-            form: {}
-          }
-        }, alert("success!"))
-      }}, this.closeModal())
-    }
-  };
-////////////////////////////////////////////////////////////////
-
-//////////////////Mobile Orientation Change//////////////////////////
-
-////This is a bit of a hack. There is probably a better solution but I will figure it out later.
-
-updateWindowDimensions() {
-  switch(window.orientation) {  
-    case -90 || 90:
-      this.setState((state) => {
-        return {windowWidth: window.innerHeight}
-      });
-      break; 
-    default:
-      this.setState((state) => {
-        return {windowWidth: window.innerWidth}
-      });
-      break; 
-  }
-}
-
-
-////////////////////////////////////////////////////////////////
-
-///////////////manipulate filtered data functions///////////////
-  unformatMoney = (dollars) => {
-    return Number(dollars.replace(/[^0-9\\.-]+/g,""));
-  }
-
-  averageEntries = (data) => {
-    let sum = data.reduce((prev, cur) => {
-      return prev + this.unformatMoney(cur.amount)
-    }, 0);
-    return formatMoney(sum/data.length)
-  }
-
-  sumEntries = (data) => {
-    let sum = data.reduce((prev, cur) => {
-      return prev + this.unformatMoney(cur.amount)
-    }, 0);
-    return formatMoney(sum)
-  }
-
-//////////////////////////////////////////////////////////////
-
   componentDidMount() {
     const id = this.props.current_user.user_id
     const url = `${process.env.REACT_APP_API}/api/v1/entries/${id}`
@@ -202,73 +74,6 @@ updateWindowDimensions() {
     console.log(this.state)
     const data = this.state.entries;
     const windowWidth = this.state.windowWidth
-    let mobileColumns = [
-        {
-          Header: "Category",
-          accessor: "category_name",
-          maxWidth: 200,
-          Filter: ({filter, onChange}) =>
-            <select
-              onChange={event => onChange(event.target.value)}
-              style={{ width: "100%" }}
-              value={filter ? filter.value : ""}
-              >
-              <option value="">All</option>
-              {this.props.current_user.categories.map( category =>
-                <option
-                  key={category.id}
-                  value={category.name}>{category.name}</option>
-                )
-              }
-            </select>
-        },
-        {
-          Header: "Date",
-          accessor: "date",
-          Footer: (<span><strong>Sum:</strong></span>),
-          maxWidth: 110,
-          filterMethod: (filter, rows) =>
-            matchSorter(rows, filter.value, { keys: ["date"] }),
-            filterAll: true
-        },
-        {
-          Header: "Amount",
-          id: "amount",
-          accessor: d => {
-            return "$" + Number(d.amount).toFixed(2)
-          },
-          Footer: columnProps => {
-            return(
-              <span>
-                {columnProps.data.length > 0 ? this.sumEntries(columnProps.data) : 0}
-              </span>
-            )
-          },
-          maxWidth: 100,
-          sortMethod: (a, b) => {
-            if (a === b) {
-              return 0;
-            }
-            const aInteger = Number(a.replace(/[^0-9\\.-]+/g,""));
-            const bInteger = Number(b.replace(/[^0-9\\.-]+/g,""));
-            // Originally this ^ was .replace(/[^0-9\.-]+/g,"") but the linter was throwing a "unnecessary escape character" error so I escaped it. Not sure if this is cool or not.
-            return aInteger > bInteger ? 1 : -1;
-          },
-          filterMethod: (filter, rows) =>
-            matchSorter(rows, filter.value, { keys: ["amount"] }),
-            filterAll: true
-        }
-      ]
-    let desktopColumns = [
-          ...mobileColumns,
-          {
-            Header: "Notes",
-            accessor: "notes",
-            filterMethod: (filter, rows) =>
-              matchSorter(rows, filter.value, { keys: ["notes"] }),
-              filterAll: true
-          }
-        ]
     return (
       <div className="table-content">
         <ReactTable
@@ -281,7 +86,7 @@ updateWindowDimensions() {
               }
             };
           }}
-          columns={windowWidth > 500 ? [{columns: desktopColumns}] : [{columns: mobileColumns}]}
+          columns={windowWidth > 500 ? [{columns: this.desktopColumns()}] : [{columns: this.mobileColumns()}]}
           defaultPageSize={10}
           defaultSorted={[
             {
@@ -307,20 +112,21 @@ updateWindowDimensions() {
         </ReactTable>
         {/* INFO MODAL */}
         <Popup
-          open={this.state.open === "info"}
-          closeOnDocumentClick
-          onClose={this.closeModal}
+        open={this.state.open === "info"}
+        closeOnDocumentClick
+        onClose={this.closeModal}
         >
-          <div className="table-popup">
+        <div className="table-popup">
             <p>Amount: {"$" + Number(this.state.data.amount).toFixed(2)}</p>
             <p>Category: {this.state.data.category_name}</p>
             <p>Date: {this.state.data.date}</p>
             <p>Notes: {this.state.data.notes}</p>
             <button onClick={this.askIfSure}>Delete Entry</button>
             <button onClick={this.switchToUpdateModal}>Update Entry</button>
-          </div>
+        </div>
         </Popup>
         {/* UPDATE MODAL */}
+        {/* TODO: FIX FORM SUBMISSION ERROR */}
         <Popup
           open={this.state.open === "update"}
           closeOnDocumentClick
