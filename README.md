@@ -33,15 +33,6 @@ https://sumfinance-b89c6.firebaseapp.com/
 - [ ] Recurring payments
 - [ ] Savings and goals
 - [ ] React Native Version?
-- [X] Sum by filtered table results (added 9/16/18)
-- [X] Fix table to add notes column when mobile switches to landscape (added 9/23/18)
-- [X] Setup dev environment for enhanced testing of frontend and backend (added 9/24/18)
-- [X] Fix bug: when only one entry is available and it is an income the charts page breaks (fixed 9/27/18)
-  - [X] Add staging environment to test new backend on(added 9/27/18)
-- [X] Add select box to charts page instead of "next" button (added 9/28/18)
-  - [X] Add PL chart to the select instead of "change chart" button (added 9/29/18)
-- [X] Add stats to charts page (added 10/1/18)
-- [X] Add untracked categories (added 10/3/18)
 
 
 ## Research Resources for Accessibility that I need to look at
