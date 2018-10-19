@@ -33,19 +33,17 @@ class Table extends React.Component {
       open: "info",
       data: entry,
       index: entry_index,
-      form: {
-        category: entry.category_name,
-        date: entry.date,
-        amount: entry.amount,
-        notes: entry.notes
-      }
+      form: entry
     });
   };
   closeModal = () => {
-    this.setState({ open: false, form: {} });
+    this.setState({ open: false });
   };
   switchToUpdateModal = () => {
     this.setState({ open: "update" });
+  };
+  askIfSure = () => {
+    this.setState({ open: "ask" });
   };
   handleDelete = () => {
     const index = this.state.index
@@ -87,40 +85,47 @@ class Table extends React.Component {
           [name]: value
         }
       }
-    }, console.log(this.state.form));
+    });
 
   };
   handleUpdate = () => {
-    const index = this.state.index
-    const token = localStorage.getItem('jwt')
-    const updatedEntry = { id: this.state.data.id, ...this.state.form}
-    const options = {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-        "Accept": "application/json",
-        'Authorization': token
-      },
-      body: JSON.stringify(updatedEntry)
-    };
-    fetch(`${process.env.REACT_APP_API}/api/v1/entries`, options)
-    .then(resp => resp.json())
-    .then(resp => { if (resp.error) {
-      alert(resp.exception)
+    if (this.state.form === this.state.data) {
+      alert("No changes were made")
+      this.closeModal();
+      this.setState({ form: {} })
     } else {
-      this.setState((prevState) => {
-        // Not a deep clone of the objects, just a copy of the array
-        let newEntries = prevState.entries.slice(0)
-        let newEntry = newEntries[index]
-        let newValues = updatedEntry
-        Object.keys(updatedEntry).forEach( (key) => {
-          newEntry[key] = newValues[key]
-        })
-        return {
-          entries: newEntries
-        }
-      }, alert("success!"))
-    }}, this.closeModal())
+      const index = this.state.index
+      const token = localStorage.getItem('jwt')
+      const updatedEntry = { id: this.state.data.id, ...this.state.form}
+      const options = {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json",
+          'Authorization': token
+        },
+        body: JSON.stringify(updatedEntry)
+      };
+      fetch(`${process.env.REACT_APP_API}/api/v1/entries`, options)
+      .then(resp => resp.json())
+      .then(resp => { if (resp.error) {
+        alert(resp.exception)
+      } else {
+        this.setState((prevState) => {
+          // Not a deep clone of the objects, just a copy of the array
+          let newEntries = prevState.entries.slice(0)
+          let newEntry = newEntries[index]
+          let newValues = updatedEntry
+          Object.keys(updatedEntry).forEach( (key) => {
+            newEntry[key] = newValues[key]
+          })
+          return {
+            entries: newEntries,
+            form: {}
+          }
+        }, alert("success!"))
+      }}, this.closeModal())
+    }
   };
 ////////////////////////////////////////////////////////////////
 
@@ -194,6 +199,7 @@ updateWindowDimensions() {
 
 
   render() {
+    console.log(this.state)
     const data = this.state.entries;
     const windowWidth = this.state.windowWidth
     let mobileColumns = [
@@ -310,9 +316,8 @@ updateWindowDimensions() {
             <p>Category: {this.state.data.category_name}</p>
             <p>Date: {this.state.data.date}</p>
             <p>Notes: {this.state.data.notes}</p>
-            <button onClick={this.handleDelete}>Delete Entry</button>
+            <button onClick={this.askIfSure}>Delete Entry</button>
             <button onClick={this.switchToUpdateModal}>Update Entry</button>
-            {console.log(this.state)}
           </div>
         </Popup>
         {/* UPDATE MODAL */}
@@ -327,7 +332,7 @@ updateWindowDimensions() {
             <form onSubmit={this.handleUpdate}>
                 <select
                   name="category"
-                  value={this.state.form.category}
+                  value={this.state.form.category_name}
                   onChange={this.handleChange}
                   >
                   {!!this.props.current_user.categories ? this.props.current_user.categories.map(cat => <option value={cat.name} key={cat.id}>{cat.name}</option>) : null}
@@ -355,8 +360,22 @@ updateWindowDimensions() {
               <button type="submit" className="button">
                 Submit
               </button>
+              {/* <button type="button" onClick={this.closeModal}>Cancel</button> */}
             </form>
 
+          </div>
+        </Popup>
+        {/* ARE YOU SURE MODAL */}
+        <Popup
+          open={this.state.open === "ask"}
+          closeOnDocumentClick
+          onClose={this.closeModal}
+          onOpen={this.askIfSure}
+        >
+          <div className="table-popup">
+            <p>Are You Sure?</p>
+            <button onClick={this.handleDelete} >Delete</button>
+            <button onClick={this.closeModal} >Close</button>
           </div>
         </Popup>
       </div>
