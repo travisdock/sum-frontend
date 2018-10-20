@@ -85,11 +85,7 @@ export function openModal(entry, entry_index) {
         this.setState((prevState) => {
           // Not a deep clone of the objects, just a copy of the array
           let newEntries = prevState.entries.slice(0)
-          let newEntry = newEntries[index]
-          let newValues = updatedEntry
-          Object.keys(updatedEntry).forEach( (key) => {
-            newEntry[key] = newValues[key]
-          })
+          newEntries[index] = resp
           return {
             entries: newEntries,
             form: {}

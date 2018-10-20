@@ -137,7 +137,7 @@ class Table extends React.Component {
             <p>Update Entry</p>
             <form onSubmit={this.handleUpdate}>
                 <select
-                  name="category"
+                  name="category_name"
                   value={this.state.form.category_name}
                   onChange={this.handleChange}
                   >
