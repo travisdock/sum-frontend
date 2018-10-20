@@ -14,18 +14,18 @@ https://sumfinance-b89c6.firebaseapp.com/
 
 
 ## Things to do:
+- [ ] Add ability to edit entry
+- [ ] Add "are you sure?" to delete buttons
 - [ ] Add tests (jest/enzyme)
 - [ ] Add Travis CI with staging and production (master) branches
-- [ ] Color code stats for readability?
 - [ ] Add seed for example user for people who want to see it with data
-- [ ] Sorting table by income and expense
 - [ ] Add google sheets connection for uploading data
-- [ ] Add ability to edit entry
+- [ ] Sorting table by income and expense
 - [ ] Add ability to edit Category
-- [ ] Add ability to view app by year, entire app changes when year is changed somehow
 - [ ] Add ability to delete category (asks to recategorize or delete existing entries)
 - [ ] Add pwa icon image
-- [ ] Add "are you sure?" to delete buttons
+- [ ] Color code stats for readability?
+- [ ] Add ability to view app by year, entire app changes when year is changed somehow
 - [ ] Test and improve accessibility
 - [ ] Add separate components for mobile and desktop viewing
 - [ ] Change charts to D3?
