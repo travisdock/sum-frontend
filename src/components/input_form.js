@@ -9,7 +9,7 @@ class InputForm extends React.Component {
     super(props)
     this.state = {
       form: {
-        category: '',
+        category_name: '',
         date: new Date().toISOString().substr(0, 10),
         amount: '',
         notes: '',
@@ -68,7 +68,7 @@ class InputForm extends React.Component {
           alert("Success!")
           this.setState({
             form: {
-              category: '',
+              category_name: '',
               date: new Date().toISOString().substr(0, 10),
               amount: '',
               notes: '',
@@ -88,7 +88,7 @@ class InputForm extends React.Component {
         ...prevState,
         form: {
           ...prevState.form,
-          category: '',
+          category_name: '',
           income: false,
           untracked: false
         },
@@ -124,8 +124,8 @@ class InputForm extends React.Component {
   render() {
     const newCategory = (<div className="ui field">
       <input
-        name="category"
-        value={this.state.form.category}
+        name="category_name"
+        value={this.state.form.category_name}
         placeholder='Category Name'
         onChange={this.handleChange}
       />
@@ -151,8 +151,8 @@ class InputForm extends React.Component {
     </div>)
     const selectCategory = (<div className="ui field">
       <select
-        name="category"
-        value={this.state.form.category}
+        name="category_name"
+        value={this.state.form.category_name}
         onChange={this.handleChange}
         >
         <option>Select Category</option>
