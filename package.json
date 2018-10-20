@@ -21,6 +21,7 @@
     "staging": "REACT_APP_API=https://sumfinance-staging.herokuapp.com/ react-scripts start",
     "dev": "REACT_APP_API=https://sumfinance.herokuapp.com react-scripts start",
     "build": "REACT_APP_API=https://sumfinance.herokuapp.com react-scripts build",
+    "deploy": "firebase deploy",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   }
