@@ -14,8 +14,6 @@ https://sumfinance-b89c6.firebaseapp.com/
 
 
 ## Things to do:
-- [ ] Add ability to edit entry
-- [ ] Add "are you sure?" to delete buttons
 - [ ] Add tests (jest/enzyme)
 - [ ] Add Travis CI with staging and production (master) branches
 - [ ] Add seed for example user for people who want to see it with data
