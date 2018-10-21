@@ -22,7 +22,32 @@
     "dev": "REACT_APP_API=https://sumfinance.herokuapp.com react-scripts start",
     "build": "REACT_APP_API=https://sumfinance.herokuapp.com react-scripts build",
     "deploy": "firebase deploy",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "default_test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "test": "jest",
+    "test:watch": "jest --watch"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-jest": "^23.6.0",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "enzyme": "^3.7.0",
+    "enzyme-adapter-react-16": "^1.6.0",
+    "enzyme-to-json": "^3.3.4",
+    "jest": "^23.6.0",
+    "react-test-renderer": "^16.5.2",
+    "redux-mock-store": "^1.5.3",
+    "regenerator-runtime": "^0.12.1"
+  },
+  "jest": {
+    "setupTestFrameworkScriptFile": "<rootDir>__tests__/setup/setupEnzyme.js",
+    "testPathIgnorePatterns": [
+      "<rootDir>/__tests__/setup/"
+    ],
+    "verbose": true,
+    "clearMocks": true,
+    "collectCoverage": true
   }
 }
