@@ -59,7 +59,8 @@ export function openModal(entry, entry_index) {
     });
 
   };
-  export function handleUpdate() {
+  export function handleUpdate(e) {
+    e.preventDefault();
     if (this.state.form === this.state.data) {
       alert("No changes were made")
       this.closeModal();
