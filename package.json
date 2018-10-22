@@ -48,6 +48,9 @@
     ],
     "verbose": true,
     "clearMocks": true,
-    "collectCoverage": true
+    "collectCoverage": true,
+    "moduleNameMapper": {
+      "^.+\\.(css|less)$": "<rootDir>/__tests__/setup/CSSStub.js"
+    }
   }
 }
