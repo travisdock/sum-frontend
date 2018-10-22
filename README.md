@@ -21,6 +21,7 @@ https://sumfinance-b89c6.firebaseapp.com/
 - [ ] Sorting table by income and expense
 - [ ] Add ability to edit Category
 - [ ] Add ability to delete category (asks to recategorize or delete existing entries)
+- [ ] Add user ability to edit profile (username, email, password)
 - [ ] Add pwa icon image
 - [ ] Color code stats for readability?
 - [ ] Add ability to view app by year, entire app changes when year is changed somehow
