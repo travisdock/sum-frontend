@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter, Redirect } from 'react-router';
 
-class Signup extends React.Component {
+export class Signup extends React.Component {
   state = {
     username: '',
     password: '',
