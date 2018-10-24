@@ -10,7 +10,6 @@ import Table from '../components/table';
 
 class Dashboard extends React.Component {
   render() {
-    console.log("dashboard")
     return (
       <div className="content">
         { !this.props.current_user.user_id ? <Redirect to='/login' /> : null }

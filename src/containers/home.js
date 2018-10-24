@@ -10,8 +10,6 @@ import About from '../components/about';
 
 class Home extends React.Component {
   render() {
-    console.log("home")
-    console.log(this.props.match.url)
     return (
       <div className="content">
         { this.props.current_user.user_id ? <Redirect to='/dashboard/form' /> : null }

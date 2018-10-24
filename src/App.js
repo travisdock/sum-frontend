@@ -16,12 +16,10 @@ import Dashboard from './containers/dashboard'
 export class App extends Component {
 
   componentDidMount = () => {
-    console.log("app did mount")
     this.loggedin()
   }
 
   loggedin() {
-    console.log("checking token")
     const token = localStorage.getItem('jwt')
 
     if (token) {
@@ -44,15 +42,11 @@ export class App extends Component {
           }
         })
     } else {
-      console.log("no token")
       this.props.logout()
     }
   }
 
   render() {
-    console.log("app render")
-    console.log("load:", this.props.load)
-    console.log("id:", !!this.props.current_user.user_id)
     return (
       <div id="home">
         {this.props.load || !!this.props.current_user.user_id ?
