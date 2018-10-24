@@ -13,7 +13,7 @@ import Navbar from './components/navbar'
 import Home from './containers/home'
 import Dashboard from './containers/dashboard'
 
-class App extends Component {
+export class App extends Component {
 
   componentDidMount = () => {
     console.log("app did mount")

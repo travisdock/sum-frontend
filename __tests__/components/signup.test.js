@@ -4,18 +4,18 @@ import toJson from 'enzyme-to-json';
 import configureStore from 'redux-mock-store'; // Smart components
 
 // Component to be tested
-import SignUp from '../../src/components/signup';
+import { Signup } from '../../src/components/signup';
 
 // Setup Store
 const mockStore = configureStore();
-const initialState = {current_user: {}}
+const initialState = {current_user: { user_id: 1 }}
 const store = mockStore(initialState);
 
 
 describe('<SignUp />', () => {
     describe('render()', () => {
             test('renders the component', () => {
-                const wrapper = shallow(<SignUp store={store}/>);
+                const wrapper = shallow(<Signup store={store}/>);
                 const component = wrapper.dive();
 
                 expect(toJson(component)).toMatchSnapshot();
