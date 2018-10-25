@@ -13,7 +13,7 @@ import Navbar from './components/navbar'
 import Home from './containers/home'
 import Dashboard from './containers/dashboard'
 
-export class App extends Component {
+class App extends Component {
 
   componentDidMount = () => {
     this.loggedin()

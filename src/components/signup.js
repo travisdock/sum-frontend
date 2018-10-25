@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter, Redirect } from 'react-router';
 
-export class Signup extends React.Component {
+class Signup extends React.Component {
   state = {
     username: '',
     password: '',
@@ -88,3 +88,4 @@ const mapStateToProps = state => ({
 });
 
 export default connect(mapStateToProps)(withRouter(Signup));
+export const noRouterSignUp = connect(mapStateToProps)(Signup);
