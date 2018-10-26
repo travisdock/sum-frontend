@@ -95,3 +95,4 @@ const mapStateToProps = state => ({
 
 export default connect(mapStateToProps)(withRouter(Signup));
 export const noRouterSignUp = connect(mapStateToProps)(Signup);
+export const nakedSignup = Signup;
