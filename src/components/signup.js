@@ -3,13 +3,19 @@ import { connect } from 'react-redux';
 import { withRouter, Redirect } from 'react-router';
 
 class Signup extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleChange = this.handleChange.bind(this)
+  }
   state = {
     username: '',
     password: '',
     email: ''
   };
 
-  handleChange = (e) => {
+  handleChange(e) {
     const target = e.target;
     const value = target.value;
     const name = target.name;
@@ -19,7 +25,7 @@ class Signup extends React.Component {
     });
   };
 
-  handleSubmit = (e) => {
+  handleSubmit(e) {
     e.preventDefault();
     const url = `${process.env.REACT_APP_API}/api/v1/users`
     const options = {
