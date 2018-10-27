@@ -127,5 +127,19 @@ describe('<Signup /> methods, without wrappers', () => {
             done();
         });
     });
+
+    it('updates state when form inputs change', () => {
+
+        const spy = jest.spyOn(NakedSignup.prototype, "handleChange");
+        const component = shallow(
+            <NakedSignup current_user={userProp} history={historyProp} />
+        );
+        
+        const input = component.find('input').first()
+        input.simulate('change', {target: {value: 'David', name: 'username'}});
+        
+        expect(spy).toHaveBeenCalled();
+        expect(component.state().username).toEqual('David');
+    });
     
 });
