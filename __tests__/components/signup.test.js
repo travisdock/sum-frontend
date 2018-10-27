@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow, mount } from 'enzyme';
+import { shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import configureStore from 'redux-mock-store'; // Smart components
 
@@ -13,6 +13,10 @@ import {
 const mockStore = configureStore();
 const initialState = {current_user: {}}
 const store = mockStore(initialState);
+
+// props for no redux
+const userProp = {user_id: null}
+const historyProp = {push: jest.fn()}
 
 // Mock fetches
 function mockFetch(data) {
@@ -47,10 +51,9 @@ describe('<Signup /> methods, without wrappers', () => {
     it('handleSubmit is fired on button click', () => {
         const spy = jest.spyOn(NakedSignup.prototype, "handleSubmit");
         const fetch = mockFetch({"cool": "yeah"})
-        const props = {user_id: null}
 
         const component = shallow(
-            <NakedSignup current_user={ props }/>
+            <NakedSignup current_user={ userProp }/>
         );
 
         const signUpButton = component.find('button')
@@ -63,7 +66,6 @@ describe('<Signup /> methods, without wrappers', () => {
 
     it('responds with an error alert if errors on fetch', async (done) => {
         window.alert = jest.fn()
-        const props = {user_id: null}
 
         const fakePromise = Promise.resolve(mockResponse(
             200,
@@ -78,7 +80,7 @@ describe('<Signup /> methods, without wrappers', () => {
         expect.assertions(1);
 
         const component = shallow(
-            <NakedSignup current_user={ props }/>
+            <NakedSignup current_user={ userProp }/>
         );
 
         const form = component.find('form')
@@ -96,8 +98,6 @@ describe('<Signup /> methods, without wrappers', () => {
 
     it('responds with sucess message if fetch response has no errors', async (done) => {
         window.alert = jest.fn()
-        const user = {user_id: null}
-        const history = {push: jest.fn() }
 
         const fakePromise = Promise.resolve(mockResponse(
             200,
@@ -112,7 +112,7 @@ describe('<Signup /> methods, without wrappers', () => {
         expect.assertions(1);
 
         const component = shallow(
-            <NakedSignup current_user={user} history={history} />
+            <NakedSignup current_user={userProp} history={historyProp} />
         );
 
         const form = component.find('form')
