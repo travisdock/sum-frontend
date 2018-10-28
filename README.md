@@ -20,8 +20,7 @@ https://sumfinance-b89c6.firebaseapp.com/
 
 
 ## Things to do:
-- [ ] Add tests (jest/enzyme)
-- [ ] Add Travis CI with staging and production (master) branches
+- [ ] Continue adding test coverage
 - [ ] Add seed for example user for people who want to see it with data
 - [ ] Add google sheets connection for uploading data
 - [ ] Sorting table by income and expense
