@@ -8,7 +8,7 @@ script:
   - "npm run test"
   - "npm run build"
 after_success:
-  - "firebase deploy --token ${FIREBASE_API_TOKEN}"
+  - "firebase deploy --token=${FIREBASE_API_TOKEN}"
 
 # before_script:
 #   - "npm run build"
