@@ -19,10 +19,10 @@ The back end is a Rails API hosted on Heroku.
 https://sumfinance-b89c6.firebaseapp.com/
 
 <p align="center">
-<img src="https://user-images.githubusercontent.com/36681963/47618665-018c4480-daac-11e8-8e47-068959636d55.PNG" alt="entry view page" title="entry view page">
-<img src="https://user-images.githubusercontent.com/36681963/47618666-018c4480-daac-11e8-9fa9-2c5e5fdd5693.PNG" alt="table page" title="table page">
-<img src="https://user-images.githubusercontent.com/36681963/47618667-0224db00-daac-11e8-98e5-3249e8c1d03a.PNG" alt="new entry page" title="new entry page">
-<img src="https://user-images.githubusercontent.com/36681963/47618668-0224db00-daac-11e8-8af1-eed23848440a.PNG" alt="login" title="login page">
+<img src="https://user-images.githubusercontent.com/36681963/47618665-018c4480-daac-11e8-8e47-068959636d55.PNG" alt="entry view page" width="200" title="entry view page">
+<img src="https://user-images.githubusercontent.com/36681963/47618666-018c4480-daac-11e8-9fa9-2c5e5fdd5693.PNG" alt="table page" width="200" title="table page">
+<img src="https://user-images.githubusercontent.com/36681963/47618667-0224db00-daac-11e8-98e5-3249e8c1d03a.PNG" alt="new entry page" width="200" title="new entry page">
+<img src="https://user-images.githubusercontent.com/36681963/47618668-0224db00-daac-11e8-8af1-eed23848440a.PNG" alt="login" width="200" title="login page">
 </p>
 
 ## Things to do:
