@@ -1,4 +1,6 @@
 language: node_js
+before_script:
+  - "npm run build"
 deploy:
   provider: firebase
   token:
@@ -7,3 +9,15 @@ deploy:
   on:
     all_branches: true
     condition: "$TRAVIS_BRANCH =~ ^staging|production$"
+
+
+# branches:
+#   only:
+#     - production
+# before_script:
+#   - "npm install firebase-tools"
+# script:
+#   - "npm run test"
+#   - "npm run build"
+# after_success:
+#   - "firebase deploy --token=${FIREBASE_API_TOKEN}"
