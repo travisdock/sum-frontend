@@ -7,9 +7,9 @@ before_script:
   - npm install -g firebase-tools
 script:
   - npm run test
-  - if [ "$TRAVIS_BRANCH" == "production" ]; then npm run build
+  - if [ "$TRAVIS_BRANCH" == "production" ]; then npm run build; fi
 after_success:
-  - if [ $TRAVIS_BRANCH = "production" ]; then firebase deploy --token=${FIREBASE_API_TOKEN}
+  - if [ "$TRAVIS_BRANCH" = "production" ]; then firebase deploy --token=${FIREBASE_API_TOKEN}; fi
 
 # official Travis Ci config that doesn't work...
 # before_script:
