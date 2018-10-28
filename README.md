@@ -17,9 +17,7 @@ The back end is a Rails API hosted on Heroku.
 
 ## Try It Out
 https://sumfinance-b89c6.firebaseapp.com/
-  
-    
-      
+   
 <p align="center">
   <kbd>
     <img src="https://user-images.githubusercontent.com/36681963/47618668-0224db00-daac-11e8-8af1-eed23848440a.PNG" alt="login" width="200" title="login page">
@@ -34,8 +32,6 @@ https://sumfinance-b89c6.firebaseapp.com/
     <img src="https://user-images.githubusercontent.com/36681963/47618665-018c4480-daac-11e8-8e47-068959636d55.PNG" alt="entry view page" width="200" title="entry view page">
   </kbd>
 </p>
-  
-    
 
 ## Things to do:
 - [ ] Continue adding test coverage
