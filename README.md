@@ -6,7 +6,7 @@
 <p align="center">
 <img src="https://user-images.githubusercontent.com/36681963/47616844-57ef8800-da98-11e8-8504-89b765c4beaa.png" alt="javascript" title="Written in Javascript">
 <img src="https://user-images.githubusercontent.com/36681963/46574153-5a653300-c96d-11e8-92be-113930d0a4e4.png" alt="react" title="Built with React">
-<img src="https://user-images.githubusercontent.com/36681963/46574151-520cf800-c96d-11e8-9753-3948f3f4508a.jpg" alt="redux" title="State managed by Redux">
+<img src="https://user-images.githubusercontent.com/36681963/47617023-27a8e900-da9a-11e8-945e-5c409a0bf4a6.png" alt="jest" title="Tested with Jest">
 <img src="https://user-images.githubusercontent.com/36681963/46639150-84b41d80-cb32-11e8-88c5-a7903ffad743.jpg" alt="travisCI" title="Continuous Integration with Travis CI">
 <img src="https://user-images.githubusercontent.com/36681963/46583298-b63dc380-ca22-11e8-8d35-e77738726561.jpg" alt="firebase" title="Deployed using Firebase">
 </p>
