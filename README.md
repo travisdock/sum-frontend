@@ -12,12 +12,18 @@
 </p>
 
 ## Description
-This is a learning and working project, by which I mean I actually use it and I also use it to learn. I built it to track my personal finances and I use it as such, but I also use it whenever I want to learn something.  When I wanted to learn RSpec I added it to the backend. When I started I wanted to learn Redux so I used it here. I am constantly tweaking it and I hope to continue that for years to come as my knowledge and experience evolve.
-The front end is a React PWA hosted on Firebase.  The back end is a Rails API hosted on Heroku.
+This is a learning and working project, by which I mean I actually use it and I also use it to learn. I built it to track my personal finances and I use it as such, but I also use it whenever I want to learn something. I am constantly tweaking it and I hope to continue that for years to come as my knowledge and experience evolve. The front end is a React PWA tested with Jest and Enzyme and hosted on Firebase.  
+The back end is a Rails API hosted on Heroku.
 
 ## Try It Out
 https://sumfinance-b89c6.firebaseapp.com/
 
+<p align="center">
+<img src="https://user-images.githubusercontent.com/36681963/47618665-018c4480-daac-11e8-8e47-068959636d55.PNG" alt="entry view page" title="entry view page">
+<img src="https://user-images.githubusercontent.com/36681963/47618666-018c4480-daac-11e8-9fa9-2c5e5fdd5693.PNG" alt="table page" title="table page">
+<img src="https://user-images.githubusercontent.com/36681963/47618667-0224db00-daac-11e8-98e5-3249e8c1d03a.PNG" alt="new entry page" title="new entry page">
+<img src="https://user-images.githubusercontent.com/36681963/47618668-0224db00-daac-11e8-8af1-eed23848440a.PNG" alt="login" title="login page">
+</p>
 
 ## Things to do:
 - [ ] Continue adding test coverage
