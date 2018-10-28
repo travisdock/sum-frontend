@@ -1,4 +1,9 @@
 <p align="center">
+  <a href="https://travis-ci.org/travisdock/sum-frontend.svg?branch=staging"><img src="https://img.shields.io/travis/travisdock/sum-frontend/production.svg?style=plastic&label=Staging+Build" alt="Staging Build Status"></a>
+  <a href="https://travis-ci.org/travisdock/sum-frontend.svg?branch=production"><img src="https://img.shields.io/travis/travisdock/sum-frontend/production.svg?style=plastic&label=Production+Build" alt="Production Build Status"></a>
+</p>
+
+<p align="center">
 <img src="https://user-images.githubusercontent.com/36681963/47616844-57ef8800-da98-11e8-8504-89b765c4beaa.png" alt="javascript" title="Written in Javascript">
 <img src="https://user-images.githubusercontent.com/36681963/46574153-5a653300-c96d-11e8-92be-113930d0a4e4.png" alt="react" title="Built with React">
 <img src="https://user-images.githubusercontent.com/36681963/46574151-520cf800-c96d-11e8-9753-3948f3f4508a.jpg" alt="redux" title="State managed by Redux">
