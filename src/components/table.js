@@ -126,7 +126,6 @@ class Table extends React.Component {
         </div>
         </Popup>
         {/* UPDATE MODAL */}
-        {/* TODO: FIX FORM SUBMISSION ERROR */}
         <Popup
           open={this.state.open === "update"}
           closeOnDocumentClick
