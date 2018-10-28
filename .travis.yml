@@ -8,8 +8,10 @@ before_script:
 script:
   - npm run test
   - test $TRAVIS_BRANCH = "production" && npm run build
+  - test $TRAVIS_BRANCH = "staging"
 after_success:
   - test $TRAVIS_BRANCH = "production" && firebase deploy --token=${FIREBASE_API_TOKEN}
+  - test $TRAVIS_BRANCH = "staging"
 
 # official Travis Ci config that doesn't work...
 # before_script:
