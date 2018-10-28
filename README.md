@@ -13,7 +13,7 @@
 
 ## Description
 This is a learning and working project, by which I mean I actually use it and I also use it to learn. I built it to track my personal finances and I use it as such, but I also use it whenever I want to learn something. I am constantly tweaking it and I hope to continue that for years to come as my knowledge and experience evolve. The front end is a React PWA tested with Jest and Enzyme and hosted on Firebase.  
-The back end is a Rails API hosted on Heroku.
+The [backend](https://github.com/travisdock/sum-backend) is a Rails API hosted on Heroku.
 
 ## Try It Out
 Click "login" and use the username "test" with password "test" to see functionality. Feel free to add and remove entries, categories, etc.
