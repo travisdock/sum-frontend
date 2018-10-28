@@ -16,6 +16,7 @@ This is a learning and working project, by which I mean I actually use it and I 
 The back end is a Rails API hosted on Heroku.
 
 ## Try It Out
+Click "login" and use the username "test" with password "test" to see functionality. Feel free to add and remove entries, categories, etc.
 https://sumfinance-b89c6.firebaseapp.com/
    
 <p align="center">
@@ -35,7 +36,6 @@ https://sumfinance-b89c6.firebaseapp.com/
 
 ## Things to do:
 - [ ] Continue adding test coverage
-- [ ] Add seed for example user for people who want to see it with data
 - [ ] Add google sheets connection for uploading data
 - [ ] Sorting table by income and expense
 - [ ] Add ability to edit Category
