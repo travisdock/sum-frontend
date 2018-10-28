@@ -7,7 +7,7 @@ before_script:
   - npm install -g firebase-tools
 script:
   - npm run test
-  - test $TRAVIS_BRANCH = "production" && npm run build
+  - test $TRAVIS_BRANCH = "production" && npm run build || exit 0
   - test $TRAVIS_BRANCH = "staging"
 after_success:
   - test $TRAVIS_BRANCH = "production" && firebase deploy --token=${FIREBASE_API_TOKEN}
