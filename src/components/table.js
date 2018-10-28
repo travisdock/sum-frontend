@@ -165,7 +165,6 @@ class Table extends React.Component {
               <button type="submit" className="button">
                 Submit
               </button>
-              {/* <button type="button" onClick={this.closeModal}>Cancel</button> */}
             </form>
 
           </div>
