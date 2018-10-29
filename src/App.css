@@ -69,7 +69,7 @@ div a.active {
     color: black;
 }
 
-.navbar .logout {
+.navbar .more {
   float: right;
   background-color: #DEDCE4;
   border: 2px solid #ccc;
@@ -162,6 +162,16 @@ textarea, input {
 }
 
 div.table-popup {
+  display: flex;
+  /* justify-content: space-around; */
+  align-items: center;
+  flex-direction: column;
+  border: 3px solid #000406;
+  padding: 12px 5px;
+  border-radius: 6px;
+  background-color: white;
+}
+div.navbar-popup {
   display: flex;
   /* justify-content: space-around; */
   align-items: center;

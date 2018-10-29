@@ -5,16 +5,15 @@ import { logout } from '../actions/index'
 
 import { withRouter } from 'react-router';
 
+import { MoreMenu, handleLogout } from './moreMenu.js';
+
 class Navbar extends React.Component {
-
-  handleLogOut = () => {
-    localStorage.clear()
-    this.props.logout()
-    this.props.history.push('/login')
+  constructor() {
+    super()
+    this.handleLogout = handleLogout.bind(this)
   }
-
+  
   render() {
-    console.log("navbar")
     return (
       <div className="navbar">
         { !!this.props.current_user.user_id
@@ -29,10 +28,7 @@ class Navbar extends React.Component {
             <NavLink
               to='/dashboard/entries'
             >Entries</NavLink>
-            <button
-              className="logout"
-              onClick={this.handleLogOut}
-            >Logout</button>
+            <MoreMenu />
           </div>
           :
           <div className="navlinks">
