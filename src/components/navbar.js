@@ -5,13 +5,9 @@ import { logout } from '../actions/index'
 
 import { withRouter } from 'react-router';
 
-import { MoreMenu, handleLogout } from './moreMenu.js';
+import MoreMenu from './moreMenu.js';
 
 class Navbar extends React.Component {
-  constructor() {
-    super()
-    this.handleLogout = handleLogout.bind(this)
-  }
   
   render() {
     return (
