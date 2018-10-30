@@ -1,0 +1,291 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Navbar renders the component 1`] = `
+<MemoryRouter
+  initialEntries={
+    Array [
+      Object {
+        "key": "testKey",
+        "pathname": "/",
+      },
+    ]
+  }
+>
+  <Router
+    history={
+      Object {
+        "action": "POP",
+        "block": [Function],
+        "canGo": [Function],
+        "createHref": [Function],
+        "entries": Array [
+          Object {
+            "hash": "",
+            "key": "testKey",
+            "pathname": "/",
+            "search": "",
+          },
+        ],
+        "go": [Function],
+        "goBack": [Function],
+        "goForward": [Function],
+        "index": 0,
+        "length": 1,
+        "listen": [Function],
+        "location": Object {
+          "hash": "",
+          "key": "testKey",
+          "pathname": "/",
+          "search": "",
+        },
+        "push": [Function],
+        "replace": [Function],
+      }
+    }
+  >
+    <withRouter(Connect(Navbar))
+      current_user={
+        Object {
+          "user_id": null,
+        }
+      }
+      store={
+        Object {
+          "clearActions": [Function],
+          "dispatch": [Function],
+          "getActions": [Function],
+          "getState": [Function],
+          "replaceReducer": [Function],
+          "subscribe": [Function],
+        }
+      }
+    >
+      <Route>
+        <Connect(Navbar)
+          current_user={
+            Object {
+              "user_id": null,
+            }
+          }
+          history={
+            Object {
+              "action": "POP",
+              "block": [Function],
+              "canGo": [Function],
+              "createHref": [Function],
+              "entries": Array [
+                Object {
+                  "hash": "",
+                  "key": "testKey",
+                  "pathname": "/",
+                  "search": "",
+                },
+              ],
+              "go": [Function],
+              "goBack": [Function],
+              "goForward": [Function],
+              "index": 0,
+              "length": 1,
+              "listen": [Function],
+              "location": Object {
+                "hash": "",
+                "key": "testKey",
+                "pathname": "/",
+                "search": "",
+              },
+              "push": [Function],
+              "replace": [Function],
+            }
+          }
+          location={
+            Object {
+              "hash": "",
+              "key": "testKey",
+              "pathname": "/",
+              "search": "",
+            }
+          }
+          match={
+            Object {
+              "isExact": true,
+              "params": Object {},
+              "path": "/",
+              "url": "/",
+            }
+          }
+          store={
+            Object {
+              "clearActions": [Function],
+              "dispatch": [Function],
+              "getActions": [Function],
+              "getState": [Function],
+              "replaceReducer": [Function],
+              "subscribe": [Function],
+            }
+          }
+        >
+          <Navbar
+            current_user={Object {}}
+            dispatch={[Function]}
+            history={
+              Object {
+                "action": "POP",
+                "block": [Function],
+                "canGo": [Function],
+                "createHref": [Function],
+                "entries": Array [
+                  Object {
+                    "hash": "",
+                    "key": "testKey",
+                    "pathname": "/",
+                    "search": "",
+                  },
+                ],
+                "go": [Function],
+                "goBack": [Function],
+                "goForward": [Function],
+                "index": 0,
+                "length": 1,
+                "listen": [Function],
+                "location": Object {
+                  "hash": "",
+                  "key": "testKey",
+                  "pathname": "/",
+                  "search": "",
+                },
+                "push": [Function],
+                "replace": [Function],
+              }
+            }
+            location={
+              Object {
+                "hash": "",
+                "key": "testKey",
+                "pathname": "/",
+                "search": "",
+              }
+            }
+            match={
+              Object {
+                "isExact": true,
+                "params": Object {},
+                "path": "/",
+                "url": "/",
+              }
+            }
+            store={
+              Object {
+                "clearActions": [Function],
+                "dispatch": [Function],
+                "getActions": [Function],
+                "getState": [Function],
+                "replaceReducer": [Function],
+                "subscribe": [Function],
+              }
+            }
+            storeSubscription={
+              Subscription {
+                "listeners": Object {
+                  "clear": [Function],
+                  "get": [Function],
+                  "notify": [Function],
+                  "subscribe": [Function],
+                },
+                "onStateChange": [Function],
+                "parentSub": undefined,
+                "store": Object {
+                  "clearActions": [Function],
+                  "dispatch": [Function],
+                  "getActions": [Function],
+                  "getState": [Function],
+                  "replaceReducer": [Function],
+                  "subscribe": [Function],
+                },
+                "unsubscribe": [Function],
+              }
+            }
+          >
+            <div
+              className="navbar"
+            >
+              <div
+                className="navlinks"
+              >
+                <NavLink
+                  activeClassName="active"
+                  aria-current="page"
+                  to="/login"
+                >
+                  <Route
+                    path="\\\\/login"
+                  >
+                    <Link
+                      aria-current={null}
+                      replace={false}
+                      to="/login"
+                    >
+                      <a
+                        aria-current={null}
+                        href="/login"
+                        onClick={[Function]}
+                      >
+                        Login
+                      </a>
+                    </Link>
+                  </Route>
+                </NavLink>
+                <NavLink
+                  activeClassName="active"
+                  aria-current="page"
+                  to="/about"
+                >
+                  <Route
+                    path="\\\\/about"
+                  >
+                    <Link
+                      aria-current={null}
+                      replace={false}
+                      to="/about"
+                    >
+                      <a
+                        aria-current={null}
+                        href="/about"
+                        onClick={[Function]}
+                      >
+                        About
+                      </a>
+                    </Link>
+                  </Route>
+                </NavLink>
+                <NavLink
+                  activeClassName="active"
+                  aria-current="page"
+                  to="/signup"
+                >
+                  <Route
+                    path="\\\\/signup"
+                  >
+                    <Link
+                      aria-current={null}
+                      replace={false}
+                      to="/signup"
+                    >
+                      <a
+                        aria-current={null}
+                        href="/signup"
+                        onClick={[Function]}
+                      >
+                        Signup
+                      </a>
+                    </Link>
+                  </Route>
+                </NavLink>
+              </div>
+            </div>
+          </Navbar>
+        </Connect(Navbar)>
+      </Route>
+    </withRouter(Connect(Navbar))>
+  </Router>
+</MemoryRouter>
+`;
