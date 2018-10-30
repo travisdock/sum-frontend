@@ -1,10 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { logout } from '../actions/index'
-
 import { withRouter } from 'react-router';
-
 import MoreMenu from './moreMenu.js';
 
 class Navbar extends React.Component {
@@ -47,5 +44,4 @@ class Navbar extends React.Component {
 const mapStateToProps = state => ({
   current_user: state.current_user
 });
-
-export default withRouter(connect(mapStateToProps, { logout })(Navbar))
+export default withRouter(connect(mapStateToProps)(Navbar))
