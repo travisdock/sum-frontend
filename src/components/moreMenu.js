@@ -59,4 +59,4 @@ const mapStateToProps = state => ({
     current_user: state.current_user
   });
 export default withRouter(connect(mapStateToProps, { logout })(MoreMenu))
-  
+export const NakedMoreMenu = MoreMenu;
