@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import configureStore from 'redux-mock-store'; // Smart components
 
@@ -11,8 +11,10 @@ import {
 
 // Setup Store
 const mockStore = configureStore();
-const initialState = {current_user: {}}
-const store = mockStore(initialState);
+const userState = {current_user: {user_id: 1}}
+const userStore = mockStore(userState);
+const noUserState = {current_user: {}};
+const noUserStore = mockStore(noUserState);
 
 // props for no redux
 const userProp = {user_id: null}
@@ -38,10 +40,11 @@ const mockResponse = (status, statusText, response) => {
 };
 
 describe('<SignUp /> with redux', () => {
-    it('renders the component', () => {
-        const wrapper = shallow(<ReduxWrappedSignup store={store}/>);
+    it('renders the component correctly', () => {
+        const wrapper = shallow(<ReduxWrappedSignup store={noUserStore}/>);
         const component = wrapper.dive();
 
+        expect(component.find('Redirect')).toHaveLength(0);
         expect(toJson(component)).toMatchSnapshot();
     });
 });
@@ -142,4 +145,11 @@ describe('<Signup /> methods, without wrappers', () => {
         expect(component.state().username).toEqual('David');
     });
     
+    it('given a user it redirects', () => {
+        const wrapper = shallow(
+            <ReduxWrappedSignup store={userStore} />
+        );
+
+        expect(wrapper.dive().find('Redirect')).toHaveLength(1);
+    });
 });
