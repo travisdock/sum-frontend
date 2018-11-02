@@ -40,7 +40,7 @@ class MoreMenu extends React.Component {
                 >
                     <div className="navbar-popup">
                         <NavLink
-                            to='/dashboard/csv'
+                            to='/dashboard/import'
                             onClick={this.closeModal}
                         >Import CSV</NavLink>
                         <br></br>
