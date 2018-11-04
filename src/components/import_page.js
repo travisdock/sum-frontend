@@ -38,7 +38,7 @@ class ImportPage extends React.Component {
 
     render() {
         return(
-            <div>
+            <div className="upper_third">
                 { this.state.loading
                 ?
                 <PulseLoader

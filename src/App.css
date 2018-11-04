@@ -245,3 +245,7 @@ textarea {
    height: auto;
    margin: auto;
 }
+
+div.upper_third {
+  height: 100%;
+}
