@@ -48,10 +48,22 @@ class ImportPage extends React.Component {
                         loading={this.state.loading}
                         />
                 :
-                <form encType="multipart/form-data" onSubmit={this.handleSubmit} >
-                    <input id = "fileupload" type = "file" />
-                    <input type = "submit" value = "submit" id = "submit" />
-                </form>
+                <div className="import_container">
+                    <h2>Upload CSV</h2>
+                    <p align='center'>
+                        You can upload csv files of previous financial information as long
+                        as it has Date, Category, Amount, and Note headers.  It works best
+                        if the date category is formatted as a date in excel or google sheets
+                        before it is exported to csv.
+                    </p>
+                    <div className="img_container">
+                    <img src='/import_example.png' alt="example format screenshot"></img>
+                    </div>
+                    <form encType="multipart/form-data" onSubmit={this.handleSubmit} >
+                        <input id = "fileupload" type = "file" />
+                        <input type = "submit" value = "submit" id = "submit" />
+                    </form>
+                </div>
                 }
             </div>
         )

@@ -228,3 +228,20 @@ select:focus,
 textarea {
   font-size: 16px;
 }
+
+.import_container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin: 15px;
+}
+.img_container {
+   width: 100%;
+}
+.img_container img {
+   display: block;
+   width: 100%;
+   max-width: 448px;
+   height: auto;
+   margin: auto;
+}
