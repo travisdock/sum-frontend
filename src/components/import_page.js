@@ -52,9 +52,11 @@ class ImportPage extends React.Component {
                     <h2>Upload CSV</h2>
                     <p align='center'>
                         You can upload csv files of previous financial information as long
-                        as it has Date, Category, Amount, and Note headers.  It works best
-                        if the date category is formatted as a date in excel or google sheets
-                        before it is exported to csv.
+                        as it has Date, Category, Amount, and Note headers(case sensitive). 
+                        It works best if the date category is formatted as a date in excel 
+                        or google sheets before it is exported to csv. Any categories that 
+                        do not already exist in your account will be created as a regular 
+                        expense category.
                     </p>
                     <div className="img_container">
                     <img src='/import_example.png' alt="example format screenshot"></img>
