@@ -71,7 +71,6 @@ class Table extends React.Component {
 
 
   render() {
-    console.log(this.state)
     const data = this.state.entries;
     const windowWidth = this.state.windowWidth
     return (

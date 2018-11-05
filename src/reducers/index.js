@@ -6,7 +6,6 @@ export default function reducer(
 ) {
   switch (action.type) {
     case "LOGIN":
-      console.log("current user set")
       return {
         ...state, current_user: action.payload, load: false
       }
