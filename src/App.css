@@ -53,7 +53,7 @@ div a.active {
   width: 100%;
 }
 
-.navbar a {
+.navlinks a {
   float: left;
   color: #3F4D4E;
   text-align: center;
@@ -163,7 +163,6 @@ textarea, input {
 
 div.table-popup {
   display: flex;
-  /* justify-content: space-around; */
   align-items: center;
   flex-direction: column;
   border: 3px solid #000406;
@@ -171,15 +170,22 @@ div.table-popup {
   border-radius: 6px;
   background-color: white;
 }
+
 div.navbar-popup {
   display: flex;
-  /* justify-content: space-around; */
   align-items: center;
   flex-direction: column;
   border: 3px solid #000406;
-  padding: 12px 5px;
   border-radius: 6px;
   background-color: white;
+}
+.navbar-popup a {
+  width: 84%;
+  margin: 2px;
+  padding: 10px 10px;
+  border-style: outset;
+  border-bottom: 2px solid grey;
+  border-radius: 1px;
 }
 
 @media only screen and (max-width: 500px) {
@@ -188,7 +194,7 @@ div.navbar-popup {
     }
 }
 
-div.content div.popup-content {
+div.popup-content {
   padding: 0px !important;
   border: none !important;
   border-radius: 6px;
