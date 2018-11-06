@@ -75,4 +75,5 @@ class ImportPage extends React.Component {
 const mapStateToProps = state => ({
     current_user: state.current_user
 });
-export default connect(mapStateToProps, { updateCategories })(ImportPage)
+export default connect(mapStateToProps, { updateCategories })(ImportPage);
+export const nakedImportPage = ImportPage;

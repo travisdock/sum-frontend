@@ -42,11 +42,10 @@ exports[`<MoreMenu /> matches snapshot 1`] = `
         activeClassName="active"
         aria-current="page"
         onClick={[Function]}
-        to="/dashboard/csv"
+        to="/dashboard/import"
       >
         Import CSV
       </NavLink>
-      <br />
       <button
         className="more"
         onClick={[Function]}
