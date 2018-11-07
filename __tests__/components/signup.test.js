@@ -29,15 +29,6 @@ function mockFetch(data) {
       })
     );
   }
-const mockResponse = (status, statusText, response) => {
-    return new Response(response, {
-        status: status,
-        statusText: statusText,
-        headers: {
-            'Content-type': 'application/json'
-        }
-    });
-};
 
 describe('<SignUp /> with redux', () => {
     it('renders the component correctly', () => {
@@ -51,35 +42,35 @@ describe('<SignUp /> with redux', () => {
 
 describe('<Signup /> methods, without wrappers', () => {
 
-    it('handleSubmit is fired on button click', () => {
+    it('handleSubmit is fired on button click', async (done) => {
         const spy = jest.spyOn(NakedSignup.prototype, "handleSubmit");
-        const fetch = mockFetch({"cool": "yeah"})
+        window.fetch = mockFetch({errors: "yeah"})
+        window.alert = jest.fn()
 
         const component = shallow(
-            <NakedSignup current_user={ userProp }/>
+            <NakedSignup current_user={ userProp } />
         );
 
         const signUpButton = component.find('button')
         const form = component.find('form')
-        form.simulate('submit', { preventDefault () {} });
+        await form.simulate('submit', { preventDefault () {} });
 
-        expect(signUpButton.text()).toEqual('Sign up')
-        expect(spy).toHaveBeenCalled();
+        
+        setImmediate(() => {
+            try {
+                expect(signUpButton.text()).toEqual('Sign up')
+                expect(spy).toHaveBeenCalled();
+            } catch (e) {
+                done.fail(e);
+            }
+            done();
+        });
     });
 
     it('responds with an error alert if errors on fetch', async (done) => {
         window.alert = jest.fn()
+        window.fetch = mockFetch({errors: "invalid username or password"})
 
-        const fakePromise = Promise.resolve(mockResponse(
-            200,
-            null,
-           JSON.stringify({errors: "invalid username or password"})
-        ));
-        window.fetch = jest.fn().mockImplementationOnce(
-            () => {
-                return fakePromise
-            }
-        );
         expect.assertions(1);
 
         const component = shallow(
@@ -101,17 +92,8 @@ describe('<Signup /> methods, without wrappers', () => {
 
     it('responds with sucess message if fetch response has no errors', async (done) => {
         window.alert = jest.fn()
-
-        const fakePromise = Promise.resolve(mockResponse(
-            200,
-            null,
-           JSON.stringify({user: "user info here"})
-        ));
-        window.fetch = jest.fn().mockImplementationOnce(
-            () => {
-                return fakePromise
-            }
-        );
+        window.fetch = mockFetch({"success": "Success! Please log in."})
+        
         expect.assertions(1);
 
         const component = shallow(

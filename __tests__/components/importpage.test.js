@@ -6,7 +6,6 @@ import configureStore from 'redux-mock-store';
 import {
     nakedImportPage as NakedImportPage
 } from '../../src/components/import_page';
-// import { PulseLoader } from 'react-spinners';
 
 // Setup Store
 const mockStore = configureStore();
@@ -26,29 +25,30 @@ function mockFetch(data) {
       })
     );
   }
-const mockResponse = (status, statusText, response) => {
-    return new Response(response, {
-        status: status,
-        statusText: statusText,
-        headers: {
-            'Content-type': 'application/json'
-        }
-    });
-};
 
 describe('<ImportPage /> with redux', () => {
-    it('handleSubmit function fires when button is pressed', () => {
+    it('handleSubmit function fires when button is pressed', async (done) => {
         const spy = jest.spyOn(NakedImportPage.prototype, "handleSubmit");
+        window.alert = jest.fn()
+        window.fetch = mockFetch({message: "error"})
 
         const wrapper = shallow(
             <NakedImportPage current_user={ userProp } />
         );
         
-        
         const form = wrapper.find('form')
-        form.simulate('submit', { preventDefault: jest.fn(), target: {0: {files: {0: "success"}}} });
+        await form.simulate('submit', { preventDefault: jest.fn(), target: {0: {files: {0: "success"}}} });
 
         expect(spy).toHaveBeenCalled();
+        expect
+        setImmediate(() => {
+            try {
+                expect(window.alert).toHaveBeenCalledWith('error');
+            } catch (e) {
+                done.fail(e);
+            }
+            done();
+        });
 
     });
 });
