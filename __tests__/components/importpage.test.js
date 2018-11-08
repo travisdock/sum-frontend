@@ -1,20 +1,13 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import toJson from 'enzyme-to-json';
 import configureStore from 'redux-mock-store';
 
 import {
     nakedImportPage as NakedImportPage
 } from '../../src/components/import_page';
 
-// Setup Store
-const mockStore = configureStore();
-const state = {current_user: {user_id: 1}}
-const store = mockStore(state);
-
 // props for no redux
 const userProp = {user_id: null}
-const historyProp = {push: jest.fn()}
 
 // Mock fetches
 function mockFetch(data) {
@@ -37,18 +30,55 @@ describe('<ImportPage /> with redux', () => {
         );
         
         const form = wrapper.find('form')
-        await form.simulate('submit', { preventDefault: jest.fn(), target: {0: {files: {0: "success"}}} });
+        await form.simulate('submit', { preventDefault: jest.fn(), target: {0: {files: {0: "file"}}} });
 
         expect(spy).toHaveBeenCalled();
-        expect
+        spy.mockRestore();
+        done();
+    });
+
+    it('alerts with message from response', async (done) => {
+        window.alert = jest.fn()
+        window.fetch = mockFetch({message: "message from response"})
+
+        const wrapper = shallow(
+            <NakedImportPage current_user={ userProp } />
+        );
+
+        const form = wrapper.find('form')
+        await form.simulate('submit', { preventDefault: jest.fn(), target: {0: {files: {0: "file"}}} });
+
         setImmediate(() => {
             try {
-                expect(window.alert).toHaveBeenCalledWith('error');
+                expect(window.alert).toHaveBeenCalledWith("message from response");
             } catch (e) {
                 done.fail(e);
             }
             done();
         });
-
     });
+
+    it('fires action if import is successful', async (done) => {
+        window.alert = jest.fn()
+        window.fetch = mockFetch({message: "success message", categories: [{}, {}, {}]})
+        const updateCategories = jest.fn()
+
+        const wrapper = shallow(
+            <NakedImportPage current_user={ userProp } updateCategories={ updateCategories } />
+        );
+        
+        const form = wrapper.find('form')
+        await form.simulate('submit', { preventDefault: jest.fn(), target: {0: {files: {0: "file"}}} });
+        
+        setImmediate(() => {
+            try {
+                expect(updateCategories).toHaveBeenCalled();
+            } catch (e) {
+                done.fail(e);
+            }
+            done();
+        });
+    });
+
+
 });
