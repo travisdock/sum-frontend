@@ -1,20 +1,12 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { logout } from '../actions/index'
-
 import { withRouter } from 'react-router';
+import MoreMenu from './moreMenu.js';
 
 class Navbar extends React.Component {
-
-  handleLogOut = () => {
-    localStorage.clear()
-    this.props.logout()
-    this.props.history.push('/login')
-  }
-
+  
   render() {
-    console.log("navbar")
     return (
       <div className="navbar">
         { !!this.props.current_user.user_id
@@ -29,10 +21,7 @@ class Navbar extends React.Component {
             <NavLink
               to='/dashboard/entries'
             >Entries</NavLink>
-            <button
-              className="logout"
-              onClick={this.handleLogOut}
-            >Logout</button>
+            <MoreMenu />
           </div>
           :
           <div className="navlinks">
@@ -55,5 +44,4 @@ class Navbar extends React.Component {
 const mapStateToProps = state => ({
   current_user: state.current_user
 });
-
-export default withRouter(connect(mapStateToProps, { logout })(Navbar))
+export default withRouter(connect(mapStateToProps)(Navbar))

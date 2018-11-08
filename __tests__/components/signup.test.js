@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import configureStore from 'redux-mock-store'; // Smart components
 
@@ -11,8 +11,10 @@ import {
 
 // Setup Store
 const mockStore = configureStore();
-const initialState = {current_user: {}}
-const store = mockStore(initialState);
+const userState = {current_user: {user_id: 1}}
+const userStore = mockStore(userState);
+const noUserState = {current_user: {}};
+const noUserStore = mockStore(noUserState);
 
 // props for no redux
 const userProp = {user_id: null}
@@ -27,56 +29,48 @@ function mockFetch(data) {
       })
     );
   }
-const mockResponse = (status, statusText, response) => {
-    return new Response(response, {
-        status: status,
-        statusText: statusText,
-        headers: {
-            'Content-type': 'application/json'
-        }
-    });
-};
 
 describe('<SignUp /> with redux', () => {
-    it('renders the component', () => {
-        const wrapper = shallow(<ReduxWrappedSignup store={store}/>);
+    it('renders the component correctly', () => {
+        const wrapper = shallow(<ReduxWrappedSignup store={noUserStore}/>);
         const component = wrapper.dive();
 
+        expect(component.find('Redirect')).toHaveLength(0);
         expect(toJson(component)).toMatchSnapshot();
     });
 });
 
 describe('<Signup /> methods, without wrappers', () => {
 
-    it('handleSubmit is fired on button click', () => {
+    it('handleSubmit is fired on button click', async (done) => {
         const spy = jest.spyOn(NakedSignup.prototype, "handleSubmit");
-        const fetch = mockFetch({"cool": "yeah"})
+        window.fetch = mockFetch({errors: "yeah"})
+        window.alert = jest.fn()
 
         const component = shallow(
-            <NakedSignup current_user={ userProp }/>
+            <NakedSignup current_user={ userProp } />
         );
 
         const signUpButton = component.find('button')
         const form = component.find('form')
-        form.simulate('submit', { preventDefault () {} });
+        await form.simulate('submit', { preventDefault () {} });
 
-        expect(signUpButton.text()).toEqual('Sign up')
-        expect(spy).toHaveBeenCalled();
+        
+        setImmediate(() => {
+            try {
+                expect(signUpButton.text()).toEqual('Sign up')
+                expect(spy).toHaveBeenCalled();
+            } catch (e) {
+                done.fail(e);
+            }
+            done();
+        });
     });
 
     it('responds with an error alert if errors on fetch', async (done) => {
         window.alert = jest.fn()
+        window.fetch = mockFetch({errors: "invalid username or password"})
 
-        const fakePromise = Promise.resolve(mockResponse(
-            200,
-            null,
-           JSON.stringify({errors: "invalid username or password"})
-        ));
-        window.fetch = jest.fn().mockImplementationOnce(
-            () => {
-                return fakePromise
-            }
-        );
         expect.assertions(1);
 
         const component = shallow(
@@ -98,17 +92,8 @@ describe('<Signup /> methods, without wrappers', () => {
 
     it('responds with sucess message if fetch response has no errors', async (done) => {
         window.alert = jest.fn()
-
-        const fakePromise = Promise.resolve(mockResponse(
-            200,
-            null,
-           JSON.stringify({user: "user info here"})
-        ));
-        window.fetch = jest.fn().mockImplementationOnce(
-            () => {
-                return fakePromise
-            }
-        );
+        window.fetch = mockFetch({"success": "Success! Please log in."})
+        
         expect.assertions(1);
 
         const component = shallow(
@@ -142,4 +127,11 @@ describe('<Signup /> methods, without wrappers', () => {
         expect(component.state().username).toEqual('David');
     });
     
+    it('given a user it redirects', () => {
+        const wrapper = shallow(
+            <ReduxWrappedSignup store={userStore} />
+        );
+
+        expect(wrapper.dive().find('Redirect')).toHaveLength(1);
+    });
 });
