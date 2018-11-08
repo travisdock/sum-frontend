@@ -24,16 +24,22 @@ function flushPromises() {
 }
 
 describe('<ImportPage /> with redux', () => {
+    it('renders correctly', () => {
+        const component = shallow(
+            <NakedImportPage current_user={ userProp } />
+        );
+        expect(component).toMatchSnapshot();
+    })
     it('handleSubmit function fires when button is pressed', async (done) => {
         const spy = jest.spyOn(NakedImportPage.prototype, "handleSubmit");
         window.alert = jest.fn()
         window.fetch = mockFetch({message: "error"})
 
-        const wrapper = shallow(
+        const component = shallow(
             <NakedImportPage current_user={ userProp } />
         );
         
-        const form = wrapper.find('form')
+        const form = component.find('form')
         await form.simulate('submit', { preventDefault: jest.fn(), target: {0: {files: {0: "file"}}} });
 
         expect(spy).toHaveBeenCalled();
@@ -45,11 +51,11 @@ describe('<ImportPage /> with redux', () => {
         window.alert = jest.fn()
         window.fetch = mockFetch({message: "message from response"})
 
-        const wrapper = shallow(
+        const component = shallow(
             <NakedImportPage current_user={ userProp } />
         );
 
-        const form = wrapper.find('form')
+        const form = component.find('form')
         await form.simulate('submit', { preventDefault: jest.fn(), target: {0: {files: {0: "file"}}} });
         
         return flushPromises().then(() => {
@@ -63,11 +69,11 @@ describe('<ImportPage /> with redux', () => {
         window.fetch = mockFetch({message: "success message", categories: [{}, {}, {}]})
         const updateCategories = jest.fn()
 
-        const wrapper = shallow(
+        const component = shallow(
             <NakedImportPage current_user={ userProp } updateCategories={ updateCategories } />
         );
         
-        const form = wrapper.find('form')
+        const form = component.find('form')
         await form.simulate('submit', { preventDefault: jest.fn(), target: {0: {files: {0: "file"}}} });
         
         return flushPromises().then(() => {
