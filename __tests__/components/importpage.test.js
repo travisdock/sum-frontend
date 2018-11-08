@@ -19,6 +19,10 @@ function mockFetch(data) {
     );
   }
 
+function flushPromises() {
+    return new Promise(resolve => setImmediate(resolve));
+}
+
 describe('<ImportPage /> with redux', () => {
     it('handleSubmit function fires when button is pressed', async (done) => {
         const spy = jest.spyOn(NakedImportPage.prototype, "handleSubmit");
@@ -47,13 +51,9 @@ describe('<ImportPage /> with redux', () => {
 
         const form = wrapper.find('form')
         await form.simulate('submit', { preventDefault: jest.fn(), target: {0: {files: {0: "file"}}} });
-
-        setImmediate(() => {
-            try {
-                expect(window.alert).toHaveBeenCalledWith("message from response");
-            } catch (e) {
-                done.fail(e);
-            }
+        
+        return flushPromises().then(() => {
+            expect(window.alert).toHaveBeenCalledWith("message from response");
             done();
         });
     });
@@ -70,12 +70,8 @@ describe('<ImportPage /> with redux', () => {
         const form = wrapper.find('form')
         await form.simulate('submit', { preventDefault: jest.fn(), target: {0: {files: {0: "file"}}} });
         
-        setImmediate(() => {
-            try {
-                expect(updateCategories).toHaveBeenCalled();
-            } catch (e) {
-                done.fail(e);
-            }
+        return flushPromises().then(() => {
+            expect(updateCategories).toHaveBeenCalled();
             done();
         });
     });
