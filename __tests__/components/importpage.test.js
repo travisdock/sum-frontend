@@ -1,6 +1,5 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import configureStore from 'redux-mock-store';
 
 import {
     nakedImportPage as NakedImportPage
@@ -19,6 +18,7 @@ function mockFetch(data) {
     );
   }
 
+//   https://github.com/facebook/jest/issues/2157#issuecomment-279171856
 function flushPromises() {
     return new Promise(resolve => setImmediate(resolve));
 }
