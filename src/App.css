@@ -255,3 +255,7 @@ textarea {
 div.upper_third {
   height: 100%;
 }
+
+.loading {
+  margin: 100% 0%;
+}

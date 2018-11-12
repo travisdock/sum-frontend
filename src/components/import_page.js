@@ -46,6 +46,7 @@ class ImportPage extends React.Component {
                         size={26}
                         color={'#00A0C2'}
                         loading={this.state.loading}
+                        className={"loading"}
                         />
                 :
                 <div className="import_container">
