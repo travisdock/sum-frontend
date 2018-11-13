@@ -1,5 +1,6 @@
 import React from 'react';
 import {bb} from "billboard.js";
+import { PulseLoader } from 'react-spinners';
 import { connect } from 'react-redux';
 import { formatMoney } from './formatMoney.js';
 
@@ -127,7 +128,13 @@ class Chart extends React.Component {
                 }
               </div>
             </div> :
-            this.state.error ? <div>{this.state.error}</div> : <div>Loading...</div>
+            this.state.error ? <div>{this.state.error}</div> : <PulseLoader
+              sizeUnit={"px"}
+              size={26}
+              color={'#00A0C2'}
+              loading={this.state.loading}
+              className={"loading"}
+              />
         }
       </div>
     )

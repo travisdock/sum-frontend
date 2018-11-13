@@ -28,6 +28,7 @@ class Table extends React.Component {
       filterSum: 0,
       windowWidth: 0,
       form: {},
+      loading: true
     };
     // Imported functions
     this.openModal = openModal.bind(this);
@@ -61,7 +62,7 @@ class Table extends React.Component {
     window.addEventListener('orientationchange', this.updateWindowDimensions);
     fetch(url, options)
     .then(res => res.json())
-    .then(res => this.setState({entries: res}))
+    .then(res => this.setState({entries: res, loading: false}))
   }
   
   componentWillUnmount() {
@@ -94,7 +95,7 @@ class Table extends React.Component {
             }
           ]}
           className="-striped -highlight"
-          noDataText="No Entries"
+          noDataText={this.state.loading ? "Loading" : "No Entries"}
         >
           {(state, makeTable, instance) => {
             return (
