@@ -49,6 +49,15 @@ export function mobileColumns() {
           Header: "Category",
           accessor: "category_name",
           maxWidth: 200,
+          filterMethod: (filter, row) => {
+            if (filter.value === "income") {
+              return row._original.income === true;
+            }
+            if (filter.value === "expense") {
+              return row._original.income === false;
+            }
+            return row[filter.id] === filter.value;
+          },
           Filter: ({filter, onChange}) =>
             <select
               onChange={event => onChange(event.target.value)}
@@ -56,6 +65,8 @@ export function mobileColumns() {
               value={filter ? filter.value : ""}
               >
               <option value="">All</option>
+              <option value="income">Only Income</option>
+              <option value="expense">Only Expenses</option>
               {this.props.current_user.categories.map( category =>
                 <option
                   key={category.id}
