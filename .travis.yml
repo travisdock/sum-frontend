@@ -9,14 +9,6 @@ script:
   - npm run test
   - jest --coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage
   - if [ "$TRAVIS_BRANCH" == "production" ]; then npm run build; fi
-# jobs:
-#   include:
-#     - stage: Testing
-#       script: npm run test
-#     - stage: Produce Coverage
-#       script: jest --coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage
-#     - stage: Build for Deploy
-#       script: if [ "$TRAVIS_BRANCH" == "production" ]; then npm run build; fi
 after_success:
   - if [ "$TRAVIS_BRANCH" == "production" ]; then firebase deploy --token=${FIREBASE_API_TOKEN}; fi
 
