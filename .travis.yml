@@ -5,14 +5,20 @@ branches:
     - staging
 before_script:
   - if [ "$TRAVIS_BRANCH" == "production" ]; then npm install -g firebase-tools; fi
-script:
-  - npm run test
-  - if [ "$TRAVIS_BRANCH" == "production" ]; then npm run build; fi
+# script:
+#   - npm run test
+#   - if [ "$TRAVIS_BRANCH" == "production" ]; then npm run build; fi
 jobs:
   include:
+    - stage: Testing
+      node_js: node
+      script: npm run test
     - stage: Produce Coverage
       node_js: node
       script: jest --coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage
+    - stage: Build for Deploy
+      node_js: node
+      script: if [ "$TRAVIS_BRANCH" == "production" ]; then npm run build; fi
 after_success:
   - if [ "$TRAVIS_BRANCH" == "production" ]; then firebase deploy --token=${FIREBASE_API_TOKEN}; fi
 
