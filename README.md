@@ -36,7 +36,7 @@ https://sumfinance-b89c6.firebaseapp.com/
 
 ## Things to do:
 - [ ] Continue adding test coverage
-- [ ] Sorting table by income and expense
+- [ ] Better "create category" flow
 - [ ] Add ability to edit Category
 - [ ] Add ability to delete category (asks to recategorize or delete existing entries)
 - [ ] Add user ability to edit profile (username, email, password)
