@@ -10,12 +10,12 @@ import matchSorter from 'match-sorter';
 export function updateWindowDimensions() {
     switch(window.orientation) {  
       case -90 || 90:
-        this.setState((state) => {
+        this.setState(() => {
           return {windowWidth: window.innerHeight}
         });
         break; 
       default:
-        this.setState((state) => {
+        this.setState(() => {
           return {windowWidth: window.innerWidth}
         });
         break; 
