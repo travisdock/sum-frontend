@@ -1,7 +1,7 @@
 <p align="center">
-  <a href="https://travis-ci.org/travisdock/sum-frontend.svg?branch=staging"><img src="https://img.shields.io/travis/travisdock/sum-frontend/production.svg?style=plastic&label=Staging+Build" alt="Staging Build Status"></a>
-  <a href="https://travis-ci.org/travisdock/sum-frontend.svg?branch=production"><img src="https://img.shields.io/travis/travisdock/sum-frontend/production.svg?style=plastic&label=Production+Build" alt="Production Build Status"></a>
-  <a href="https://img.shields.io/coveralls/travisdock/sum-frontend/production.svg?style=plastic"><img src="https://img.shields.io/coveralls/travisdock/sum-frontend/production.svg?style=plastic&label=Coveralls+Coverage" alt="Coveralls Test Coverage"></a>
+  <a href="https://travis-ci.org/travisdock/sum-backend/branches"><img src="https://img.shields.io/travis/travisdock/sum-frontend/production.svg?style=plastic&label=Staging+Build" alt="Staging Build Status"></a>
+  <a href="https://travis-ci.org/travisdock/sum-backend/branches"><img src="https://img.shields.io/travis/travisdock/sum-frontend/production.svg?style=plastic&label=Production+Build" alt="Production Build Status"></a>
+  <a href="href='https://coveralls.io/github/travisdock/sum-frontend?branch=staging"><img src="https://img.shields.io/coveralls/travisdock/sum-frontend/production.svg?style=plastic&label=Coveralls+Coverage" alt="Coveralls Test Coverage"></a>
 </p>
 
 <p align="center">
