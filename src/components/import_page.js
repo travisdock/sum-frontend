@@ -18,11 +18,14 @@ class ImportPage extends React.Component {
         this.setState({loading: true});
         const url = `${process.env.REACT_APP_API}/api/v1/entries/import`
         let formPackage = new FormData();
+        const token = localStorage.getItem('jwt')
         formPackage.append('file', e.target['0'].files['0'])
         formPackage.append('user_id', this.props.current_user.user_id)
-
         const options = {
         method: 'POST',
+        headers: {
+            'Authorization': token
+        },
         body: formPackage
         }
         fetch(url, options)
