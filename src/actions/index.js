@@ -1,11 +1,13 @@
 
 
-export function login(user_id, categories) {
+export function login(user_id, categories, year_view, years) {
   return {
     type: 'LOGIN',
     payload: {
       user_id: user_id,
-      categories: categories
+      categories: categories,
+      year_view: year_view,
+      years: years
     }
   }
 }
