@@ -43,6 +43,10 @@ class MoreMenu extends React.Component {
                             to='/dashboard/import'
                             onClick={this.closeModal}
                         >Import CSV</NavLink>
+                        <NavLink
+                            to='/dashboard/settings'
+                            onClick={this.closeModal}
+                        >Settings</NavLink>
                         <button
                             className="more"
                             onClick={this.handleLogout}

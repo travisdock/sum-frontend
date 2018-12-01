@@ -7,7 +7,8 @@ import { Route } from 'react-router';
 import InputForm from '../components/input_form';
 import Chart from '../components/chart';
 import Table from '../components/table';
-import ImportPage from '../components/import_page'
+import ImportPage from '../components/import_page';
+import Settings from '../components/settings';
 
 class Dashboard extends React.Component {
   render() {
@@ -18,6 +19,7 @@ class Dashboard extends React.Component {
         <Route path={`${this.props.match.url}/charts`} component={Chart} />
         <Route path={`${this.props.match.url}/entries`} component={Table} />
         <Route path={`${this.props.match.url}/import`} component={ImportPage} />
+        <Route path={`${this.props.match.url}/settings`} component={Settings} />
       </div>
     )
   }
