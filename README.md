@@ -42,12 +42,19 @@ https://sumfinance-b89c6.firebaseapp.com/
 - [ ] Add ability to delete category (asks to recategorize or delete existing entries)
 - [ ] Add user ability to edit profile (username, email, password)
 - [ ] Add pwa icon image
+- [ ] Add change in averages to stats
 - [ ] Color code stats for readability?
 - [ ] Add ability to view app by year, entire app changes when year is changed somehow
 - [ ] Test and improve accessibility
-- [ ] Add separate components for mobile and desktop viewing
+- [ ] Add separate components for mobile and desktop viewing?
 - [ ] Change charts to D3?
 - [ ] Percent of income saved, spent, donated?
 - [ ] Recurring payments
 - [ ] Savings and goals
 - [ ] React Native Version?
+
+
+- [ ] Add year to categories for year view
+- [ ] Update years as soon as new entry is made
+- [ ] Update categories and current user as soon as year_view is updated
+- [ ] Change income and untracked from update table modal
