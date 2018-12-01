@@ -38,7 +38,7 @@ class App extends Component {
             localStorage.clear()
             this.props.logout()
           } else {
-            this.props.login(resp.id, resp.categories)
+            this.props.login(resp.id, resp.categories, resp.year_view, resp.years)
           }
         })
     } else {
