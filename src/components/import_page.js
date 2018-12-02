@@ -1,7 +1,7 @@
 import React from 'react';
 import { PulseLoader } from 'react-spinners';
 import { connect } from 'react-redux';
-import { updateCategories } from '../actions';
+import { updateUser } from '../actions';
 class ImportPage extends React.Component {
     constructor() {
         super();
@@ -33,8 +33,8 @@ class ImportPage extends React.Component {
             .then(resp => {
                 this.setState({loading: false});
                 alert(resp.message);
-                if ( Object.prototype.toString.call( resp.categories ) === '[object Array]' ) {
-                    this.props.updateCategories(resp.categories)
+                if ( resp.user ) {
+                    this.props.updateUser(resp.user)
                 }
             });
     };
@@ -79,5 +79,5 @@ class ImportPage extends React.Component {
 const mapStateToProps = state => ({
     current_user: state.current_user
 });
-export default connect(mapStateToProps, { updateCategories })(ImportPage);
+export default connect(mapStateToProps, { updateUser })(ImportPage);
 export const nakedImportPage = ImportPage;

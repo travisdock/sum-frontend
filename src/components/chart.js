@@ -38,8 +38,8 @@ class Chart extends React.Component {
           load: true,
           currentChart: resp.charts[lastMonth], currentTitle: lastMonth
         }, this.renderPieChart)
-      }}
-        )
+      }
+    });
   }
 
   selectChangePieChart = (e) => {

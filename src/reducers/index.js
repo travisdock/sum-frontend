@@ -13,9 +13,10 @@ export default function reducer(
       return {
         ...state, current_user: '', load: true
       }
-    case "UPDATECATS":
+    case "UPDATEUSER":
+      console.log("reducer", action.payload)
       return {
-        ...state, current_user: { ...state.current_user, categories: action.payload.categories }
+        ...state, current_user: action.payload
       }
     default:
       return state;

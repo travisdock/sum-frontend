@@ -1,4 +1,4 @@
-export function handleYearViewChange(e) {
+export function handleUpdate(e) {
     e.preventDefault();
     const token = localStorage.getItem('jwt')
     const element = e.target.form.elements[0]
@@ -19,5 +19,8 @@ export function handleYearViewChange(e) {
     const url = `${process.env.REACT_APP_API}/api/v1/users/${user_id}`
     fetch(url, options)
         .then(resp => resp.json())
-        .then(resp => console.log(resp))
+        .then(resp => {
+            this.props.updateUser(resp)
+            alert("Success!")
+        });
 };

@@ -1,17 +1,16 @@
 import React from 'react';
 // import { PulseLoader } from 'react-spinners';
 import { connect } from 'react-redux';
-// import { updateCategories } from '../actions';
+import { updateUser } from '../actions';
 
-import { handleYearViewChange } from './settings_helpers.js';
+import { handleUpdate } from './settings_helpers.js';
 
 class Settings extends React.Component {
     constructor() {
         super();
-        this.handleYearViewChange = handleYearViewChange.bind(this);
+        this.handleUpdate = handleUpdate.bind(this);
     }
-    // User table has a current year. This defaults to the current year but can be changed from settings.
-    // Current year can be saved via the login action and accessed in redux state.
+
     render() {
         const props = this.props
         return (
@@ -24,7 +23,7 @@ class Settings extends React.Component {
                     >
                         {props.current_user.years.map(year => <option value={year} key={year}>{year}</option>)}
                     </select>
-                    <button onClick={this.handleYearViewChange}>Submit</button>
+                    <button onClick={this.handleUpdate}>Submit</button>
                 </form>
             </div>
         )
@@ -35,4 +34,4 @@ const mapStateToProps = state => ({
     current_user: state.current_user
 });
   
-export default connect(mapStateToProps)(Settings);
+export default connect(mapStateToProps, { updateUser })(Settings);

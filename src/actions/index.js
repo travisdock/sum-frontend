@@ -18,11 +18,15 @@ export function logout() {
   }
 }
 
-export function updateCategories(categories) {
+export function updateUser(user) {
+  console.log("action", user)
   return {
-    type: 'UPDATECATS',
+    type: 'UPDATEUSER',
     payload: {
-      categories: categories
+      user_id: user.id,
+      categories: user.categories,
+      year_view: user.year_view,
+      years: user.years
     }
   }
 }

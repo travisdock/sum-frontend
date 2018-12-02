@@ -2,7 +2,7 @@ import React from 'react';
 
 import { connect } from 'react-redux';
 
-import { updateCategories } from '../actions';
+import { updateUser } from '../actions';
 
 class InputForm extends React.Component {
   constructor(props) {
@@ -62,8 +62,8 @@ class InputForm extends React.Component {
         } else if (resp.error) {
           alert(resp.error)
         } else {
-          if ( Object.prototype.toString.call( resp ) === '[object Array]' ) {
-            this.props.updateCategories(resp)
+          if (resp.id) {
+            this.props.updateUser(resp)
           }
           alert("Success!")
           this.setState({
@@ -79,7 +79,6 @@ class InputForm extends React.Component {
           })
         }
       })
-
   }
 
   toggleCategory = () => {
@@ -120,7 +119,6 @@ class InputForm extends React.Component {
       }
     })
   }
-
   render() {
     const newCategory = (<div className="ui field">
       <input
@@ -197,4 +195,4 @@ const mapStateToProps = state => ({
   current_user: state.current_user
 });
 
-export default connect(mapStateToProps, { updateCategories })(InputForm);
+export default connect(mapStateToProps, { updateUser })(InputForm);
