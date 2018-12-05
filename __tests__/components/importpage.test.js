@@ -67,17 +67,17 @@ describe('<ImportPage /> with redux', () => {
     it('fires action if import is successful', async (done) => {
         window.alert = jest.fn()
         window.fetch = mockFetch({message: "success message", categories: [{}, {}, {}]})
-        const updateCategories = jest.fn()
+        const updateUser = jest.fn()
 
         const component = shallow(
-            <NakedImportPage current_user={ userProp } updateCategories={ updateCategories } />
+            <NakedImportPage current_user={ userProp } updateUser={ updateUser } />
         );
         
         const form = component.find('form')
         await form.simulate('submit', { preventDefault: jest.fn(), target: {0: {files: {0: "file"}}} });
         
         return flushPromises().then(() => {
-            expect(updateCategories).toHaveBeenCalled();
+            expect(updateUser).toHaveBeenCalled();
             done();
         });
     });
