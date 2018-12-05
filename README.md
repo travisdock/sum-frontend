@@ -40,6 +40,7 @@ https://sumfinance-b89c6.firebaseapp.com/
 - [ ] Better "create category" flow
 - [ ] Add ability to edit Category
 - [ ] Add ability to delete category (asks to recategorize or delete existing entries)
+- [ ] Change entry income and untracked from update table modal
 - [ ] Add user ability to edit profile (username, email, password)
 - [ ] Add pwa icon image
 - [ ] Add change in averages to stats
@@ -52,7 +53,3 @@ https://sumfinance-b89c6.firebaseapp.com/
 - [ ] Recurring payments
 - [ ] Savings and goals
 - [ ] React Native Version?
-
-- [ ] Update years as soon as new entry is made
-- [ ] Update categories and current user as soon as year_view is updated
-- [ ] Change income and untracked from update table modal
