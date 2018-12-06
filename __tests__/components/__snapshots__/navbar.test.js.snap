@@ -405,6 +405,7 @@ exports[`<Navbar /> given a user, it renders the component correctly 1`] = `
                               closeOnEscape={true}
                               contentStyle={Object {}}
                               defaultOpen={false}
+                              disabled={false}
                               keepTooltipInside={false}
                               lockScroll={false}
                               modal={true}

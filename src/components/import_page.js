@@ -33,6 +33,7 @@ class ImportPage extends React.Component {
             .then(resp => {
                 this.setState({loading: false});
                 alert(resp.message);
+                
                 if ( resp.user ) {
                     this.props.updateUser(resp.user)
                 }

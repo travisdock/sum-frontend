@@ -66,7 +66,7 @@ describe('<ImportPage /> with redux', () => {
 
     it('fires action if import is successful', async (done) => {
         window.alert = jest.fn()
-        window.fetch = mockFetch({message: "success message", categories: [{}, {}, {}]})
+        window.fetch = mockFetch({message: "success message", user: {}})
         const updateUser = jest.fn()
 
         const component = shallow(

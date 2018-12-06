@@ -16,6 +16,7 @@ exports[`<MoreMenu /> matches snapshot 1`] = `
     closeOnEscape={true}
     contentStyle={Object {}}
     defaultOpen={false}
+    disabled={false}
     keepTooltipInside={false}
     lockScroll={false}
     modal={true}
@@ -45,6 +46,14 @@ exports[`<MoreMenu /> matches snapshot 1`] = `
         to="/dashboard/import"
       >
         Import CSV
+      </NavLink>
+      <NavLink
+        activeClassName="active"
+        aria-current="page"
+        onClick={[Function]}
+        to="/dashboard/settings"
+      >
+        Settings
       </NavLink>
       <button
         className="more"

@@ -33,7 +33,14 @@ describe('<MoreMenu />', () => {
         expect(openModalSpy).toHaveBeenCalled();
         expect(component.state(['open'])).toBe(true);
 
-        component.find('NavLink').simulate('click')
+        expect(component.find('NavLink')).toHaveLength(2);
+        expect(component.find('NavLink').get(0).props.to).toBe('/dashboard/import');
+        expect(component.find('NavLink').get(1).props.to).toBe('/dashboard/settings');
+
+        component.find('NavLink').at(1).simulate('click')
+        expect(closeModalSpy).toHaveBeenCalled();
+
+        component.find('NavLink').at(0).simulate('click')
         expect(closeModalSpy).toHaveBeenCalled();
 
         logoutButton.simulate('click');
