@@ -40,8 +40,8 @@ https://sumfinance-b89c6.firebaseapp.com/
 - [ ] Better "create category" flow
 - [ ] Add ability to edit Category
 - [ ] Add ability to delete category (asks to recategorize or delete existing entries)
-- [ ] Change entry income and untracked from update table modal
-- [ ] Add user ability to edit profile (username, email, password)
+- [ ] Add ability to change entry income and untracked from update table modal
+- [ ] Add user ability to edit profile (username, email, password) to settings page
 - [ ] Add pwa icon image
 - [ ] Add change in averages to stats
 - [ ] Color code stats for readability?
