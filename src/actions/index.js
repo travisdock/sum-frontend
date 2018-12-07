@@ -19,7 +19,6 @@ export function logout() {
 }
 
 export function updateUser(user) {
-  console.log("action", user)
   return {
     type: 'UPDATEUSER',
     payload: {

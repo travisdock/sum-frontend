@@ -14,7 +14,6 @@ export default function reducer(
         ...state, current_user: '', load: true
       }
     case "UPDATEUSER":
-      console.log("reducer", action.payload)
       return {
         ...state, current_user: action.payload
       }
