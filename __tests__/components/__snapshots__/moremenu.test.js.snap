@@ -16,7 +16,6 @@ exports[`<MoreMenu /> matches snapshot 1`] = `
     closeOnEscape={true}
     contentStyle={Object {}}
     defaultOpen={false}
-    disabled={false}
     keepTooltipInside={false}
     lockScroll={false}
     modal={true}
