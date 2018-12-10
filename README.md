@@ -43,6 +43,7 @@ https://sumfinance-b89c6.firebaseapp.com/
 - [ ] Add ability to change entry income and untracked from update table modal
 - [ ] Add user ability to edit profile (username, email, password) to settings page
 - [ ] Add pwa icon image
+- [ ] Change caching strategy to allow immediate updates
 - [ ] Add change in averages to stats
 - [ ] Color code stats for readability?
 - [ ] Add ability to view app by year, entire app changes when year is changed somehow
