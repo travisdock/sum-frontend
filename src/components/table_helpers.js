@@ -51,10 +51,10 @@ export function mobileColumns() {
           maxWidth: 200,
           filterMethod: (filter, row) => {
             if (filter.value === "income") {
-              return row._original.income === true && row._original.untracked == false;
+              return row._original.income === true && row._original.untracked === false;
             }
             if (filter.value === "expense") {
-              return row._original.income === false && row._original.untracked == false;
+              return row._original.income === false && row._original.untracked === false;
             }
             return row[filter.id] === filter.value;
           },
