@@ -15,8 +15,8 @@ class Settings extends React.Component {
         const props = this.props
         return (
             <div className="settings">
-                <h2>Change year view:</h2>
-                <form>
+                <h2 className="settings">Change year view:</h2>
+                <form className="settings">
                     <select
                         name="year_view"
                         defaultValue={props.current_user.year_view}
