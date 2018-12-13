@@ -37,18 +37,18 @@ https://sumfinance-b89c6.firebaseapp.com/
 
 ## Things to do:
 
-# Functionality
+### Functionality
 - [ ] Continue adding test coverage
 - [ ] Add ability to edit Category
 - [ ] Add ability to delete category (asks to recategorize or delete existing entries)
 - [ ] Add user ability to edit profile (username, email, password) to settings page
 - [ ] Add change in averages to stats
 
-# Esthetics
+### Esthetics
 - [ ] Add pwa icon image
 - [ ] Color code stats for readability?
 
-# Misc/Unformed Ideas
+### Misc/Unformed Ideas
 - [ ] Change caching strategy to allow immediate updates?
 - [ ] Change charts to D3?
 - [ ] Test and improve accessibility
