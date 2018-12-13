@@ -5,8 +5,10 @@ import { connect } from 'react-redux';
 import ReactTable from "react-table";
 import "react-table/react-table.css";
 
-// Import React Popup
-import Popup from "reactjs-popup";
+// Imported Popups
+import AreYouSure from './AreYouSure.jsx'
+import UpdateEntry from './UpdateEntry.jsx'
+import EntryInfo from './EntryInfo.jsx'
 
 // Imported Functions
 import {
@@ -111,77 +113,36 @@ class Table extends React.Component {
           }}
         </ReactTable>
         {/* INFO MODAL */}
-        <Popup
-        open={this.state.open === "info"}
-        closeOnDocumentClick
-        onClose={this.closeModal}
-        >
-        <div className="table-popup">
-            <p>Amount: {"$" + Number(this.state.data.amount).toFixed(2)}</p>
-            <p>Category: {this.state.data.category_name}</p>
-            <p>Date: {this.state.data.date}</p>
-            <p>Notes: {this.state.data.notes}</p>
-            <button onClick={this.askIfSure}>Delete Entry</button>
-            <button onClick={this.switchToUpdateModal}>Update Entry</button>
-        </div>
-        </Popup>
+        <EntryInfo
+          open={this.state.open}
+          closeModal={this.closeModal}
+          category_name={this.state.form.category_name}
+          date={this.state.form.date}
+          amount={this.state.form.amount}
+          notes={this.state.form.notes}
+          askIfSure={this.askIfSure}
+          switchToUpdateModal={this.switchToUpdateModal}
+        />
         {/* UPDATE MODAL */}
-        <Popup
-          open={this.state.open === "update"}
-          closeOnDocumentClick
-          onClose={this.closeModal}
-          onOpen={this.switchToUpdateModal}
-        >
-          <div className="table-popup">
-            <p>Update Entry</p>
-            <form onSubmit={this.handleUpdate}>
-                <select
-                  name="category_name"
-                  value={this.state.form.category_name}
-                  onChange={this.handleChange}
-                  >
-                  {!!this.props.current_user.categories ? this.props.current_user.categories.map(cat => <option value={cat.name} key={cat.id}>{cat.name}</option>) : null}
-                </select>
-                <input
-                  name="date"
-                  type="date"
-                  value={this.state.form.date}
-                  onChange={this.handleChange}
-                />
-                <input
-                  name="amount"
-                  placeholder="0.00"
-                  value={this.state.form.amount}
-                  onChange={this.handleChange}
-                />
-                <textarea
-                  name="notes"
-                  placeholder="Entry details..."
-                  rows="5"
-                  cols="55"
-                  value={this.state.form.notes}
-                  onChange={this.handleChange}
-                />
-              <button type="submit" className="button">
-                Submit
-              </button>
-            </form>
-
-          </div>
-        </Popup>
+        <UpdateEntry
+          open={this.state.open}
+          closeModal={this.closeModal}
+          switchToUpdateModal={this.switchToUpdateModal}
+          handleUpdate={this.handleUpdate}
+          handleChange={this.handleChange}
+          category_name={this.state.form.category_name}
+          current_user={this.props.current_user}
+          date={this.state.form.date}
+          amount={this.state.form.amount}
+          notes={this.state.form.notes}
+        />
         {/* ARE YOU SURE MODAL */}
-        <Popup
-          open={this.state.open === "ask"}
-          closeOnDocumentClick
-          onClose={this.closeModal}
-          onOpen={this.askIfSure}
-        >
-          <div className="table-popup">
-            <p>Are You Sure?</p>
-            <button onClick={this.handleDelete} >Delete</button>
-            <button onClick={this.closeModal} >Close</button>
-          </div>
-        </Popup>
+        <AreYouSure
+          open={this.state.open}
+          closeModal={this.closeModal}
+          askIfSure={this.askIfSure}
+          handleDelete={this.handleDelete}
+        />
       </div>
     );
   }
