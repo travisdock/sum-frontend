@@ -47,19 +47,16 @@ class InputForm extends React.Component {
           type="checkbox"
           checked={this.state.form.income}
           onChange={this.toggleIncome}
-          disabled={this.state.form.untracked}
         />income</label>
 
         <label className="checkboxes">
         <input
           name="untracked"
           type="checkbox"
+          checked={this.state.form.untracked}
           onChange={this.toggleUntracked}
-          disabled={this.state.form.income}
         />untracked</label>
       </div>
-      {/* ADD GIFT FUNCTIONALITY(maybe make this untracked categories?) */}
-      <button onClick={this.toggleCategory}>Select Category</button>
     </div>)
     const selectCategory = (<div className="ui field">
       <select
@@ -70,12 +67,15 @@ class InputForm extends React.Component {
         <option value="" disabled>Select Category</option>
         {!!this.props.current_user.categories ? this.props.current_user.categories.map(cat => <option value={cat.name} key={cat.id}>{cat.name}</option>) : null}
       </select>
-      <button onClick={this.toggleCategory}>Create Category</button>
     </div>)
     return (
       <div className="input_form">
         <form onSubmit={this.handleSubmit}>
           {(this.state.new_category ? newCategory : selectCategory)}
+          <label>
+            <input name="newcategory" type="checkbox" onChange={this.toggleCategory}/>
+            New Category?
+          </label>
             <input
               name="date"
               type="date"

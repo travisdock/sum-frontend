@@ -80,7 +80,8 @@ export function handleChange(e) {
         ...prevState,
         form: {
           ...prevState.form,
-          income: !prevState.form.income
+          income: !prevState.form.income,
+          untracked: false
         }
       }
     })
@@ -101,6 +102,7 @@ export function handleChange(e) {
       if (e.target.value) {
           try {
               e.target.value = math.eval(e.target.value);
+              this.handleChange(e);
           }
           catch(err) {
               alert(`There was an error: ${err.message}`)
