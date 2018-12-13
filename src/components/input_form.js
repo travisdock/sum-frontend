@@ -6,7 +6,7 @@ import { updateUser } from '../actions';
 import {
   handleChange, handleSubmit,
   toggleCategory, toggleIncome,
-  toggleUntracked
+  toggleUntracked, evaluateAmount
 } from './input_form_helpers.js'
 
 class InputForm extends React.Component {
@@ -29,6 +29,7 @@ class InputForm extends React.Component {
     this.toggleCategory = toggleCategory.bind(this);
     this.toggleIncome = toggleIncome.bind(this);
     this.toggleUntracked = toggleUntracked.bind(this);
+    this.evaluateAmount = evaluateAmount.bind(this);
   }
 
   render() {
@@ -54,6 +55,7 @@ class InputForm extends React.Component {
           name="untracked"
           type="checkbox"
           onChange={this.toggleUntracked}
+          disabled={this.state.form.income}
         />untracked</label>
       </div>
       {/* ADD GIFT FUNCTIONALITY(maybe make this untracked categories?) */}
@@ -65,7 +67,7 @@ class InputForm extends React.Component {
         value={this.state.form.category_name}
         onChange={this.handleChange}
         >
-        <option>Select Category</option>
+        <option value="" disabled>Select Category</option>
         {!!this.props.current_user.categories ? this.props.current_user.categories.map(cat => <option value={cat.name} key={cat.id}>{cat.name}</option>) : null}
       </select>
       <button onClick={this.toggleCategory}>Create Category</button>
@@ -83,8 +85,10 @@ class InputForm extends React.Component {
             <input
               name="amount"
               placeholder="0.00"
+              type="tel"
               value={this.state.form.amount}
               onChange={this.handleChange}
+              onBlur={this.evaluateAmount}
             />
             <textarea
               name="notes"

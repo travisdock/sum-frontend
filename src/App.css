@@ -1,3 +1,13 @@
+select:required:invalid {
+  color: gray;
+}
+option[value=""][disabled] {
+  display: none;
+}
+option {
+  color: black;
+}
+
 #home2 {
   height:100vh;
   display: flex;

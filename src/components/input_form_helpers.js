@@ -1,3 +1,4 @@
+const math = require('mathjs-expression-parser')
 export function handleChange(e) {
     const target = e.target;
     const value = target.value;
@@ -96,3 +97,13 @@ export function handleChange(e) {
       }
     })
   }
+  export function evaluateAmount(e) {
+      if (e.target.value) {
+          try {
+              e.target.value = math.eval(e.target.value);
+          }
+          catch(err) {
+              alert(`There was an error: ${err.message}`)
+          }
+        }
+  };
