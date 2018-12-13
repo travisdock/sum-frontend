@@ -3,12 +3,15 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { updateUser } from '../actions';
 
-import { handleUpdate } from './settings_helpers.js';
+import {
+    handleUpdate, handleDelete
+    } from './settings_helpers.js';
 
 class Settings extends React.Component {
     constructor() {
         super();
         this.handleUpdate = handleUpdate.bind(this);
+        this.handleDelete = handleDelete.bind(this);
     }
 
     render() {
@@ -24,6 +27,14 @@ class Settings extends React.Component {
                         {props.current_user.years.map(year => <option value={year} key={year}>{year}</option>)}
                     </select>
                     <button onClick={this.handleUpdate}>Submit</button>
+                </form>
+                    <h2 className="settings">Delete a Category:</h2>
+                    <form className="settings">
+                    <select defaultValue="">
+                        <option value="" disabled>Select Category</option>
+                        {!!this.props.current_user.categories ? this.props.current_user.categories.map(cat => <option value={cat.name} key={cat.id}>{cat.name}</option>) : null}
+                    </select>
+                    <button onClick={this.handleDelete}>Submit</button>
                 </form>
             </div>
         )
