@@ -49,6 +49,7 @@ https://sumfinance-b89c6.firebaseapp.com/
 - [ ] Color code stats for readability?
 
 ### Misc/Unformed Ideas
+- [ ] Fix coveralls coverage. Pretty sure it is wrong...
 - [ ] Change caching strategy to allow immediate updates?
 - [ ] Change charts to D3?
 - [ ] Test and improve accessibility
