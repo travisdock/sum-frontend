@@ -71,11 +71,16 @@ class InputForm extends React.Component {
     return (
       <div className="input_form">
         <form onSubmit={this.handleSubmit}>
-          {(this.state.new_category ? newCategory : selectCategory)}
           <label>
-            <input name="newcategory" type="checkbox" onChange={this.toggleCategory}/>
+            <input
+              name="newcategory"
+              type="checkbox"
+              onChange={this.toggleCategory}
+              checked={this.state.new_category}
+              />
             New Category?
           </label>
+          {(this.state.new_category ? newCategory : selectCategory)}
             <input
               name="date"
               type="date"
