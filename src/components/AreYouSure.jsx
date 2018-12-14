@@ -8,10 +8,10 @@ class AreYouSure extends React.Component {
             open={this.props.open === "ask"}
             closeOnDocumentClick
             onClose={this.props.closeModal}
-            onOpen={this.props.askIfSure}
+            onOpen={this.props.onOpen}
             >
             <div className="table-popup">
-                <p>Are You Sure?</p>
+                <p>{this.props.message}</p>
                 <button onClick={this.props.handleDelete} >Delete</button>
                 <button onClick={this.props.closeModal} >Close</button>
             </div>

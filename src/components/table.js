@@ -140,8 +140,9 @@ class Table extends React.Component {
         <AreYouSure
           open={this.state.open}
           closeModal={this.closeModal}
-          askIfSure={this.askIfSure}
+          onOpen={this.askIfSure}
           handleDelete={this.handleDelete}
+          message={"Are you sure?"}
         />
       </div>
     );

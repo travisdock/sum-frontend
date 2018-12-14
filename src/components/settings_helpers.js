@@ -1,3 +1,19 @@
+export function openModal() {
+    const category_name = document.getElementsByName("delete_category")[0].value
+    try {
+        const category_id = this.props.current_user.categories.find( cat => cat.name === category_name ).id
+        this.setState({
+          category_id: category_id
+        });
+    }
+    catch {
+        alert("No category selected");
+        this.setState({
+            open: false
+        });
+    }
+  };
+  
 export function handleUpdate(e) {
     e.preventDefault();
     const token = localStorage.getItem('jwt')
@@ -26,10 +42,8 @@ export function handleUpdate(e) {
 };
 
 export function handleDelete(e) {
-    e.preventDefault();
     const token = localStorage.getItem('jwt')
-    const name = e.target.form.elements[0].value
-    const category_id = this.props.current_user.categories.find( cat => cat.name === name ).id
+    const category_id = this.state.category_id
     const body = {
         user_id: this.props.current_user.user_id
     };
@@ -48,5 +62,5 @@ export function handleDelete(e) {
         .then(resp => {
             this.props.updateUser(resp)
             alert("Success!")
-        });
+        }, this.closeModal());
 };
