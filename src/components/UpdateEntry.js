@@ -31,6 +31,7 @@ class UpdateEntry extends React.Component {
                         placeholder="0.00"
                         value={this.props.amount}
                         onChange={this.props.handleChange}
+                        onBlur={this.props.evaluateAmount}
                     />
                     <textarea
                         name="notes"

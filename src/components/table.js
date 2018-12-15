@@ -14,11 +14,14 @@ import EntryInfo from './EntryInfo'
 import {
   openModal, closeModal, openUpdateModal,
   askIfSure, handleDelete, handleChange, handleUpdate
-} from './helpers/modalHelpers.js'
+} from './helpers/modalHelpers'
 import {
   updateWindowDimensions, unformatMoney, sumEntries,
   mobileColumns, desktopColumns
-} from './helpers/tableHelpers.js'
+} from './helpers/tableHelpers'
+import {
+  evaluateAmount
+} from './helpers/inputFormHelpers'
 
 class Table extends React.Component {
   constructor() {
@@ -40,6 +43,7 @@ class Table extends React.Component {
     this.handleDelete = handleDelete.bind(this);
     this.handleChange = handleChange.bind(this);
     this.handleUpdate = handleUpdate.bind(this);
+    this.evaluateAmount = evaluateAmount.bind(this);
     this.updateWindowDimensions = updateWindowDimensions.bind(this);
     this.unformatMoney = unformatMoney.bind(this);
     this.sumEntries = sumEntries.bind(this);
@@ -130,6 +134,7 @@ class Table extends React.Component {
           openUpdateModal={this.openUpdateModal}
           handleUpdate={this.handleUpdate}
           handleChange={this.handleChange}
+          evaluateAmount={this.evaluateAmount}
           category_name={this.state.form.category_name}
           current_user={this.props.current_user}
           date={this.state.form.date}
