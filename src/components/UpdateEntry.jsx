@@ -8,7 +8,7 @@ class UpdateEntry extends React.Component {
                 open={this.props.open === "update"}
                 closeOnDocumentClick
                 onClose={this.props.closeModal}
-                onOpen={this.props.switchToUpdateModal}
+                onOpen={this.props.openUpdateModal}
             >
                 <div className="table-popup">
                 <p>Update Entry</p>

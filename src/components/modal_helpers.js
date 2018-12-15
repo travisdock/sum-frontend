@@ -10,7 +10,7 @@ export function openModal(entry, entry_index) {
   export function closeModal() {
     this.setState({ open: false });
   };
-  export function switchToUpdateModal() {
+  export function openUpdateModal() {
     this.setState({ open: "update" });
   };
   export function askIfSure() {

@@ -12,7 +12,7 @@ import EntryInfo from './EntryInfo.jsx'
 
 // Imported Functions
 import {
-  openModal, closeModal, switchToUpdateModal,
+  openModal, closeModal, openUpdateModal,
   askIfSure, handleDelete, handleChange, handleUpdate
 } from './modal_helpers.js'
 import {
@@ -35,7 +35,7 @@ class Table extends React.Component {
     // Imported functions
     this.openModal = openModal.bind(this);
     this.closeModal = closeModal.bind(this);
-    this.switchToUpdateModal = switchToUpdateModal.bind(this);
+    this.openUpdateModal = openUpdateModal.bind(this);
     this.askIfSure = askIfSure.bind(this);
     this.handleDelete = handleDelete.bind(this);
     this.handleChange = handleChange.bind(this);
@@ -121,13 +121,13 @@ class Table extends React.Component {
           amount={this.state.form.amount}
           notes={this.state.form.notes}
           askIfSure={this.askIfSure}
-          switchToUpdateModal={this.switchToUpdateModal}
+          openUpdateModal={this.openUpdateModal}
         />
         {/* UPDATE MODAL */}
         <UpdateEntry
           open={this.state.open}
           closeModal={this.closeModal}
-          switchToUpdateModal={this.switchToUpdateModal}
+          openUpdateModal={this.openUpdateModal}
           handleUpdate={this.handleUpdate}
           handleChange={this.handleChange}
           category_name={this.state.form.category_name}

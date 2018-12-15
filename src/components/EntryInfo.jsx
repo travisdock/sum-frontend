@@ -15,7 +15,7 @@ class EntryInfo extends React.Component {
                 <p>Date: {this.props.date}</p>
                 <p>Notes: {this.props.notes}</p>
                 <button onClick={this.props.askIfSure}>Delete Entry</button>
-                <button onClick={this.props.switchToUpdateModal}>Update Entry</button>
+                <button onClick={this.props.openUpdateModal}>Update Entry</button>
             </div>
             </Popup>
         )
