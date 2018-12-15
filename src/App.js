@@ -9,9 +9,9 @@ import { connect } from 'react-redux';
 import { login, logout } from './actions/index'
 
 //////////////CONTAINER COMPONENTS//////////////
-import Navbar from './components/navbar'
-import Home from './containers/home'
-import Dashboard from './containers/dashboard'
+import Navbar from './components/Navbar'
+import Home from './containers/Home'
+import Dashboard from './containers/Dashboard'
 
 class App extends Component {
 

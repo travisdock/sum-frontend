@@ -6,19 +6,19 @@ import ReactTable from "react-table";
 import "react-table/react-table.css";
 
 // Imported Popups
-import AreYouSure from './AreYouSure.jsx'
-import UpdateEntry from './UpdateEntry.jsx'
-import EntryInfo from './EntryInfo.jsx'
+import AreYouSure from './AreYouSure'
+import UpdateEntry from './UpdateEntry'
+import EntryInfo from './EntryInfo'
 
 // Imported Functions
 import {
   openModal, closeModal, openUpdateModal,
   askIfSure, handleDelete, handleChange, handleUpdate
-} from './modal_helpers.js'
+} from './helpers/modalHelpers.js'
 import {
   updateWindowDimensions, unformatMoney, sumEntries,
   mobileColumns, desktopColumns
-} from './table_helpers.js'
+} from './helpers/tableHelpers.js'
 
 class Table extends React.Component {
   constructor() {

@@ -4,9 +4,9 @@ import { connect } from 'react-redux';
 import {Redirect } from 'react-router';
 import { Route } from 'react-router';
 
-import Login from '../components/login';
-import Signup from '../components/signup';
-import About from '../components/about';
+import Login from '../components/Login';
+import Signup from '../components/Signup';
+import About from '../components/About';
 
 class Home extends React.Component {
   render() {

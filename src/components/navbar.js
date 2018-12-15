@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
-import MoreMenu from './moreMenu.js';
+import MoreMenu from './MoreMenu';
 
 class Navbar extends React.Component {
   

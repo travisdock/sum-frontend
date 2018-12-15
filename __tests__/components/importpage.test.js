@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 
 import {
     nakedImportPage as NakedImportPage
-} from '../../src/components/import_page';
+} from '../../src/components/ImportPage';
 
 // props for no redux
 const userProp = {user_id: null}

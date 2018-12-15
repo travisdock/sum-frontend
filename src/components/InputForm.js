@@ -7,7 +7,7 @@ import {
   handleChange, handleSubmit,
   toggleCategory, toggleIncome,
   toggleUntracked, evaluateAmount
-} from './input_form_helpers.js'
+} from './helpers/inputFormHelpers'
 
 class InputForm extends React.Component {
   constructor(props) {

@@ -4,11 +4,11 @@ import { connect } from 'react-redux';
 import {Redirect } from 'react-router';
 import { Route } from 'react-router';
 
-import InputForm from '../components/input_form';
-import Chart from '../components/chart';
-import Table from '../components/table';
-import ImportPage from '../components/import_page';
-import Settings from '../components/settings';
+import InputForm from '../components/InputForm';
+import Chart from '../components/Chart';
+import Table from '../components/Table';
+import ImportPage from '../components/ImportPage';
+import Settings from '../components/Settings';
 
 class Dashboard extends React.Component {
   render() {

@@ -3,22 +3,22 @@ import { connect } from 'react-redux';
 import { updateUser } from '../actions';
 
 // Import modals
-import AreYouSure from './AreYouSure.jsx'
-import UpdateCategory from './UpdateCategory.jsx'
+import AreYouSure from './AreYouSure'
+import UpdateCategory from './UpdateCategory'
 
 import {
     handleUserUpdate, handleDelete,
     openModal, handleCategoryUpdate
-} from './settings_helpers.js';
+} from './helpers/settingsHelpers';
 
 import {
     closeModal, askIfSure,
     openUpdateModal, handleChange
-} from './modal_helpers.js'
+} from './helpers/modalHelpers'
 
 import {
     toggleIncome, toggleUntracked
-} from './input_form_helpers.js'
+} from './helpers/inputFormHelpers'
 
 class Settings extends React.Component {
     constructor() {

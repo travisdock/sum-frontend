@@ -2,7 +2,7 @@ import React from 'react';
 import {bb} from "billboard.js";
 import { PulseLoader } from 'react-spinners';
 import { connect } from 'react-redux';
-import { formatMoney } from './formatMoney.js';
+import { formatMoney } from './helpers/formatMoney';
 
 class Chart extends React.Component {
 
