@@ -5,7 +5,7 @@ import { Provider } from "react-redux";
 import configureStore from 'redux-mock-store'; // Smart components
 import { MemoryRouter } from 'react-router';
 
-import Navbar from '../../src/components/navbar';
+import Navbar from '../../src/components/Navbar';
 
 // Setup Store
 const mockStore = configureStore();
