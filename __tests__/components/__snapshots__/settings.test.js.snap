@@ -1,0 +1,114 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Settings /> renders the component correctly 1`] = `
+<div
+  className="settings"
+>
+  <h2
+    className="settings"
+  >
+    Change year view:
+  </h2>
+  <form
+    className="settings"
+  >
+    <select
+      defaultValue={2018}
+      name="year_view"
+    >
+      <option
+        key="2018"
+        value={2018}
+      >
+        2018
+      </option>
+    </select>
+    <button
+      onClick={[Function]}
+    >
+      Submit
+    </button>
+  </form>
+  <h2
+    className="settings"
+  >
+    Delete a Category:
+  </h2>
+  <form
+    className="settings"
+  >
+    <select
+      defaultValue=""
+      name="delete_category"
+    >
+      <option
+        disabled={true}
+        value=""
+      >
+        Select Category
+      </option>
+    </select>
+    <button
+      onClick={[Function]}
+      type="button"
+    >
+      Delete
+    </button>
+  </form>
+  <h2
+    className="settings"
+  >
+    Update a Category:
+  </h2>
+  <form
+    className="settings"
+  >
+    <select
+      defaultValue=""
+      name="update_category"
+    >
+      <option
+        disabled={true}
+        value=""
+      >
+        Select Category
+      </option>
+    </select>
+    <button
+      onClick={[Function]}
+      type="button"
+    >
+      Update
+    </button>
+  </form>
+  <AreYouSure
+    closeModal={[Function]}
+    handleDelete={[Function]}
+    message="Are you sure you want to delete this category and all its entries?"
+    onOpen={[Function]}
+    open={false}
+  />
+  <UpdateCategory
+    closeModal={[Function]}
+    current_user={
+      Object {
+        "user_id": 1,
+        "year_view": 2018,
+        "years": Array [
+          2018,
+        ],
+      }
+    }
+    handleChange={[Function]}
+    handleUpdate={[Function]}
+    income=""
+    name=""
+    onOpen={[Function]}
+    open={false}
+    toggleIncome={[Function]}
+    toggleUntracked={[Function]}
+    untracked=""
+    year=""
+  />
+</div>
+`;
