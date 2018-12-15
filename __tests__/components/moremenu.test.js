@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
 
-import { NakedMoreMenu } from '../../src/components/moreMenu';
+import { NakedMoreMenu } from '../../src/components/MoreMenu';
 
 // props for no redux
 const historyProp = {push: jest.fn()}

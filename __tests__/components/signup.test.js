@@ -7,7 +7,7 @@ import configureStore from 'redux-mock-store'; // Smart components
 import {
     noRouterSignUp as ReduxWrappedSignup,
     nakedSignup as NakedSignup
-} from '../../src/components/signup';
+} from '../../src/components/Signup';
 
 // Setup Store
 const mockStore = configureStore();
