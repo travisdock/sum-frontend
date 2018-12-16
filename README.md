@@ -39,8 +39,8 @@ https://sumfinance-b89c6.firebaseapp.com/
 
 ### Functionality
 - [ ] Continue adding test coverage
-- [ ] Add ability to edit Category
-- [ ] Add ability to delete category (asks to recategorize or delete existing entries)
+- [ ] Add ability to export csv
+- [ ] When a category is deleted, add option to shift entries to existing category
 - [ ] Add user ability to edit profile (username, email, password) to settings page
 - [ ] Add change in averages to stats
 
