@@ -90,7 +90,7 @@ class InputForm extends React.Component {
             <input
               name="amount"
               placeholder="0.00"
-              type="tel"
+              type="text"
               value={this.state.form.amount}
               onChange={this.handleChange}
               onBlur={this.evaluateAmount}
