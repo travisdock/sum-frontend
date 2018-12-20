@@ -30,6 +30,7 @@ export function handleUserUpdate(e) {
     const token = localStorage.getItem('jwt')
     const element = e.target.form.elements[0]
     const user_id = this.props.current_user.user_id
+    const token = localStorage.getItem('jwt')
     const body = {
         user_id: user_id,
         [element.name]: parseInt(element.value)
@@ -40,6 +41,9 @@ export function handleUserUpdate(e) {
           "Content-Type": "application/json",
           "Accept": "application/json",
           'Authorization': token
+        },
+        headers: {
+            'Authorization': token
         },
         body: JSON.stringify(body)
     };
@@ -55,12 +59,14 @@ export function handleCategoryUpdate(e) {
     e.preventDefault();
     const user_id = this.props.current_user.user_id
     const updated_category = this.state.form
+    const token = localStorage.getItem('jwt')
     const body = { user_id: user_id, ...updated_category };
     const options = {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
           "Accept": "application/json",
+          "Authorization": token
         },
         body: JSON.stringify(body)
     };
