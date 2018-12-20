@@ -28,7 +28,8 @@
     "eject": "react-scripts eject",
     "test": "jest",
     "test:watch": "jest --watch",
-    "test:updateSnapshots": "jest --updateSnapshot"
+    "test:updateSnapshots": "jest --updateSnapshot",
+    "test:coverage": "jest --coverage --coverageReporters=text-lcov | coveralls"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",
