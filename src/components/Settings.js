@@ -56,7 +56,7 @@ class Settings extends React.Component {
                     >
                         {props.current_user.years.map(year => <option value={year} key={year}>{year}</option>)}
                     </select>
-                    <button onClick={this.handleUserUpdate}>Submit</button>
+                    <button className="year_view" onClick={this.handleUserUpdate}>Submit</button>
                 </form>
 
                 <h2 className="settings">Delete a Category:</h2>
@@ -68,7 +68,7 @@ class Settings extends React.Component {
                         <option value="" disabled>Select Category</option>
                         {!!props.current_user.categories ? props.current_user.categories.map(cat => <option value={cat.name} key={cat.id}>{cat.name}</option>) : null}
                     </select>
-                    <button type="button" onClick={this.askIfSure}>Delete</button>
+                    <button className="delete_category" type="button" onClick={this.askIfSure}>Delete</button>
                 </form>
 
                 <h2 className="settings">Update a Category:</h2>
@@ -80,7 +80,7 @@ class Settings extends React.Component {
                         <option value="" disabled>Select Category</option>
                         {!!props.current_user.categories ? props.current_user.categories.map(cat => <option value={cat.name} key={cat.id}>{cat.name}</option>) : null}
                     </select>
-                    <button type="button" onClick={this.openUpdateModal}>Update</button>
+                    <button className="update_category" type="button" onClick={this.openUpdateModal}>Update</button>
                 </form>
 
                 <AreYouSure
