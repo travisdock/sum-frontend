@@ -1,5 +1,5 @@
 import React from 'react';
-import About from '../../src/components/About';
+import About from '../../components/About';
 import renderer from 'react-test-renderer';
 
 it('renders a <About/> snapshot', () => {

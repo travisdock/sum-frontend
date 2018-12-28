@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import { shallow } from 'enzyme';
-import { nakedSignup as Signup } from '../../src/components/Signup';
+import { nakedSignup as Signup } from '../../components/Signup';
 
 
 const noUserProps = {user_id: null}
