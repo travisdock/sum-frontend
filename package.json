@@ -41,11 +41,11 @@
     "enzyme-adapter-react-16": "^1.7.1",
     "react-test-renderer": "^16.7.0"
   },
-  // browserslist is for starting development in chrome
   "browserslist": [
     ">0.2%",
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "browserslistComment": ["this is used when starting development in chrome"]
 }
