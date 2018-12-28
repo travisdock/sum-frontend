@@ -33,9 +33,12 @@
     "test:coverage": "jest --coverage --coverageReporters=text-lcov | coveralls"
   },
   "devDependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.2.3",
     "@babel/preset-env": "^7.2.3",
     "@babel/preset-react": "^7.0.0",
     "babel-core": "^7.0.0-bridge.0",
+    "enzyme": "^3.8.0",
+    "enzyme-adapter-react-16": "^1.7.1",
     "react-test-renderer": "^16.7.0"
   }
 }
