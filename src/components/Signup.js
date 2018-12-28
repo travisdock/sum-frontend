@@ -3,9 +3,8 @@ import { connect } from 'react-redux';
 import { withRouter, Redirect } from 'react-router';
 
 class Signup extends React.Component {
-  constructor(props) {
-    super(props);
-
+  constructor() {
+    super()
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
   }
