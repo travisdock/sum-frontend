@@ -12,8 +12,8 @@ class AreYouSure extends React.Component {
             >
             <div className="table-popup">
                 <p>{this.props.message}</p>
-                <button onClick={this.props.handleDelete} >Delete</button>
-                <button onClick={this.props.closeModal} >Close</button>
+                <button className="delete" onClick={this.props.handleDelete} >Delete</button>
+                <button className="close" onClick={this.props.closeModal} >Close</button>
             </div>
             </Popup>
         )
