@@ -15,7 +15,7 @@ class InputForm extends React.Component {
     this.state = {
       form: {
         category_name: '',
-        date: new Date().toLocaleString({timeZone: Intl.DateTimeFormat().resolvedOptions.timeZone}),
+        date: new Date().toISOString({timeZone: Intl.DateTimeFormat().resolvedOptions.timeZone}).substr(0, 10),
         amount: '',
         notes: '',
         income: false,
