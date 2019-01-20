@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders a <Chart/> snapshot 1`] = `
+<div
+  className="content"
+>
+  <div
+    className="loading"
+  >
+    <div
+      className="css-zfoonb"
+    />
+    <div
+      className="css-13966zd"
+    />
+    <div
+      className="css-coub4"
+    />
+  </div>
+</div>
+`;
