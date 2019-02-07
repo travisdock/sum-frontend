@@ -13,7 +13,7 @@
     "react-dom": "^16.7.0",
     "react-redux": "^5.1.1",
     "react-router-dom": "^4.3.1",
-    "react-scripts": "^2.1.2",
+    "react-scripts": "^2.1.3",
     "react-spinners": "^0.4.8",
     "react-table": "^6.8.6",
     "reactjs-popup": "^1.3.2",
@@ -47,5 +47,7 @@
     "not ie <= 11",
     "not op_mini all"
   ],
-  "browserslistComment": ["this is used when starting development in chrome"]
+  "browserslistComment": [
+    "this is used when starting development in chrome"
+  ]
 }
