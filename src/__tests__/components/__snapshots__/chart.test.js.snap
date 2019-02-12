@@ -5,17 +5,61 @@ exports[`renders a <Chart/> snapshot 1`] = `
   className="content"
 >
   <div
-    className="loading"
+    className="chart-content"
   >
+    <select
+      name="chart"
+      onChange={[Function]}
+      value="December"
+    >
+      <option
+        value="2019"
+      >
+         
+        2019
+         
+      </option>
+      <option
+        value="December"
+      >
+         
+        December
+         
+      </option>
+    </select>
     <div
-      className="css-zfoonb"
+      id="chart"
     />
-    <div
-      className="css-13966zd"
-    />
-    <div
-      className="css-coub4"
-    />
+    <div>
+      <h2>
+        Stats
+      </h2>
+      <h3>
+        an_income
+        : 
+        $123.00
+      </h3>
+      <h3>
+        an_expense
+        : 
+        $123.00
+      </h3>
+      <h3>
+        Total Income
+        : 
+        $123.00
+      </h3>
+      <h3>
+        Total Expense
+        : 
+        $123.00
+      </h3>
+      <h3>
+        Profit/Loss
+        : 
+        $0.00
+      </h3>
+    </div>
   </div>
 </div>
 `;

@@ -49,7 +49,6 @@ it('renders a <Chart/> snapshot', async () => {
 
     const component = renderer.create(<Chart {...props} />);
     component.root.instance.setState(newState)
-    component.update();
 
     let tree = component.toJSON();
     expect(tree).toMatchSnapshot();
