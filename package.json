@@ -5,6 +5,7 @@
   "dependencies": {
     "billboard.js": "^1.7.1",
     "connected-react-router": "^4.5.0",
+    "coveralls": "^3.0.3",
     "match-sorter": "^2.3.0",
     "mathjs-expression-parser": "^1.0.2",
     "merge": "^1.2.1",
@@ -27,11 +28,10 @@
     "build": "REACT_APP_API=https://sumfinance.herokuapp.com react-scripts build",
     "deploy": "firebase deploy",
     "eject": "react-scripts eject",
-    "test": "react-scripts test --coverage",
-    "test:ci": "CI=true react-scripts test --coverage",
-    "test:watch": "jest --watch",
-    "test:updateSnapshots": "jest --updateSnapshot",
-    "test:coverage": "react-scripts test --coverage --coverageReporters=text-lcov | coveralls"
+    "test": "react-scripts test",
+    "coverage": "react-scripts test --coverage",
+    "coveralls": "cat ./coverage/lcov.info | node node_modules/.bin/coveralls",
+    "test:updateSnapshots": "jest --updateSnapshot"
   },
   "devDependencies": {
     "@babel/plugin-proposal-class-properties": "^7.2.3",
