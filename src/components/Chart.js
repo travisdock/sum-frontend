@@ -36,7 +36,8 @@ class Chart extends React.Component {
           charts: resp.charts,
           stats: resp.stats,
           load: true,
-          currentChart: resp.charts[lastMonth], currentTitle: lastMonth
+          currentChart: resp.charts[lastMonth],
+          currentTitle: lastMonth
         }, this.renderPieChart)
       }
     });
@@ -144,7 +145,8 @@ const mapStateToProps = state => ({
   current_user: state.current_user
 });
 
-export default connect(mapStateToProps)(Chart)
+export default connect(mapStateToProps)(Chart);
+export const nakedChart = Chart;
 
 
 

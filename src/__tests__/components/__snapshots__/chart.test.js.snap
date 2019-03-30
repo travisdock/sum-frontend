@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders a <Chart/> snapshot 1`] = `
+<div
+  className="content"
+>
+  <div
+    className="chart-content"
+  >
+    <select
+      name="chart"
+      onChange={[Function]}
+      value="December"
+    >
+      <option
+        value="2019"
+      >
+         
+        2019
+         
+      </option>
+      <option
+        value="December"
+      >
+         
+        December
+         
+      </option>
+    </select>
+    <div
+      id="chart"
+    />
+    <div>
+      <h2>
+        Stats
+      </h2>
+      <h3>
+        an_income
+        : 
+        $123.00
+      </h3>
+      <h3>
+        an_expense
+        : 
+        $123.00
+      </h3>
+      <h3>
+        Total Income
+        : 
+        $123.00
+      </h3>
+      <h3>
+        Total Expense
+        : 
+        $123.00
+      </h3>
+      <h3>
+        Profit/Loss
+        : 
+        $0.00
+      </h3>
+    </div>
+  </div>
+</div>
+`;
