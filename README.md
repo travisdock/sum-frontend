@@ -39,6 +39,8 @@ https://sumfinance-b89c6.firebaseapp.com/
 
 ### Functionality
 - [ ] Continue adding test coverage
+- [ ] Year view does not actually show current year if no entries for current year
+- [ ] Add error for bad backend connection
 - [ ] Add ability to export csv
 - [ ] When a category is deleted, add option to shift entries to existing category
 - [ ] Add user ability to edit profile (username, email, password) to settings page
