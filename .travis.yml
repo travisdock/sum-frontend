@@ -8,18 +8,6 @@ before_script:
 script:
   - npm run test
   - jest --coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage
-  - if [ "$TRAVIS_BRANCH" == "production" ]; then npm run build; fi
+  - if [ "$TRAVIS_BRANCH" == "production" ]; then npm run-script build; fi
 after_success:
-  - if [ "$TRAVIS_BRANCH" == "production" ]; then firebase deploy --token=${FIREBASE_API_TOKEN}; fi
-
-# official Travis Ci config that doesn't work... I would like to revisit this
-# before_script:
-#   - "npm run build"
-# deploy:
-#   provider: firebase
-#   token:
-#     secure: aCEaqrLVhgOz6pBHtVKNRVt/WNUzSQ7WOJ5x4MrkpmgpB3ilfYjG1xLaxp3PiLFuD4M1Qb3WTLvovfkqIg57T8iGF1UmhFLFHoOSaY+WDFLtwAkFNEfP/hkGU1dyO/RVKhw/i9WIotVNvHcAMLtNBtZe2PlAYlsB7slTFn9UDq/6/Ymu6qwkziT8bq8tZkJTxHcL3NUK4fpTRrHiiH59BzjNvqijt1awhpkacR8aQ2remjRKGB24f/HHlrjfSB4qwLV78OkqHfYtIJPoNGi4RV58T3B7WC2KKCHzwPg5Lq4qpaadFwy0eGscmGCRrEw/8hEWo+RFhHUm64zChIU8mXMG6Jk9pZFsToyf1YzyPl666xVS2m6s34Pzkjqh/H4Xykm4p0xJFwMCMHkZiklcHPforjGbAt3iqxjr6slzrsJtcP/OCfA5gBLeTMi9ZAi2AGThxvSu7uSf/OoFQ0UTxYEymc21Q68B2o3vZPoMZhKGGzDlMTSxV/x0xTyE3CD9LocXjuGnF6X8PvyugyGW+982WAmM4LnEnGjIF2fc8Jsat2wJ5Ipv9oAZHjVI9wTsEhi/j40orHlHqVEysWIpvAY25BlyYUrgkd8xcwJJC1S7X4hOcKV570QryNawUNOOZcgYlUYwX6Onv2hCHyzKFUFGHXZeUa4cSA02mV8DHfw=
-#   skip_cleanup: true
-#   on:
-#     all_branches: true
-#     condition: "$TRAVIS_BRANCH =~ ^staging|production$"
+  - if [ "$TRAVIS_BRANCH" == "production" ]; then firebase deploy --only hosting:sum-finance --token=${FIREBASE_API_TOKEN}; fi
