@@ -1,6 +1,5 @@
 <p align="center">
-  <a href="https://travis-ci.com/travisdock/sum-backend/branches"><img src="https://img.shields.io/travis/travisdock/sum-frontend/production.svg?style=plastic&label=Staging+Build" alt="Staging Build Status"></a>
-  <a href="https://travis-ci.com/travisdock/sum-backend/branches"><img src="https://img.shields.io/travis/travisdock/sum-frontend/production.svg?style=plastic&label=Production+Build" alt="Production Build Status"></a>
+  <a href="https://travis-ci.com/travisdock/sum-frontend"><img src="https://travis-ci.com/travisdock/sum-frontend.svg?branch=production" alt="Staging Build Status"></a>
   <a href="href='https://coveralls.io/github/travisdock/sum-frontend?branch=staging"><img src="https://img.shields.io/coveralls/travisdock/sum-frontend/production.svg?style=plastic&label=Coveralls+Coverage" alt="Coveralls Test Coverage"></a>
 </p>
 
