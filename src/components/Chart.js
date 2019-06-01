@@ -134,7 +134,7 @@ class Chart extends React.Component {
               size={26}
               color={'#00A0C2'}
               loading={this.state.loading}
-              css={"loading"}
+              className={"loading"}
               />
         }
       </div>
