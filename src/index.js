@@ -11,7 +11,7 @@ import { createBrowserHistory } from 'history';
 import { ConnectedRouter, connectRouter, routerMiddleware } from 'connected-react-router'
 
 
-import reducer from './reducers/index';
+import reducer from './reducers/UserReducers';
 
 const history = createBrowserHistory()
 const initialState = {

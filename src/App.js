@@ -6,7 +6,7 @@ import { withRouter } from 'react-router';
 import { connect } from 'react-redux';
 
 ////////////////ACTIONS/////////////////////////
-import { login, logout } from './actions/index'
+import { login, logout } from './actions/UserActions'
 
 //////////////CONTAINER COMPONENTS//////////////
 import Navbar from './components/Navbar'
@@ -38,7 +38,7 @@ class App extends Component {
             localStorage.clear()
             this.props.logout()
           } else {
-            this.props.login(resp.id, resp.categories, resp.year_view, resp.years)
+            this.props.login(resp)
           }
         })
     } else {

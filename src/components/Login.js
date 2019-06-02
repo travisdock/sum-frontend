@@ -3,7 +3,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter, Redirect } from 'react-router';
 
-import { login } from '../actions/index';
+import { login } from '../actions/UserActions';
 
 
 class Login extends React.Component {
@@ -43,7 +43,7 @@ class Login extends React.Component {
         })
       } else {
         localStorage.setItem('jwt', resp.jwt);
-        this.props.login(resp.id, resp.categories, resp.year_view, resp.years);
+        this.props.login(resp);
       }
     })
   }
