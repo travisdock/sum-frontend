@@ -1,14 +1,14 @@
 
 import { LOGIN, LOGOUT, UPDATEUSER } from '../constants/ActionTypes';
 
-export function login(id, categories, year_view, years) {
+export function login(resp) {
   return {
     type: LOGIN,
     payload: {
-      user_id: id,
-      categories: categories,
-      year_view: year_view,
-      years: years
+      user_id: resp.id,
+      categories: resp.categories,
+      year_view: resp.year_view,
+      years: resp.years
     }
   }
 }

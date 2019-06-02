@@ -2,14 +2,14 @@ import * as actions from '../../actions/UserActions'
 import * as types from '../../constants/ActionTypes'
 
 describe('actions', () => {
-    const action_payload = {
-      user_id: 5,
+    const response = {
+      id: 5,
       categories: ['categories'],
       year_view: 1999,
       years: [1999]
     }
-    const update_payload = {
-      id: 5,
+    const payload = {
+      user_id: 5,
       categories: ['categories'],
       year_view: 1999,
       years: [1999]
@@ -17,25 +17,18 @@ describe('actions', () => {
   it('should create an action to login', () => {
     const expectedAction = {
       type: types.LOGIN,
-      payload: action_payload
+      payload: payload
     }
-    expect(
-        actions.login(
-            action_payload.user_id, 
-            action_payload.categories, 
-            action_payload.year_view, 
-            action_payload.years
-        )
-    ).toEqual(expectedAction)
+    expect(actions.login(response)).toEqual(expectedAction)
   })
 
   it('should create an action to update user', () => {
     const expectedAction = {
       type: types.UPDATEUSER,
-      payload: action_payload
+      payload: payload
     }
     expect(
-        actions.updateUser(update_payload)).toEqual(expectedAction)
+        actions.updateUser(response)).toEqual(expectedAction)
   })
 
   it('should create an action to logout', () => {

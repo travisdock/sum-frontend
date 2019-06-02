@@ -43,7 +43,7 @@ class Login extends React.Component {
         })
       } else {
         localStorage.setItem('jwt', resp.jwt);
-        this.props.login(resp.id, resp.categories, resp.year_view, resp.years);
+        this.props.login(resp);
       }
     })
   }
