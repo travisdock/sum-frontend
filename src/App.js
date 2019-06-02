@@ -38,7 +38,6 @@ class App extends Component {
             localStorage.clear()
             this.props.logout()
           } else {
-            console.log(resp)
             this.props.login(resp)
           }
         })
