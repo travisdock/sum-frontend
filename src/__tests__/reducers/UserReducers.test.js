@@ -1,4 +1,4 @@
-import reducer from '../../reducers/UsersReducers'
+import reducer from '../../reducers/UserReducers'
 import * as types from '../../constants/ActionTypes'
 
 describe('todos reducer', () => {
