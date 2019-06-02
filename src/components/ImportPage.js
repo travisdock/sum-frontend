@@ -1,7 +1,7 @@
 import React from 'react';
 import { PulseLoader } from 'react-spinners';
 import { connect } from 'react-redux';
-import { updateUser } from '../actions';
+import { updateUser } from '../actions/UserActions';
 class ImportPage extends React.Component {
     constructor() {
         super();

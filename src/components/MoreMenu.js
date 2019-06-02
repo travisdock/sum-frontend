@@ -3,7 +3,7 @@ import Popup from "reactjs-popup";
 import { NavLink } from 'react-router-dom';
 import { withRouter } from 'react-router';
 import { connect } from 'react-redux';
-import { logout } from '../actions/index'
+import { logout } from '../actions/UserActions'
 
 class MoreMenu extends React.Component {
     constructor() {

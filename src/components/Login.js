@@ -3,7 +3,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter, Redirect } from 'react-router';
 
-import { login } from '../actions/index';
+import { login } from '../actions/UserActions';
 
 
 class Login extends React.Component {

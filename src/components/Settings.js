@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { updateUser } from '../actions';
+import { updateUser } from '../actions/UserActions';
 
 // Import modals
 import AreYouSure from './AreYouSure'
