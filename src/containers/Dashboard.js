@@ -20,6 +20,7 @@ class Dashboard extends React.Component {
         <Route path={`${this.props.match.url}/entries`} component={Table} />
         <Route path={`${this.props.match.url}/import`} component={ImportPage} />
         <Route path={`${this.props.match.url}/settings`} component={Settings} />
+        <Route exact path={`${this.props.match.url}`} component={InputForm} />
       </div>
     )
   }
