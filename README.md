@@ -38,6 +38,7 @@ https://sumfinance-b89c6.firebaseapp.com/
 
 ### Functionality
 - [ ] Continue adding test coverage
+- [ ] Change new category flow
 - [ ] Year view does not actually show current year if no entries for current year
 - [ ] Add error for bad backend connection
 - [ ] Add ability to export csv
@@ -50,7 +51,6 @@ https://sumfinance-b89c6.firebaseapp.com/
 - [ ] Color code stats for readability?
 
 ### Misc/Unformed Ideas
-- [ ] Fix coveralls coverage. Pretty sure it is wrong...
 - [ ] Change caching strategy to allow immediate updates?
 - [ ] Change charts to D3?
 - [ ] Test and improve accessibility
@@ -58,4 +58,3 @@ https://sumfinance-b89c6.firebaseapp.com/
 - [ ] Percent of income saved, spent, donated?
 - [ ] Recurring payments
 - [ ] Savings and goals
-- [ ] React Native Version?
