@@ -5,12 +5,11 @@
   "targets": {
     "sumfinance-b89c6": {
       "hosting": {
-        "staging": [
-          "sumfinance-b89c6",
-          "sumfinance-staging"
-        ],
         "production": [
           "sum-finance"
+        ],
+        "staging": [
+          "sumfinance-b89c6"
         ]
       }
     }
