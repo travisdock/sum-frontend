@@ -1,3 +1,5 @@
+import { LOGIN, LOGOUT, UPDATEUSER } from '../constants/ActionTypes';
+
 export default function reducer(
   state = {
     current_user: ''
@@ -5,15 +7,15 @@ export default function reducer(
   action
 ) {
   switch (action.type) {
-    case "LOGIN":
+    case LOGIN:
       return {
         ...state, current_user: action.payload, load: false
       }
-    case "LOGOUT":
+    case LOGOUT:
       return {
         ...state, current_user: '', load: true
       }
-    case "UPDATEUSER":
+    case UPDATEUSER:
       return {
         ...state, current_user: action.payload
       }

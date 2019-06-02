@@ -1,5 +1,3 @@
-// import React from 'react';
-
 import * as actions from '../../actions/UserActions'
 import * as types from '../../constants/ActionTypes'
 
