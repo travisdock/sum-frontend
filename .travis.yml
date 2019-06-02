@@ -10,8 +10,8 @@ before_script:
 script:
   - npm run test:ci
   - npm run test:coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage
-  - if [ "$TRAVIS_BRANCH" == "production" ]; then npm run-script build; fi
-  - if [ "$TRAVIS_BRANCH" == "staging" ]; then npm run-script build-staging; fi
+  - if [ "$TRAVIS_BRANCH" == "production" ]; then npm run build; fi
+  - if [ "$TRAVIS_BRANCH" == "staging" ]; then npm run build-staging; fi
 after_success:
   - if [ "$TRAVIS_BRANCH" == "production" ]; then firebase deploy --only hosting:production --token=${FIREBASE_API_TOKEN}; fi
   - if [ "$TRAVIS_BRANCH" == "staging" ]; then firebase deploy --only hosting:staging --token=${FIREBASE_API_TOKEN}; fi
