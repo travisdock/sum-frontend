@@ -1,8 +1,6 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { withRouter, Redirect } from 'react-router';
 
-export class Signup extends React.Component {
+export  default class Signup extends React.Component {
   constructor() {
     super()
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -50,7 +48,6 @@ export class Signup extends React.Component {
   render() {
     return (
       <div>
-        {this.props.current_user.user_id ? <Redirect to='/dashboard' /> : null}
         <form onSubmit={this.handleSubmit}>
           <h1 className="logo">Sum.</h1>
           <div className="ui field">
@@ -87,9 +84,3 @@ export class Signup extends React.Component {
     )
   }
 }
-
-const mapStateToProps = state => ({
-  current_user: state.current_user
-});
-
-export default connect(mapStateToProps)(withRouter(Signup));

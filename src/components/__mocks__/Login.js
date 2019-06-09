@@ -1,12 +1,6 @@
 import React from 'react';
 
-import { connect } from 'react-redux';
-import { withRouter, Redirect } from 'react-router';
-
-import { login } from '../actions/UserActions';
-
-
-export class Login extends React.Component {
+export default class Login extends React.Component {
   state = {
     username: '',
     password: ''
@@ -51,8 +45,6 @@ export class Login extends React.Component {
   render() {
     return (
       <div>
-        {this.props.current_user.user_id ? <Redirect to='/dashboard/form' /> : null}
-
         <form onSubmit={this.handleSubmit}>
           <h1 className="logo">Sum.</h1>
           <div className="ui field">
@@ -82,8 +74,3 @@ export class Login extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({
-  current_user: state.current_user
-});
-
-export default connect(mapStateToProps, { login })(withRouter(Login));
