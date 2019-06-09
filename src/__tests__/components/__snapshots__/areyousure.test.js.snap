@@ -12,7 +12,7 @@ Array [
     }
   />,
   <div
-    className="popup-overlay"
+    className="popup-overlay "
     onClick={[Function]}
     style={
       Object {
