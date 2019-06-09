@@ -10,7 +10,7 @@ import Table from '../components/Table';
 import ImportPage from '../components/ImportPage';
 import Settings from '../components/Settings';
 
-class Dashboard extends React.Component {
+export class Dashboard extends React.Component {
   render() {
     return (
       <div className="content">
