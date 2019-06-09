@@ -6,7 +6,7 @@ import { withRouter, Redirect } from 'react-router';
 import { login } from '../actions/UserActions';
 
 
-class Login extends React.Component {
+export class Login extends React.Component {
   state = {
     username: '',
     password: ''
