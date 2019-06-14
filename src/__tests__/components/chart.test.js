@@ -1,16 +1,22 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
+import { mount } from 'enzyme';
 
 import { nakedChart as Chart } from '../../components/Chart';
 
 // Mock fetches
 function mockFetch(data) {
-    return jest.fn().mockImplementation(() =>
+    return jest.fn(() =>
       Promise.resolve({
         ok: true,
         json: () => data
       })
     );
+}
+
+// Mock localStorage
+const mockLocalStorage = {
+    getItem: '1234'
 }
 
 // Mock props
@@ -43,7 +49,7 @@ const newState = {
     }
 }
 
-it('renders a <Chart/> snapshot', async () => {
+it('renders a <Chart/> snapshot', () => {
     expect.assertions(1);
     Chart.prototype.componentDidMount = jest.fn();
 
@@ -53,3 +59,29 @@ it('renders a <Chart/> snapshot', async () => {
     let tree = component.toJSON();
     expect(tree).toMatchSnapshot();
 });
+
+it('renders an error, snapshot', () => {
+    expect.assertions(1);
+    Chart.prototype.componentDidMount = jest.fn();
+
+    const component = renderer.create(<Chart {...props} />);
+    component.root.instance.setState(response)
+
+    let tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+})
+
+it('changes state on select change', () => {
+    expect.assertions(1);
+    Chart.prototype.componentDidMount = jest.fn();
+    
+    const component = renderer.create(<Chart {...props} />);
+    const spy = jest.spyOn(component.root.instance, "selectChangePieChart");
+
+    component.root.instance.setState(newState)
+    const select = component.root.find((el) => el.type == 'select' )
+    select.props.onChange({target: { value: '2019' } });
+    
+    expect(spy).toHaveBeenCalled();
+})
+    
