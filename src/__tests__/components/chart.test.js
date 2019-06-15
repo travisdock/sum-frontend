@@ -17,6 +17,7 @@ function mockFetch(data) {
 // Mock props
 const props = {current_user: {user_id: 1}};
 const response = {error: "error"}
+const loading = {load: false}
 const newState = {
     charts: {"2019": ["an_expense", "123.0"], "December": ["an_expense", "123.0"]},
     currentChart: ["an_expense", "123.0"],
@@ -60,6 +61,13 @@ describe('renders snapshots', () => {
 
         const component = renderer.create(<Chart {...props} />);
         component.root.instance.setState(response)
+
+        let tree = component.toJSON();
+        expect(tree).toMatchSnapshot();
+    })
+    test('renders loader', () => {
+        const component = renderer.create(<Chart {...props} />);
+        component.root.instance.setState(loading)
 
         let tree = component.toJSON();
         expect(tree).toMatchSnapshot();
