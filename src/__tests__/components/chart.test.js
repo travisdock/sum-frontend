@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import { mount } from 'enzyme';
+import { shallow } from 'enzyme';
 
 import { Chart } from '../../components/Chart';
 
@@ -86,7 +86,7 @@ describe('methods fire appropriately', () => {
         const spy = jest.spyOn(Chart.prototype, "renderPieChart");
         window.fetch = mockFetch(newState)
 
-        const component = mount(<Chart {...props} />);
+        const component = shallow(<Chart {...props} />);
 
         setImmediate(() => {
             try {
