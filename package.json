@@ -41,6 +41,7 @@
     "babel-core": "^7.0.0-bridge.0",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
+    "enzyme-to-json": "^3.3.5",
     "react-test-renderer": "^16.8.6"
   },
   "browserslist": [
@@ -51,5 +52,8 @@
   ],
   "browserslistComment": [
     "this is used when starting development in chrome"
-  ]
+  ],
+  "jest": {
+    "snapshotSerializers": ["enzyme-to-json/serializer"]
+  }
 }

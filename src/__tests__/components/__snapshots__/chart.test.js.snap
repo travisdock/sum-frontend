@@ -63,3 +63,13 @@ exports[`renders a <Chart/> snapshot 1`] = `
   </div>
 </div>
 `;
+
+exports[`renders an error, snapshot 1`] = `
+<div
+  className="content"
+>
+  <div>
+    error
+  </div>
+</div>
+`;
