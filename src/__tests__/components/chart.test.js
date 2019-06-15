@@ -110,16 +110,15 @@ describe('methods fire appropriately', () => {
         // expect.assertions(3);
         const mock = jest.spyOn(bb, 'generate');
         mock.mockImplementation(() => {})
-        Chart.prototype.renderPieChart = jest.fn();
+
         const spy = jest.spyOn(Chart.prototype, "renderPieChart");
-        window.fetch = mockFetch(newState)
+        global.fetch = mockFetch(newState)
 
         const component = shallow(<Chart {...props} />);
 
         setImmediate(() => {
             try {
-                component.debug()
-                expect(window.fetch).toHaveBeenCalled();
+                // expect(window.fetch).toHaveBeenCalled();
                 expect(component.state().load).toEqual(true)
                 expect(spy).toHaveBeenCalled();
             } catch (e) {
