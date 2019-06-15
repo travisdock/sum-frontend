@@ -5,11 +5,14 @@ import { mount } from 'enzyme';
 import { Chart } from '../../components/Chart';
 
 // Mock fetch
-const mockResponse = (status, response) => {
-    return new Response(response, {
-        status: status
-    });
-};
+function mockFetch(data) {
+    return jest.fn().mockImplementation(() =>
+      Promise.resolve({
+        ok: true,
+        json: () => data
+      })
+    );
+  }
 
 // Mock props
 const props = {current_user: {user_id: 1}};
@@ -79,22 +82,15 @@ describe('methods fire appropriately', () => {
 
     test('should call renderPieChart after componentDidMount', async (done) => {
         expect.assertions(3);
-        const fakePromise = Promise.resolve(mockResponse(
-            200,
-            JSON.stringify(newState)
-        ));
         Chart.prototype.renderPieChart = jest.fn();
         const spy = jest.spyOn(Chart.prototype, "renderPieChart");
-        global.fetch = jest.fn().mockImplementationOnce(() => {
-            return fakePromise
-        });
+        window.fetch = mockFetch(newState)
 
         const component = mount(<Chart {...props} />);
-        await Promise.all([fakePromise]);
 
         setImmediate(() => {
             try {
-                expect(global.fetch).toHaveBeenCalled();
+                expect(window.fetch).toHaveBeenCalled();
                 expect(component.state().load).toEqual(true)
                 expect(spy).toHaveBeenCalled();
             } catch (e) {
@@ -104,7 +100,3 @@ describe('methods fire appropriately', () => {
         });
     });
 });
-
-// mock fetch for async from:
-// https://levelup.gitconnected.com/testing-asynchronous-and-synchronous-react-components-with-jest-and-enzyme-a979ab425aa1
-    
