@@ -89,7 +89,7 @@ describe('methods fire appropriately', () => {
     });
 
     test('should call renderPieChart after componentDidMount', async (done) => {
-        expect.assertions(3);
+        // expect.assertions(3);
         Chart.prototype.renderPieChart = jest.fn();
         const spy = jest.spyOn(Chart.prototype, "renderPieChart");
         window.fetch = mockFetch(newState)
@@ -98,6 +98,7 @@ describe('methods fire appropriately', () => {
 
         setImmediate(() => {
             try {
+                component.debug()
                 expect(window.fetch).toHaveBeenCalled();
                 expect(component.state().load).toEqual(true)
                 expect(spy).toHaveBeenCalled();
