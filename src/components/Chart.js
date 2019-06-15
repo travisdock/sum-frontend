@@ -4,7 +4,7 @@ import { PulseLoader } from 'react-spinners';
 import { connect } from 'react-redux';
 import { formatMoney } from './helpers/formatMoney';
 
-class Chart extends React.Component {
+export class Chart extends React.Component {
 
   state = {
     charts: {},
@@ -146,9 +146,6 @@ const mapStateToProps = state => ({
 });
 
 export default connect(mapStateToProps)(Chart);
-export const nakedChart = Chart;
-
-
 
 // This is the profit loss chart. I got rid of it because it was ugly but I may want to remake it one day so here is the code.
 // renderPLChart() {
