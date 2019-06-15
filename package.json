@@ -54,6 +54,8 @@
     "this is used when starting development in chrome"
   ],
   "jest": {
-    "snapshotSerializers": ["enzyme-to-json/serializer"]
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ]
   }
 }
