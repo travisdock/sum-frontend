@@ -2,7 +2,22 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import { shallow } from 'enzyme';
 
+import { PulseLoader } from 'react-spinners';
+
 import { Chart } from '../../components/Chart';
+import { bb } from 'billboard.js';
+// import blah from '../../../node_modules/billboard.js/dist/billboard'
+
+// import { bb } from '../../../__mocks__/billboard'
+// jest.mock('react-spinners');
+// jest.genMockFromModule('react-spinners');
+// jest.mock('billboard.js');
+// jest.mock('billboard.js', () => {
+//     const bb = true;
+//   });
+// billboard.bb = jest.fn();
+// const bb = jest.genMockFromModule('../../../node_modules/billboard.js/dist/billboard');
+// bb.bb = jest.fn(() => 'not wizard');
 
 // Mock fetch
 function mockFetch(data) {
@@ -66,6 +81,9 @@ describe('renders snapshots', () => {
         expect(tree).toMatchSnapshot();
     })
     test('renders loader', () => {
+        // const mock = jest.spyOn(PulseLoader.prototype, 'render');
+        // mock.mockImplementation(() => (<div>hello</div>))
+
         const component = renderer.create(<Chart {...props} />);
         component.root.instance.setState(loading)
 
@@ -88,8 +106,10 @@ describe('methods fire appropriately', () => {
         expect(spy).toHaveBeenCalled();
     });
 
-    xtest('should call renderPieChart after componentDidMount', async (done) => {
+    test('should call renderPieChart after componentDidMount', async (done) => {
         // expect.assertions(3);
+        const mock = jest.spyOn(bb, 'generate');
+        mock.mockImplementation(() => {})
         Chart.prototype.renderPieChart = jest.fn();
         const spy = jest.spyOn(Chart.prototype, "renderPieChart");
         window.fetch = mockFetch(newState)
