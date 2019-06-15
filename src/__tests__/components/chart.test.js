@@ -104,4 +104,7 @@ describe('methods fire appropriately', () => {
         });
     });
 });
+
+// mock fetch for async from:
+// https://levelup.gitconnected.com/testing-asynchronous-and-synchronous-react-components-with-jest-and-enzyme-a979ab425aa1
     
