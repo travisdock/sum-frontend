@@ -31,7 +31,7 @@ function mockFetch(data) {
 
 // Mock props
 const props = {current_user: {user_id: 1}};
-const response = {error: "error"}
+const errorResponse = {error: "There was an error"}
 const loading = {load: false}
 const newState = {
     charts: {"2019": ["an_expense", "123.0"], "December": ["an_expense", "123.0"]},
@@ -79,7 +79,7 @@ describe('renders snapshots', () => {
         expect.assertions(1);
 
         const component = renderer.create(<Chart {...props} />);
-        component.root.instance.setState(response)
+        component.root.instance.setState(errorResponse)
 
         let tree = component.toJSON();
         expect(tree).toMatchSnapshot();
@@ -113,7 +113,7 @@ describe('methods fire appropriately', () => {
         expect(spy).toHaveBeenCalled();
     });
 
-    test('componentDidMount updates state correctly', async () => {
+    test('componentDidMount updates success state correctly', async () => {
         const pieChart = jest.spyOn(Chart.prototype, "renderPieChart");
         pieChart.mockImplementation(() => {})
 
@@ -124,6 +124,16 @@ describe('methods fire appropriately', () => {
 
         expect(component.state('load')).toEqual(true)
         expect(pieChart).toHaveBeenCalled();
+        // https://medium.com/@wvm/asynchronous-api-testing-in-react-cf3b180bc3d
+    });
+    
+    test('componentDidMount updates error state correctly', async () => {
+        window.fetch = mockFetch(errorResponse)
+
+        const component = await shallow(<Chart {...props} />);
+        await component.update();
+
+        expect(component.state('error')).toEqual('There was an error')
         // https://medium.com/@wvm/asynchronous-api-testing-in-react-cf3b180bc3d
     });
 });
