@@ -121,7 +121,9 @@ describe('methods fire appropriately', () => {
 
         const component = await shallow(<Chart {...props} />);
         await component.update();
+
         expect(component.state('load')).toEqual(true)
         expect(pieChart).toHaveBeenCalled();
+        // https://medium.com/@wvm/asynchronous-api-testing-in-react-cf3b180bc3d
     });
 });
