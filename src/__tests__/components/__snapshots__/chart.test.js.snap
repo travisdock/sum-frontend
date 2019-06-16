@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders a <Chart/> snapshot 1`] = `
+exports[`renders snapshots renders a <Chart/> snapshot 1`] = `
 <div
   className="content"
 >
@@ -64,12 +64,32 @@ exports[`renders a <Chart/> snapshot 1`] = `
 </div>
 `;
 
-exports[`renders an error, snapshot 1`] = `
+exports[`renders snapshots renders an error, snapshot 1`] = `
 <div
   className="content"
 >
   <div>
     error
+  </div>
+</div>
+`;
+
+exports[`renders snapshots renders loader 1`] = `
+<div
+  className="content"
+>
+  <div
+    className="css-0"
+  >
+    <div
+      className="css-zdf5pk-style"
+    />
+    <div
+      className="css-mym47v-style"
+    />
+    <div
+      className="css-1moxn8g-style"
+    />
   </div>
 </div>
 `;
