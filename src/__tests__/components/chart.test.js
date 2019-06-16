@@ -125,13 +125,12 @@ describe('methods fire appropriately', () => {
         spy.mockImplementation(() => {})
         window.fetch = mockFetch(newState)
 
-        const component = renderer.create(<Chart {...props} />);
+        const component = shallow(<Chart {...props} />);
 
         await window.fetch
 
         setImmediate(() => {
             try {
-                // expect(chart).toHaveBeenCalled();
                 expect(loader).toHaveBeenCalled();
                 expect(spy).toHaveBeenCalled();
                 expect(component.root.instance.state.load).toEqual(true)
