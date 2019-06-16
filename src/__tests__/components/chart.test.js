@@ -113,7 +113,7 @@ describe('methods fire appropriately', () => {
         expect(spy).toHaveBeenCalled();
     });
 
-    test('should call renderPieChart after componentDidMount', async (done) => {
+    xtest('should call renderPieChart after componentDidMount', async (done) => {
         // expect.assertions(3);
         // const chart = jest.spyOn(bb, 'generate');
         // chart.mockImplementation(() => {})
