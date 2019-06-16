@@ -21,7 +21,7 @@ import { bb } from 'billboard.js';
 
 // Mock fetch
 function mockFetch(data) {
-    return jest.fn().mockImplementation(() =>
+    return jest.fn(() =>
       Promise.resolve({
         ok: true,
         json: () => data
@@ -123,9 +123,11 @@ describe('methods fire appropriately', () => {
 
         const spy = jest.spyOn(Chart.prototype, "renderPieChart");
         spy.mockImplementation(() => {})
-        global.fetch = mockFetch(newState)
+        window.fetch = mockFetch(newState)
 
         const component = renderer.create(<Chart {...props} />);
+
+        await window.fetch
 
         setImmediate(() => {
             try {
