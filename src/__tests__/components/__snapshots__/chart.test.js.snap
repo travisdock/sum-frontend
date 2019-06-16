@@ -69,7 +69,7 @@ exports[`renders snapshots renders an error, snapshot 1`] = `
   className="content"
 >
   <div>
-    error
+    There was an error
   </div>
 </div>
 `;
