@@ -1,14 +1,14 @@
 import React from 'react';
 
 import { connect } from 'react-redux';
-import {Redirect } from 'react-router';
+import { Redirect } from 'react-router';
 import { Route } from 'react-router';
 
 import Login from '../components/Login';
 import Signup from '../components/Signup';
 import About from '../components/About';
 
-class Home extends React.Component {
+export class Home extends React.Component {
   render() {
     return (
       <div className="content">

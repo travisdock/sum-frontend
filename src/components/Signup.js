@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter, Redirect } from 'react-router';
 
-class Signup extends React.Component {
+export class Signup extends React.Component {
   constructor() {
     super()
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -93,5 +93,3 @@ const mapStateToProps = state => ({
 });
 
 export default connect(mapStateToProps)(withRouter(Signup));
-export const noRouterSignUp = connect(mapStateToProps)(Signup);
-export const nakedSignup = Signup;

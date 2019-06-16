@@ -1,21 +1,38 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
+import { shallow } from 'enzyme';
 
-import { nakedChart as Chart } from '../../components/Chart';
+import { PulseLoader } from 'react-spinners';
 
-// Mock fetches
+import { Chart } from '../../components/Chart';
+import { bb } from 'billboard.js';
+// import blah from '../../../node_modules/billboard.js/dist/billboard'
+
+// import { bb } from '../../../__mocks__/billboard'
+// jest.mock('react-spinners');
+// jest.genMockFromModule('react-spinners');
+// jest.mock('billboard.js');
+// jest.mock('billboard.js', () => {
+//     const bb = true;
+//   });
+// billboard.bb = jest.fn();
+// const bb = jest.genMockFromModule('../../../node_modules/billboard.js/dist/billboard');
+// bb.bb = jest.fn(() => 'not wizard');
+
+// Mock fetch
 function mockFetch(data) {
-    return jest.fn().mockImplementation(() =>
+    return jest.fn(() =>
       Promise.resolve({
         ok: true,
         json: () => data
       })
     );
-}
+  }
 
 // Mock props
 const props = {current_user: {user_id: 1}};
-const response = {error: "error"}
+const errorResponse = {error: "There was an error"}
+const loading = {load: false}
 const newState = {
     charts: {"2019": ["an_expense", "123.0"], "December": ["an_expense", "123.0"]},
     currentChart: ["an_expense", "123.0"],
@@ -43,13 +60,80 @@ const newState = {
     }
 }
 
-it('renders a <Chart/> snapshot', async () => {
-    expect.assertions(1);
-    Chart.prototype.componentDidMount = jest.fn();
+describe('renders snapshots', () => {
+    afterEach(() => {
+        jest.clearAllMocks();
+      });
 
-    const component = renderer.create(<Chart {...props} />);
-    component.root.instance.setState(newState)
+    test('renders a <Chart/> snapshot', () => {
+        expect.assertions(1);
 
-    let tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+        const component = renderer.create(<Chart {...props} />);
+        component.root.instance.setState(newState)
+
+        let tree = component.toJSON();
+        expect(tree).toMatchSnapshot();
+    });
+
+    test('renders an error, snapshot', () => {
+        expect.assertions(1);
+
+        const component = renderer.create(<Chart {...props} />);
+        component.root.instance.setState(errorResponse)
+
+        let tree = component.toJSON();
+        expect(tree).toMatchSnapshot();
+    })
+    test('renders loader', () => {
+        const mock = jest.spyOn(PulseLoader.prototype, 'render');
+
+        const component = renderer.create(<Chart {...props} />);
+        component.root.instance.setState(loading)
+
+        let tree = component.toJSON();
+        expect(tree).toMatchSnapshot();
+    })
+});
+
+describe('methods fire appropriately', () => {
+    afterEach(() => {
+        jest.clearAllMocks();
+      });
+
+    test('changes state on select change', () => {
+        expect.assertions(1);
+        
+        const component = renderer.create(<Chart {...props} />);
+        const spy = jest.spyOn(component.root.instance, "selectChangePieChart");
+
+        component.root.instance.setState(newState)
+        const select = component.root.find((el) => el.type == 'select' )
+        select.props.onChange({target: { value: '2019' } });
+        
+        expect(spy).toHaveBeenCalled();
+    });
+
+    test('componentDidMount updates success state correctly', async () => {
+        const pieChart = jest.spyOn(Chart.prototype, "renderPieChart");
+        pieChart.mockImplementation(() => {})
+
+        window.fetch = mockFetch(newState)
+
+        const component = await shallow(<Chart {...props} />);
+        await component.update();
+
+        expect(component.state('load')).toEqual(true)
+        expect(pieChart).toHaveBeenCalled();
+        // https://medium.com/@wvm/asynchronous-api-testing-in-react-cf3b180bc3d
+    });
+    
+    test('componentDidMount updates error state correctly', async () => {
+        window.fetch = mockFetch(errorResponse)
+
+        const component = await shallow(<Chart {...props} />);
+        await component.update();
+
+        expect(component.state('error')).toEqual('There was an error')
+        // https://medium.com/@wvm/asynchronous-api-testing-in-react-cf3b180bc3d
+    });
 });

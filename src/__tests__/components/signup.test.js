@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import { shallow } from 'enzyme';
-import { nakedSignup as Signup } from '../../components/Signup';
+import { Signup } from '../../components/Signup';
 
 
 const userProps = {current_user: {user_id: 1}, history: {push: jest.fn()}};
@@ -23,7 +23,7 @@ it('renders a <SignUp /> snapshot', () => {
     expect(tree).toMatchSnapshot();
 });
 
-describe('methods fire appropriately', () => {  
+describe('methods fire appropriately', () => {
     test('handleSubmit is fired on button click', async (done) => {
         expect.assertions(1);
 
