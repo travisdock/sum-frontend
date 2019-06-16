@@ -81,8 +81,7 @@ describe('renders snapshots', () => {
         expect(tree).toMatchSnapshot();
     })
     test('renders loader', () => {
-        // const mock = jest.spyOn(PulseLoader.prototype, 'render');
-        // mock.mockImplementation(() => (<div>hello</div>))
+        const mock = jest.spyOn(PulseLoader.prototype, 'render');
 
         const component = renderer.create(<Chart {...props} />);
         component.root.instance.setState(loading)
@@ -108,21 +107,23 @@ describe('methods fire appropriately', () => {
 
     test('should call renderPieChart after componentDidMount', async (done) => {
         // expect.assertions(3);
-        const mock = jest.spyOn(bb, 'generate');
-        mock.mockImplementation(() => (<div>hello</div>))
+        const chart = jest.spyOn(bb, 'generate');
+        chart.mockImplementation(() => {})
+
+        const loader = jest.spyOn(PulseLoader.prototype, 'render');
+        loader.mockImplementation(() => (<div>hello</div>))
 
         const spy = jest.spyOn(Chart.prototype, "renderPieChart");
         global.fetch = mockFetch(newState)
 
-        const component = shallow(<Chart {...props} />);
+        const component = renderer.create(<Chart {...props} />);
 
         setImmediate(() => {
             try {
-                component.update();
-                console.log(component.debug());
-                expect(mock).toHaveBeenCalled();
-                expect(component.state().load).toEqual(true)
+                expect(chart).toHaveBeenCalled();
+                expect(loader).toHaveBeenCalled();
                 expect(spy).toHaveBeenCalled();
+                expect(component.root.instance.state.load).toEqual(true)
             } catch (e) {
                 done.fail(e);
             }
