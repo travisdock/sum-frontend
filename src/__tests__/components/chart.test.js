@@ -114,24 +114,15 @@ describe('methods fire appropriately', () => {
     });
 
     xtest('should call renderPieChart after componentDidMount', async (done) => {
-        // expect.assertions(3);
-        // const chart = jest.spyOn(bb, 'generate');
-        // chart.mockImplementation(() => {})
-
-        const loader = jest.spyOn(PulseLoader.prototype, 'render');
-        loader.mockImplementation(() => {})
-
         const spy = jest.spyOn(Chart.prototype, "renderPieChart");
         spy.mockImplementation(() => {})
+
         window.fetch = mockFetch(newState)
 
         const component = shallow(<Chart {...props} />);
 
-        await window.fetch
-
         setImmediate(() => {
             try {
-                expect(loader).toHaveBeenCalled();
                 expect(spy).toHaveBeenCalled();
                 expect(component.root.instance.state.load).toEqual(true)
             } catch (e) {
