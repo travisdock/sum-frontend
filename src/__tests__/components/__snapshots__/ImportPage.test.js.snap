@@ -1,0 +1,62 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders snapshots renders <ImportPage/> 1`] = `
+<div
+  className="upper_third"
+>
+  <div
+    className="import_container"
+  >
+    <h2>
+      Upload CSV
+    </h2>
+    <p
+      align="center"
+    >
+      You can upload csv files of previous financial information as long as it has Date, Category, Amount, and Note headers(case sensitive). It works best if the date category is formatted as a date in excel or google sheets before it is exported to csv. Any categories that do not already exist in your account will be created as a regular expense category.
+    </p>
+    <div
+      className="img_container"
+    >
+      <img
+        alt="example format screenshot"
+        src="/import_example.png"
+      />
+    </div>
+    <form
+      encType="multipart/form-data"
+      onSubmit={[Function]}
+    >
+      <input
+        id="fileupload"
+        type="file"
+      />
+      <input
+        id="submit"
+        type="submit"
+        value="submit"
+      />
+    </form>
+  </div>
+</div>
+`;
+
+exports[`renders snapshots renders loader 1`] = `
+<div
+  className="upper_third"
+>
+  <div
+    className="css-0"
+  >
+    <div
+      className="css-zdf5pk-style"
+    />
+    <div
+      className="css-mym47v-style"
+    />
+    <div
+      className="css-1moxn8g-style"
+    />
+  </div>
+</div>
+`;
