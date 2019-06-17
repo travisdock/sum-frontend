@@ -19,6 +19,10 @@ const successResponse = {
     user: "this is a user"
 }
 
+const errorResponse = {
+    message: "this is an error message"
+}
+
 // Mock props
 const props = {
     current_user: {user_id: 1},
@@ -45,7 +49,7 @@ describe('renders snapshots', () => {
 describe('methods fire appropriately', () => {
     afterEach(() => {
         jest.clearAllMocks();
-      });
+    });
 
     test('submits file on button click', async () => {
         expect.assertions(6);
@@ -73,6 +77,30 @@ describe('methods fire appropriately', () => {
         expect(window.alert).toHaveBeenCalledWith('this is a message');
         expect(component.state().loading).toEqual(false);
         expect(props.updateUser).toHaveBeenCalled();
+        // https://medium.com/@wvm/asynchronous-api-testing-in-react-cf3b180bc3d
+    });
+    test('submits file on button click', async () => {
+        expect.assertions(2);
+
+        const handleSubmit = jest.spyOn(ImportPage.prototype, "handleSubmit");
+        window.fetch = mockFetch(errorResponse);
+        window.alert = jest.fn()
+        
+        const component = await shallow(<ImportPage {...props} />);
+
+        const form = component.find('form')
+        await form.simulate('submit', {
+            preventDefault: () => {},
+            target: {
+               0: {
+                    files: ['dummy']
+               }
+            }
+        });
+        
+        expect(handleSubmit).toHaveBeenCalled();
+        await component.update();
+        expect(props.updateUser).not.toHaveBeenCalled();
         // https://medium.com/@wvm/asynchronous-api-testing-in-react-cf3b180bc3d
     });
 });
