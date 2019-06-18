@@ -1,7 +1,5 @@
 import React from 'react';
-
 import { connect } from 'react-redux';
-
 import { updateUser } from '../actions/UserActions';
 import {
   handleChange, handleSubmit,
@@ -9,7 +7,7 @@ import {
   toggleUntracked, evaluateAmount
 } from './helpers/inputFormHelpers'
 
-class InputForm extends React.Component {
+export class InputForm extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
