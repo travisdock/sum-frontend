@@ -17,12 +17,23 @@ const props = {
                 name: "categoryTwo"
             }
         ]
-    },
+    }
 };
+const noCategoriesUserProps = {
+    current_user: {
+        user_id: 1
+    }
+}
 
 describe('snapshots', () => {
     it('renders an <InputForm /> with select category snapshot', () => {
         const component = renderer.create(<InputForm {...props} />);
+        let tree = component.toJSON();
+        expect(tree).toMatchSnapshot();
+    });
+
+    it('renders an <InputForm /> with no user categories', () => {
+        const component = renderer.create(<InputForm {...noCategoriesUserProps} />);
         let tree = component.toJSON();
         expect(tree).toMatchSnapshot();
     });

@@ -84,6 +84,70 @@ exports[`snapshots renders an <InputForm /> with new category snapshot 1`] = `
 </div>
 `;
 
+exports[`snapshots renders an <InputForm /> with no user categories 1`] = `
+<div
+  className="input_form"
+>
+  <form
+    onSubmit={[Function]}
+  >
+    <label>
+      <input
+        checked={false}
+        name="newcategory"
+        onChange={[Function]}
+        type="checkbox"
+      />
+      New Category?
+    </label>
+    <div
+      className="ui field"
+    >
+      <select
+        name="category_name"
+        onChange={[Function]}
+        value=""
+      >
+        <option
+          disabled={true}
+          value=""
+        >
+          Select Category
+        </option>
+      </select>
+    </div>
+    <input
+      name="date"
+      onChange={[Function]}
+      type="date"
+      value="2019-06-18"
+    />
+    <input
+      name="amount"
+      onBlur={[Function]}
+      onChange={[Function]}
+      placeholder="0.00"
+      type="text"
+      value=""
+    />
+    <textarea
+      cols="55"
+      name="notes"
+      onChange={[Function]}
+      placeholder="Entry details..."
+      rows="5"
+      value=""
+    />
+    <button
+      className="button"
+      type="submit"
+    >
+      Submit
+    </button>
+  </form>
+</div>
+`;
+
 exports[`snapshots renders an <InputForm /> with select category snapshot 1`] = `
 <div
   className="input_form"
