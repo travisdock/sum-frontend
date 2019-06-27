@@ -56,7 +56,7 @@ exports[`snapshots renders an <InputForm /> with new category snapshot 1`] = `
       name="date"
       onChange={[Function]}
       type="date"
-      value="2019-06-18"
+      value="1993-01-01"
     />
     <input
       name="amount"
@@ -120,7 +120,7 @@ exports[`snapshots renders an <InputForm /> with no user categories 1`] = `
       name="date"
       onChange={[Function]}
       type="date"
-      value="2019-06-18"
+      value="1993-01-01"
     />
     <input
       name="amount"
@@ -194,7 +194,7 @@ exports[`snapshots renders an <InputForm /> with select category snapshot 1`] = 
       name="date"
       onChange={[Function]}
       type="date"
-      value="2019-06-18"
+      value="1993-01-01"
     />
     <input
       name="amount"
