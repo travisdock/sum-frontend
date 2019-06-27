@@ -26,6 +26,15 @@ const noCategoriesUserProps = {
 }
 
 describe('snapshots', () => {
+    beforeEach(() => {
+        let date = new Date('1993')
+        global.Date = jest.fn(() => date)
+    })
+    
+    afterAll(() => {
+        global.Date = Date
+    })
+
     it('renders an <InputForm /> with select category snapshot', () => {
         const component = renderer.create(<InputForm {...props} />);
         let tree = component.toJSON();
