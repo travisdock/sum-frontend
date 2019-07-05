@@ -33,6 +33,19 @@ describe('renders snapshots', () => {
 });
 
 describe('correct functions fire on button clicks', () => {
+    test('openModal fires on Import CSV button click', () => {
+        const component = mount(
+            <MemoryRouter>
+                <MoreMenu />
+            </MemoryRouter>
+        );
+
+        
+        component.find('button.more').at(0).simulate('click');
+        const menu = component.find('MoreMenu').at(0)
+        expect(menu.state()).toEqual({open:true})
+    });
+
     test('closeModal fires on Import CSV button click', () => {
         const component = mount(
             <MemoryRouter>
