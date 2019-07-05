@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import MoreMenu from './MoreMenu';
 
-class Navbar extends React.Component {
+export class Navbar extends React.Component {
   
   render() {
     return (

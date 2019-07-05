@@ -1,0 +1,66 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders snapshots renders startpage <Navbar /> 1`] = `
+<div
+  className="navbar"
+>
+  <div
+    className="navlinks"
+  >
+    <a
+      aria-current={null}
+      href="/login"
+      onClick={[Function]}
+    >
+      Login
+    </a>
+    <a
+      aria-current={null}
+      href="/about"
+      onClick={[Function]}
+    >
+      About
+    </a>
+    <a
+      aria-current={null}
+      href="/signup"
+      onClick={[Function]}
+    >
+      Signup
+    </a>
+  </div>
+</div>
+`;
+
+exports[`renders snapshots renders user <Navbar /> 1`] = `
+<div
+  className="navbar"
+>
+  <div
+    className="navlinks"
+  >
+    <a
+      aria-current={null}
+      href="/dashboard/form"
+      onClick={[Function]}
+    >
+      Input
+    </a>
+    <a
+      aria-current={null}
+      href="/dashboard/charts"
+      onClick={[Function]}
+    >
+      Charts
+    </a>
+    <a
+      aria-current={null}
+      href="/dashboard/entries"
+      onClick={[Function]}
+    >
+      Entries
+    </a>
+    MoreMenu
+  </div>
+</div>
+`;
