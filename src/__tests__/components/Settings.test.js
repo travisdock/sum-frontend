@@ -26,10 +26,28 @@ const props = {
     }
 };
 
+const noInfoProps = {
+    current_user: {
+        user_id: 1,
+        year_view: '2020',
+        years: [],
+        categories: []
+    }
+};
+
 describe('renders snapshots', () => {
     test('renders user <Settings />', () => {
         const component = renderer.create(
             <Settings {...props} />
+        );
+
+        let tree = component.toJSON();
+        expect(tree).toMatchSnapshot();
+    });
+
+    test('renders user <Settings /> without categories', () => {
+        const component = renderer.create(
+            <Settings {...noInfoProps} />
         );
 
         let tree = component.toJSON();
