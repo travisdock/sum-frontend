@@ -1,0 +1,119 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders snapshots renders user <Settings /> 1`] = `
+<div
+  className="settings"
+>
+  <h2
+    className="settings"
+  >
+    Change year view:
+  </h2>
+  <form
+    className="settings"
+  >
+    <select
+      defaultValue="2020"
+      name="year_view"
+    >
+      <option
+        value="2018"
+      >
+        2018
+      </option>
+      <option
+        value="2019"
+      >
+        2019
+      </option>
+      <option
+        value="2020"
+      >
+        2020
+      </option>
+    </select>
+    <button
+      className="year_view"
+      onClick={[Function]}
+    >
+      Submit
+    </button>
+  </form>
+  <h2
+    className="settings"
+  >
+    Delete a Category:
+  </h2>
+  <form
+    className="settings"
+  >
+    <select
+      defaultValue=""
+      name="delete_category"
+    >
+      <option
+        disabled={true}
+        value=""
+      >
+        Select Category
+      </option>
+      <option
+        value="categoryOne"
+      >
+        categoryOne
+      </option>
+      <option
+        value="categoryTwo"
+      >
+        categoryTwo
+      </option>
+    </select>
+    <button
+      className="delete_category"
+      onClick={[Function]}
+      type="button"
+    >
+      Delete
+    </button>
+  </form>
+  <h2
+    className="settings"
+  >
+    Update a Category:
+  </h2>
+  <form
+    className="settings"
+  >
+    <select
+      defaultValue=""
+      name="update_category"
+    >
+      <option
+        disabled={true}
+        value=""
+      >
+        Select Category
+      </option>
+      <option
+        value="categoryOne"
+      >
+        categoryOne
+      </option>
+      <option
+        value="categoryTwo"
+      >
+        categoryTwo
+      </option>
+    </select>
+    <button
+      className="update_category"
+      onClick={[Function]}
+      type="button"
+    >
+      Update
+    </button>
+  </form>
+  AreYouSure
+  UpdateCategory
+</div>
+`;
