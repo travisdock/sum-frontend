@@ -20,7 +20,7 @@ import {
     toggleIncome, toggleUntracked
 } from './helpers/inputFormHelpers'
 
-class Settings extends React.Component {
+export class Settings extends React.Component {
     constructor() {
         super();
         this.state = {
