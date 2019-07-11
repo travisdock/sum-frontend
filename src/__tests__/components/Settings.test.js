@@ -30,8 +30,7 @@ const noInfoProps = {
     current_user: {
         user_id: 1,
         year_view: '2020',
-        years: [],
-        categories: []
+        years: []
     }
 };
 
@@ -73,15 +72,6 @@ describe('calls methods on button clicks', () => {
             .mockImplementationOnce(() => {});
 
         const component = shallow(<Settings {...props} />);
-
-        const select = component.find('[name="delete_category"]')
-        select.simulate('change', {target: {value: 'categoryOne'}})
-
-
-        // Currently I am trying to get the select to change so that maybe 
-        // coveralls will acknowledge that it is being manipulated in tests
-        // My only other idea is to call the openmodal function manually to
-        // test this
 
         const button = component.find('.delete_category')
         button.simulate('click', { preventDefault () {} });
