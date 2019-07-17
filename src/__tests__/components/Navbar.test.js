@@ -1,9 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import { MemoryRouter } from 'react-router-dom';
-import { mount } from 'enzyme';
 import { Navbar } from '../../components/Navbar'
-import MoreMenu from '../../components/MoreMenu'
 
 jest.mock('../../components/MoreMenu', () => () => 'MoreMenu')
 
@@ -45,63 +43,5 @@ describe('renders snapshots', () => {
 
         let tree = component.toJSON();
         expect(tree).toMatchSnapshot();
-    });
-});
-
-xdescribe('correct functions fire on button clicks', () => {
-    xtest('openModal fires on Import CSV button click', () => {
-        const component = renderer.create(
-            <MemoryRouter>
-                <Navbar {...startProps} />
-            </MemoryRouter>
-        );
-
-        component.root.findAllByProps({href: "/signup"}).simulate('click')
-
-    });
-
-    xtest('closeModal fires on Import CSV button click', () => {
-        const component = mount(
-            <MemoryRouter>
-                <MoreMenu />
-            </MemoryRouter>
-        );
-
-        const menu = component.find('MoreMenu').at(0)
-        menu.setState({open: true})
-
-        expect(menu.state()).toEqual({open:true})
-        component.find('[href="/dashboard/import"]').at(0).simulate('click')
-        expect(menu.state()).toEqual({open:false})
-    });
-
-    xtest('closeModal fires on Settings button click', () => {
-        const component = mount(
-            <MemoryRouter>
-                <MoreMenu />
-            </MemoryRouter>
-        );
-
-        const menu = component.find('MoreMenu').at(0)
-        menu.setState({open: true})
-
-        expect(menu.state()).toEqual({open:true})
-        component.find('[href="/dashboard/settings"]').at(0).simulate('click')
-        expect(menu.state()).toEqual({open:false})
-    });
-
-    xtest('logout function fires on Logout button click', () => {
-        const component = mount(
-            <MemoryRouter>
-                <MoreMenu {...props} />
-            </MemoryRouter>
-        );
-
-        const menu = component.find('MoreMenu').at(0)
-        menu.setState({open: true})
-
-        component.find('button.more').at(1).simulate('click');
-        expect(props.logout).toHaveBeenCalled();
-        expect(props.history.push).toHaveBeenCalled();
     });
 });
