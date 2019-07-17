@@ -69,9 +69,6 @@ export class Table extends React.Component {
     fetch(url, options)
     .then(res => res.json())
     .then(res => this.setState({entries: res, loading: false}))
-    .catch(error => process.on('unhandledRejection', (reason, promise) => {
-      promise.reject(typeof error === 'string' ? error : error.message);
-    }));
   }
   
   componentWillUnmount() {

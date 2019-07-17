@@ -1,13 +1,16 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
-import { shallow } from 'enzyme';
+import { mount } from 'enzyme';
 
 import { Table } from '../../components/Table';
 import * as TableHelpers from '../../components/helpers/tableHelpers';
 
 jest.mock('../../components/EntryInfo', () => () => 'EntryInfo')
 jest.mock('../../components/UpdateEntry', () => () => 'UpdateEntry')
+jest.mock('../../components/AreYouSure', () => () => 'AreYouSure')
+TableHelpers.mobileColumns = jest.fn()
 
+import ReactTable from "react-table";
+jest.mock('react-table', () => () => 'ReactTable')
 
 // Mock fetch
 function mockFetch(data) {
@@ -31,7 +34,7 @@ describe('methods fire appropriately', () => {
 
         window.fetch = mockFetch(entries)
 
-        const component = await shallow(<Table {...props} />);
+        const component = await mount(<Table {...props} />);
         await component.update();
 
         expect(component.state('loading')).toEqual(false)
@@ -40,10 +43,14 @@ describe('methods fire appropriately', () => {
     });
     
     test('componentWillUnmount is called correctly', async () => {
-        expect.assertions(1);
+        // expect.assertions(1);
         const spy = jest.spyOn(window, "removeEventListener")
+        jest.spyOn(TableHelpers, "updateWindowDimensions")
+            .mockImplementation(() => {});
+        window.fetch = mockFetch(entries)
 
-        const component = await shallow(<Table {...props} />);
+        const component = await mount(<Table {...props} />);
+        await component.update();
         component.unmount();
 
         expect(spy).toHaveBeenCalled();
