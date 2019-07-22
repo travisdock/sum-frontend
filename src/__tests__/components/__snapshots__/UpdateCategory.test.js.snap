@@ -1,0 +1,94 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snapshots renders a closed <UpdateCategory /> snapshot 1`] = `null`;
+
+exports[`snapshots renders an open <UpdateCategory /> snapshot 1`] = `
+Array [
+  <div
+    style={
+      Object {
+        "left": "0px",
+        "position": "absolute",
+        "top": "0px",
+      }
+    }
+  />,
+  <div
+    className="popup-overlay "
+    onClick={[Function]}
+    style={
+      Object {
+        "background": "rgba(0, 0, 0,0.5)",
+        "bottom": "0",
+        "display": "flex",
+        "left": "0",
+        "position": "fixed",
+        "right": "0",
+        "top": "0",
+        "zIndex": "999",
+      }
+    }
+  >
+    <div
+      className="popup-content "
+      onClick={[Function]}
+      style={
+        Object {
+          "background": "rgb(255, 255, 255)",
+          "border": "1px solid rgb(187, 187, 187)",
+          "margin": "auto",
+          "padding": "5px",
+          "position": "relative",
+          "width": "50%",
+        }
+      }
+    >
+      <div
+        className="table-popup"
+      >
+        <p>
+          Update Category
+        </p>
+        <form
+          onSubmit={[MockFunction]}
+        >
+          <input
+            name="name"
+            onChange={[MockFunction]}
+            value="categoryA"
+          />
+          <label>
+            <input
+              checked="false"
+              name="income"
+              onChange={[MockFunction]}
+              type="checkbox"
+            />
+            Income
+          </label>
+          <label>
+            <input
+              checked="false"
+              name="untracked"
+              onChange={[MockFunction]}
+              type="checkbox"
+            />
+            Untracked
+          </label>
+          <input
+            name="year"
+            onChange={[MockFunction]}
+            value="1993"
+          />
+          <button
+            className="button"
+            type="submit"
+          >
+            Submit
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>,
+]
+`;
