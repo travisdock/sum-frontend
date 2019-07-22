@@ -6,7 +6,7 @@
     "billboard.js": "^1.9.5",
     "connected-react-router": "^4.5.0",
     "coveralls": "^3.0.5",
-    "match-sorter": "^3.1.1",
+    "match-sorter": "^4.0.0",
     "mathjs-expression-parser": "^1.0.2",
     "merge": "^1.2.1",
     "node-pre-gyp": "^0.13.0",
@@ -36,7 +36,7 @@
   },
   "devDependencies": {
     "@babel/plugin-proposal-class-properties": "^7.5.0",
-    "@babel/preset-env": "^7.4.5",
+    "@babel/preset-env": "^7.5.5",
     "@babel/preset-react": "^7.0.0",
     "babel-core": "^7.0.0-bridge.0",
     "enzyme": "^3.10.0",
