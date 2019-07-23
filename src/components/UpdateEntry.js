@@ -1,7 +1,7 @@
 import React from 'react';
 import Popup from "reactjs-popup";
 
-class UpdateEntry extends React.Component {
+export class UpdateEntry extends React.Component {
     render() {
         return (
             <Popup
