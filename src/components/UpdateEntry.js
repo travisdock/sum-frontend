@@ -18,7 +18,7 @@ export class UpdateEntry extends React.Component {
                         value={this.props.category_name}
                         onChange={this.props.handleChange}
                         >
-                        {!!this.props.current_user.categories ? this.props.current_user.categories.map(cat => <option value={cat.name} key={cat.id}>{cat.name}</option>) : null}
+                        {this.props.current_user.categories.map(cat => <option value={cat.name} key={cat.id}>{cat.name}</option>)}
                     </select>
                     <input
                         name="date"

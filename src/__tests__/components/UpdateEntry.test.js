@@ -34,7 +34,7 @@ const closedProps = {
         user_id: 1,
         categories: []
     }
-}
+};
 
 describe('snapshots', () => {    
     it('renders an open <UpdateEntry /> snapshot', () => {
