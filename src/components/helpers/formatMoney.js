@@ -12,6 +12,6 @@ export const formatMoney = (number) => {
         let negative = number < 0 ? "-" : "";
         let i = parseInt(number = Math.abs(+number || 0).toFixed(places), 10) + "";
         let j = i.length > 3 ? i.length % 3 : 0;
-        return "$" + negative + (j ? i.substr(0, j) + thousand : "") + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + thousand) + (places ? decimal + Math.abs(number - i).toFixed(places).slice(2) : "");
+        return negative + "$" + (j ? i.substr(0, j) + thousand : "") + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + thousand) + (decimal + Math.abs(number - i).toFixed(places).slice(2));
     }
   }

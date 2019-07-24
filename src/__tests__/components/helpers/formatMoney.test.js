@@ -10,7 +10,7 @@ it('returns formatted money', () => {
 });
 
 it('formats negative money', () => {
-    expect(formatMoney(-5)).toEqual('$-5.00')    
+    expect(formatMoney(-5)).toEqual('-$5.00')    
 })
 
 it('formats many decimals', () => {
@@ -19,4 +19,8 @@ it('formats many decimals', () => {
 
 it('formats thousands', () => {
     expect(formatMoney(50000)).toEqual('$50,000.00')    
+})
+
+it('removes whitespace', () => {
+    expect(formatMoney('50000')).toEqual('$50,000.00')    
 })
