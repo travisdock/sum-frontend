@@ -215,3 +215,34 @@ describe('handleSubmit', () => {
         expect(component.state().new_category).toEqual(false);
     });
 });
+
+describe('evaluateAmount', () => {
+    it('fires correctly', () => {
+        const spy = jest.spyOn(Helpers, "handleChange");
+        const component = shallow(<InputForm {...props} />);
+        
+        const input = component.find('input[type="text"]').first()
+        input.simulate('change', {target: { value: '122' } });
+        
+        input.simulate('focus');
+        input.simulate('change', {target: { value: '122' } });
+        input.simulate('blur', {target: { value: '122' } });
+
+        expect(spy).toHaveBeenCalled();
+    });
+    it('alerts error', () => {
+        const spy = jest.spyOn(Helpers, "handleChange");
+        const component = shallow(<InputForm {...props} />);
+        window.alert = jest.fn()
+        
+        const input = component.find('input[type="text"]').first()
+        input.simulate('change', {target: { value: '122' } });
+        
+        input.simulate('focus');
+        input.simulate('change', {target: { value: 'abcd' } });
+        input.simulate('blur', {target: { value: 'abcd' } });
+
+        expect(spy).toHaveBeenCalled();
+        expect(window.alert).toHaveBeenCalledWith('There was an error: Undefined symbol abcd');
+    });
+});
