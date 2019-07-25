@@ -4,7 +4,18 @@ import { shallow } from 'enzyme';
 import { InputForm } from '../../components/InputForm';
 import * as Helpers from '../../components/helpers/inputFormHelpers';
 
+// Mock fetch
+function mockFetch(data) {
+    return jest.fn(() =>
+      Promise.resolve({
+        ok: true,
+        json: () => data
+      })
+    );
+  }
+
 const props = {
+    updateUser: jest.fn(),
     current_user: {
         user_id: 1,
         categories: [
@@ -154,5 +165,113 @@ describe('new Category methods fire appropriately', () => {
         input.simulate('change', {target: { checked: true } });
         
         expect(spy).toHaveBeenCalled();
+    });
+});
+
+describe('handleSubmit', () => {
+    afterEach(() => {
+        jest.clearAllMocks();
+      });
+    test('errors are handled correctly', async () => {
+        const spy = jest.spyOn(Helpers, "handleSubmit");
+        window.fetch = mockFetch({errors: 'test'})
+        window.alert = jest.fn()
+
+        const component = shallow(<InputForm {...props} />);
+
+        const form = component.find('form')
+        await form.simulate('submit', { preventDefault () {} });
+
+        expect(spy).toHaveBeenCalled();
+        await component.update();
+        expect(window.alert).toHaveBeenCalledWith('test');
+    });
+    test('error is handled correctly', async () => {
+        const spy = jest.spyOn(Helpers, "handleSubmit");
+        window.fetch = mockFetch({error: 'test'})
+        window.alert = jest.fn()
+
+        const component = shallow(<InputForm {...props} />);
+
+        const form = component.find('form')
+        await form.simulate('submit', { preventDefault () {} });
+
+        expect(spy).toHaveBeenCalled();
+        await component.update();
+        expect(window.alert).toHaveBeenCalledWith('test');
+    });
+    test('success', async () => {
+        const spy = jest.spyOn(Helpers, "handleSubmit");
+        window.fetch = mockFetch({id: 'test'})
+        window.alert = jest.fn()
+
+        const component = shallow(<InputForm {...props} />);
+        component.state().new_category = true
+
+        const form = component.find('form')
+        await form.simulate('submit', { preventDefault () {} });
+
+        expect(spy).toHaveBeenCalled();
+        await component.update();
+        expect(window.alert).toHaveBeenCalledWith('Success!');
+        expect(props.updateUser).toHaveBeenCalled();
+        expect(component.state().new_category).toEqual(false);
+    });
+    test('no id', async () => {
+        const spy = jest.spyOn(Helpers, "handleSubmit");
+        window.fetch = mockFetch({false: 'positive'})
+        window.alert = jest.fn()
+
+        const component = shallow(<InputForm {...props} />);
+        component.state().new_category = true
+
+        const form = component.find('form')
+        await form.simulate('submit', { preventDefault () {} });
+
+        expect(spy).toHaveBeenCalled();
+        await component.update();
+        expect(window.alert).toHaveBeenCalledWith('Success!');
+        expect(props.updateUser).not.toHaveBeenCalled();
+        expect(component.state().new_category).toEqual(false);
+    });
+});
+
+describe('evaluateAmount', () => {
+    it('fires correctly', () => {
+        const spy = jest.spyOn(Helpers, "handleChange");
+        const component = shallow(<InputForm {...props} />);
+        
+        const input = component.find('input[type="text"]').first()
+        
+        input.simulate('focus');
+        input.simulate('change', {target: { value: '122' } });
+        input.simulate('blur', {target: { value: '122' } });
+
+        expect(spy).toHaveBeenCalled();
+    });
+    it('no value', () => {
+        const spy = jest.spyOn(Helpers, "handleChange");
+        const component = shallow(<InputForm {...props} />);
+        
+        const input = component.find('input[type="text"]').first()
+        
+        input.simulate('focus');
+        input.simulate('blur', {target: { value: '' } });
+
+        expect(spy).toHaveBeenCalled();
+    });
+    it('alerts error', () => {
+        const spy = jest.spyOn(Helpers, "handleChange");
+        const component = shallow(<InputForm {...props} />);
+        window.alert = jest.fn()
+        
+        const input = component.find('input[type="text"]').first()
+        
+        input.simulate('focus');
+        input.simulate('change', {target: { value: 'abcd' } });
+        input.simulate('blur', {target: { value: 'abcd' } });
+
+        expect(spy).toHaveBeenCalled();
+        expect(window.alert).toHaveBeenCalledWith('There was an error: Undefined symbol abcd');
     });
 });

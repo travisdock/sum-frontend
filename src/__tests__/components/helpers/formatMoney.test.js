@@ -20,7 +20,3 @@ it('formats many decimals', () => {
 it('formats thousands', () => {
     expect(formatMoney(50000)).toEqual('$50,000.00')    
 })
-
-it('removes whitespace', () => {
-    expect(formatMoney('50000')).toEqual('$50,000.00')    
-})
