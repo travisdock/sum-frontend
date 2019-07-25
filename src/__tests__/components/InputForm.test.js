@@ -242,11 +242,21 @@ describe('evaluateAmount', () => {
         const component = shallow(<InputForm {...props} />);
         
         const input = component.find('input[type="text"]').first()
-        input.simulate('change', {target: { value: '122' } });
         
         input.simulate('focus');
         input.simulate('change', {target: { value: '122' } });
         input.simulate('blur', {target: { value: '122' } });
+
+        expect(spy).toHaveBeenCalled();
+    });
+    it('no value', () => {
+        const spy = jest.spyOn(Helpers, "handleChange");
+        const component = shallow(<InputForm {...props} />);
+        
+        const input = component.find('input[type="text"]').first()
+        
+        input.simulate('focus');
+        input.simulate('blur', {target: { value: '' } });
 
         expect(spy).toHaveBeenCalled();
     });
@@ -256,7 +266,6 @@ describe('evaluateAmount', () => {
         window.alert = jest.fn()
         
         const input = component.find('input[type="text"]').first()
-        input.simulate('change', {target: { value: '122' } });
         
         input.simulate('focus');
         input.simulate('change', {target: { value: 'abcd' } });
