@@ -169,6 +169,9 @@ describe('new Category methods fire appropriately', () => {
 });
 
 describe('handleSubmit', () => {
+    afterEach(() => {
+        jest.clearAllMocks();
+      });
     test('errors are handled correctly', async () => {
         const spy = jest.spyOn(Helpers, "handleSubmit");
         window.fetch = mockFetch({errors: 'test'})
@@ -197,7 +200,7 @@ describe('handleSubmit', () => {
         await component.update();
         expect(window.alert).toHaveBeenCalledWith('test');
     });
-    test('errors are handled correctly', async () => {
+    test('success', async () => {
         const spy = jest.spyOn(Helpers, "handleSubmit");
         window.fetch = mockFetch({id: 'test'})
         window.alert = jest.fn()
@@ -212,6 +215,23 @@ describe('handleSubmit', () => {
         await component.update();
         expect(window.alert).toHaveBeenCalledWith('Success!');
         expect(props.updateUser).toHaveBeenCalled();
+        expect(component.state().new_category).toEqual(false);
+    });
+    test('no id', async () => {
+        const spy = jest.spyOn(Helpers, "handleSubmit");
+        window.fetch = mockFetch({false: 'positive'})
+        window.alert = jest.fn()
+
+        const component = shallow(<InputForm {...props} />);
+        component.state().new_category = true
+
+        const form = component.find('form')
+        await form.simulate('submit', { preventDefault () {} });
+
+        expect(spy).toHaveBeenCalled();
+        await component.update();
+        expect(window.alert).toHaveBeenCalledWith('Success!');
+        expect(props.updateUser).not.toHaveBeenCalled();
         expect(component.state().new_category).toEqual(false);
     });
 });
