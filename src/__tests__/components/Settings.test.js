@@ -18,6 +18,11 @@ function mockFetch(data) {
     );
   }
 
+// Mock document
+const documentMock = {
+    getElementsByName: jest.fn( x => [{value: 'categoryOne'}])
+}
+
 const props = {
     updateUser: jest.fn(),
     current_user: {
@@ -115,15 +120,18 @@ describe('calls methods on button clicks', () => {
     });
 });
 
-xdescribe('modalHelpers tests', () => {
-    test('openUpdateModal sets state', () => {
+describe('modalHelpers tests', () => {
+    test('openModal works correctly', () => {
+        Object.defineProperty(window, 'document', {
+            value: documentMock
+          })
         const spy = jest.spyOn(ModalHelpers, 'openUpdateModal')
 
         const component = shallow(<Settings {...props} />);
-
-        const button = component.find('.update_category')
-        button.simulate('click', { preventDefault () {} });
+        component.state().open = 'ask'
+        component.instance().openModal();
 
         expect(spy).toHaveBeenCalled();
+        expect(component.state().form).toEqual({id: 1, name: "categoryOne"})
     });
 });
