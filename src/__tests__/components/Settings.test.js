@@ -19,9 +19,7 @@ function mockFetch(data) {
   }
 
 // Mock document
-const documentMock = {
-    getElementsByName: jest.fn( x => [{value: 'categoryOne'}])
-}
+const documentMock = [{value: 'categoryOne'}]
 
 const props = {
     updateUser: jest.fn(),
@@ -122,9 +120,7 @@ describe('calls methods on button clicks', () => {
 
 describe('modalHelpers tests', () => {
     test('openModal works correctly', () => {
-        Object.defineProperty(window, 'document', {
-            value: documentMock
-          })
+        jest.spyOn(global.document, 'getElementsByName').mockReturnValue(documentMock)
         const spy = jest.spyOn(ModalHelpers, 'openUpdateModal')
 
         const component = shallow(<Settings {...props} />);
