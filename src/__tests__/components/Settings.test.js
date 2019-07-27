@@ -151,7 +151,7 @@ describe('settingsHelpers openModal tests', () => {
         jest.spyOn(global.document, 'getElementsByName').mockReturnValue(documentMock)
 
         const component = shallow(<Settings {...props} />);
-        component.state().open = 'ask'
+        component.state().open = 'update'
         component.instance().openModal();
         
         expect(component.state().form).toEqual({id: 1, name: "categoryOne"})
