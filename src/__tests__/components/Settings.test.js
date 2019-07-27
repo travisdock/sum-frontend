@@ -200,3 +200,20 @@ describe('settingsHelpers handleCategoryUpdate tests', () => {
         expect(spy).toHaveBeenCalled();
     });
 });
+
+describe('settingsHelpers handleDelete tests', () => {
+    test('handleDelete success', async () => {
+        const spy = jest.spyOn(ModalHelpers, 'closeModal')
+        window.fetch = mockFetch('success')
+        window.alert = jest.fn()
+
+        const component = shallow(<Settings {...props} />);
+        component.state().form = { id: 1, name: "categoryOne" }
+        await component.instance().handleDelete(updateCategoryForm);
+        await component.update();
+
+        expect(props.updateUser).toHaveBeenCalledWith('success');
+        expect(window.alert).toHaveBeenCalledWith('Success!')
+        expect(spy).toHaveBeenCalled();
+    });
+});
