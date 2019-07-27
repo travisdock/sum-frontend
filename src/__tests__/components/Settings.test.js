@@ -71,6 +71,14 @@ const updateCategoryForm = {
     }
 }
 
+const handleChangeForm = {
+    preventDefault: jest.fn(),
+    target: {
+        value: 'value',
+        name: 'name'
+    }
+}
+
 afterEach(() => {
     jest.clearAllMocks();
 });
@@ -215,5 +223,22 @@ describe('settingsHelpers handleDelete tests', () => {
         expect(props.updateUser).toHaveBeenCalledWith('success');
         expect(window.alert).toHaveBeenCalledWith('Success!')
         expect(spy).toHaveBeenCalled();
+    });
+});
+
+describe('modalHelpers handleChange tests', () => {
+    test('handleChange success', async () => {
+        const component = shallow(<Settings {...props} />);
+        await component.instance().handleChange(handleChangeForm);
+        await component.update();
+
+        expect(component.state().form).toEqual(
+            {
+                name: "value",
+                income: "",
+                untracked: "",
+                year: ""
+            }
+        );
     });
 });
