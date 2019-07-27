@@ -20,6 +20,7 @@ function mockFetch(data) {
 
 // Mock document
 const documentMock = [{value: 'categoryOne'}]
+const noCatDocumentMock = [{value: ''}]
 
 const props = {
     updateUser: jest.fn(),
@@ -59,6 +60,10 @@ const updateUserForm = {
     }
 }
 
+afterEach(() => {
+    jest.clearAllMocks();
+});
+
 describe('renders snapshots', () => {
     test('renders user <Settings />', () => {
         const component = renderer.create(
@@ -80,7 +85,7 @@ describe('renders snapshots', () => {
 });
 
 describe('calls methods on button clicks', () => {
-    test('handleUserUpdate is fired on button click', () => {
+    test('handleUserUpdate is fired on button click', async () => {
         const spy = jest.spyOn(SettingsHelpers, 'handleUserUpdate')
         window.fetch = mockFetch('success')
         window.alert = jest.fn()
@@ -88,9 +93,12 @@ describe('calls methods on button clicks', () => {
         const component = shallow(<Settings {...props} />);
 
         const button = component.find('.year_view')
-        button.simulate('click', updateUserForm);
+        await button.simulate('click', updateUserForm);
+        await component.update(); //I don't know why this is necessary but it is....
 
         expect(spy).toHaveBeenCalled();
+        expect(props.updateUser).toHaveBeenCalled();
+        expect(window.alert).toHaveBeenCalledWith('Success!')        
     });
 
     test('askIfSure is fired on button click', () => {
@@ -119,15 +127,34 @@ describe('calls methods on button clicks', () => {
 });
 
 describe('settingsHelpers tests', () => {
-    test('openModal works correctly', () => {
+    test('openModal ask', () => {
         jest.spyOn(global.document, 'getElementsByName').mockReturnValue(documentMock)
-        const spy = jest.spyOn(ModalHelpers, 'openUpdateModal')
 
         const component = shallow(<Settings {...props} />);
         component.state().open = 'ask'
         component.instance().openModal();
 
-        expect(spy).toHaveBeenCalled();
         expect(component.state().form).toEqual({id: 1, name: "categoryOne"})
+    });
+    test('openModal update', () => {
+        jest.spyOn(global.document, 'getElementsByName').mockReturnValue(documentMock)
+
+        const component = shallow(<Settings {...props} />);
+        component.state().open = 'ask'
+        component.instance().openModal();
+        
+        expect(component.state().form).toEqual({id: 1, name: "categoryOne"})
+    });
+    test('openModal error', () => {
+        jest.spyOn(global.document, 'getElementsByName').mockReturnValue(noCatDocumentMock)
+        window.alert = jest.fn()
+
+        const component = shallow(<Settings {...props} />);
+        component.state().open = ''
+        component.instance().openModal();
+        component.update();
+
+        expect(component.state().open).toEqual(false)
+        expect(window.alert).toHaveBeenCalledWith('No category selected')
     });
 });
