@@ -58,7 +58,7 @@ describe('methods fire appropriately', () => {
 });
 
 describe('modalHelpers fire appropriately', () => {
-  test('handleChange success', async () => {
+  test('openModal success', async () => {
     const component = mount(<Table {...props} />);
     await component.instance().openModal('entry', 'entryIndex');
     await component.update();
