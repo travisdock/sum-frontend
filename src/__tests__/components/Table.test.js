@@ -56,3 +56,24 @@ describe('methods fire appropriately', () => {
         expect(spy).toHaveBeenCalled();
     });
 });
+
+describe('modalHelpers fire appropriately', () => {
+  test('handleChange success', async () => {
+    const component = mount(<Table {...props} />);
+    await component.instance().openModal('entry', 'entryIndex');
+    await component.update();
+
+    expect(component.state()).toEqual(
+        {
+            open: "info",
+            entries: 'entries',
+            filterSum: 0,
+            data: 'entry',
+            index: 'entryIndex',
+            form: 'entry',
+            loading: false,
+            windowWidth: 0
+        }
+    );
+  });
+});
