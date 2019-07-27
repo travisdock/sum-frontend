@@ -60,6 +60,17 @@ const updateUserForm = {
     }
 }
 
+const updateCategoryForm = {
+    preventDefault: jest.fn(),
+    target: {
+        form: {
+            elements: [
+                { name: 'year_view', value: '100'}
+            ]
+        }
+    }
+}
+
 afterEach(() => {
     jest.clearAllMocks();
 });
@@ -126,7 +137,7 @@ describe('calls methods on button clicks', () => {
     });
 });
 
-describe('settingsHelpers tests', () => {
+describe('settingsHelpers openModal tests', () => {
     test('openModal ask', () => {
         jest.spyOn(global.document, 'getElementsByName').mockReturnValue(documentMock)
 
@@ -156,5 +167,36 @@ describe('settingsHelpers tests', () => {
 
         expect(component.state().open).toEqual(false)
         expect(window.alert).toHaveBeenCalledWith('No category selected')
+    });
+});
+
+describe('settingsHelpers handleCategoryUpdate tests', () => {
+    test('handleCategoryUpdate success', async () => {
+        const spy = jest.spyOn(ModalHelpers, 'closeModal')
+        window.fetch = mockFetch('success')
+        window.alert = jest.fn()
+
+        const component = shallow(<Settings {...props} />);
+        component.state().form = { id: 1, name: "categoryOne" }
+        await component.instance().handleCategoryUpdate(updateCategoryForm);
+        await component.update();
+
+        expect(props.updateUser).toHaveBeenCalled();
+        expect(window.alert).toHaveBeenCalledWith('Success!')
+        expect(spy).toHaveBeenCalled();
+    });
+    test('handleCategoryUpdate error', async () => {
+        const spy = jest.spyOn(ModalHelpers, 'closeModal')
+        window.fetch = mockFetch({errors: 'error'})
+        window.alert = jest.fn()
+
+        const component = shallow(<Settings {...props} />);
+        component.state().form = { id: 1, name: "categoryOne" }
+        await component.instance().handleCategoryUpdate(updateCategoryForm);
+        await component.update();
+
+        expect(props.updateUser).not.toHaveBeenCalled();
+        expect(window.alert).toHaveBeenCalledWith('error')
+        expect(spy).toHaveBeenCalled();
     });
 });
