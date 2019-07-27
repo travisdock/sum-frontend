@@ -118,7 +118,7 @@ describe('calls methods on button clicks', () => {
     });
 });
 
-describe('modalHelpers tests', () => {
+describe('settingsHelpers tests', () => {
     test('openModal works correctly', () => {
         jest.spyOn(global.document, 'getElementsByName').mockReturnValue(documentMock)
         const spy = jest.spyOn(ModalHelpers, 'openUpdateModal')
