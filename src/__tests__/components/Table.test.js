@@ -76,4 +76,74 @@ describe('modalHelpers fire appropriately', () => {
         }
     );
   });
+
+  test('handleDelete success', async () => {
+    window.fetch = mockFetch([0,1,2,3])
+
+    const component = mount(<Table {...props} />);
+    component.state().index = 1
+    component.state().entries = [0,1,2,3]
+    await component.instance().handleDelete();
+    await component.update();
+
+    expect(component.state('entries')).toEqual([0,2,3]);
+  });
+
+  test('handleDelete error', async () => {
+    window.fetch = mockFetch({error: 'true', exception: 'error'})
+    window.alert = jest.fn()
+
+    const component = mount(<Table {...props} />);
+    component.state().index = 1
+    await component.instance().handleDelete();
+    await component.update();
+
+    expect(window.alert).toHaveBeenCalledWith('error')
+  });
+
+  test('handleUpdate fetch error', async () => {
+    const e = {preventDefault: jest.fn()}
+    window.fetch = mockFetch({error: 'true', exception: 'error'})
+    window.alert = jest.fn()
+
+    const component = mount(<Table {...props} />);
+    component.state().data = {id: 1}
+    await component.instance().handleUpdate(e);
+    await component.update();
+
+    expect(window.alert).toHaveBeenCalledWith('error')
+  });
+
+  test('handleUpdate no changes were made', async () => {
+    const e = {preventDefault: jest.fn()}
+    window.alert = jest.fn()
+
+    const component = mount(<Table {...props} />);
+    component.state().form = 1
+    component.state().data = 1
+    await component.instance().handleUpdate(e);
+    await component.update();
+
+    expect(window.alert).toHaveBeenCalledWith('No changes were made')
+    expect(component.state().form).toEqual({})
+  });
+  
+  test('handleUpdate success', async () => {
+    jest.spyOn(Table.prototype, "componentDidMount")
+      .mockImplementation(() => {});
+    const e = {preventDefault: jest.fn()}
+    window.fetch = mockFetch(5)
+    window.alert = jest.fn()
+
+    const component = mount(<Table {...props} />);
+    component.state().data = {id: 1}
+    component.state().index = 1
+
+    component.state().entries = [0,1,2,3]
+    await component.instance().handleUpdate(e);
+    await component.update();
+
+    expect(window.alert).toHaveBeenCalledWith('success!')
+    expect(component.state().entries).toEqual([0,5,2,3])
+  });
 });
