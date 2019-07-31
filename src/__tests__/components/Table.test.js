@@ -1,5 +1,5 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 
 import { Table } from '../../components/Table';
 import * as TableHelpers from '../../components/helpers/tableHelpers';
@@ -25,6 +25,7 @@ function mockFetch(data) {
 // Mock props
 const props = {current_user: {user_id: 1}};
 const entries = 'entries'
+const data = [{amount: '$10.00'}, {amount: '$10.00'}, {amount: '$10.00'}]
 
 window.orientation = -90
 window.innerHeight = 500
@@ -167,11 +168,20 @@ describe('modalHelpers fire appropriately', () => {
   });
 
   test('unformatMoney', () => {
-    jest.spyOn(TableHelpers, "updateWindowDimensions")
-      .mockImplementationOnce({}) //This is all messed up...
-    const component = mount(<Table {...props} />);
-
-    const method = component.instance().unformatMoney;
+    const method = TableHelpers.unformatMoney;
     expect(method('$1,000.00')).toEqual(1000)
+  });
+
+  test('sumEntries', () => {
+    const component = shallow(<Table {...props} />);
+    const method = component.instance().sumEntries;
+
+    expect(method(data)).toEqual('$30.00')
+  });
+
+  test('averageEntries', () => {
+    const method = TableHelpers.averageEntries;
+
+    expect(method(data)).toEqual('$10.00')
   });
 });
