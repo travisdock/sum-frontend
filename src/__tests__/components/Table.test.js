@@ -26,12 +26,14 @@ function mockFetch(data) {
 const props = {current_user: {user_id: 1}};
 const entries = 'entries'
 
+window.orientation = -90
+window.innerHeight = 500
+window.innerWidth = 100
+
 describe('methods fire appropriately', () => {
     test('componentDidMount updates success state correctly', async () => {
         expect.assertions(2);
         const spy = jest.spyOn(TableHelpers, "updateWindowDimensions")
-            .mockImplementation(() => {});
-
         window.fetch = mockFetch(entries)
 
         const component = await mount(<Table {...props} />);
@@ -43,10 +45,8 @@ describe('methods fire appropriately', () => {
     });
     
     test('componentWillUnmount is called correctly', async () => {
-        // expect.assertions(1);
+        expect.assertions(1);
         const spy = jest.spyOn(window, "removeEventListener")
-        jest.spyOn(TableHelpers, "updateWindowDimensions")
-            .mockImplementation(() => {});
         window.fetch = mockFetch(entries)
 
         const component = await mount(<Table {...props} />);
@@ -72,7 +72,7 @@ describe('modalHelpers fire appropriately', () => {
             index: 'entryIndex',
             form: 'entry',
             loading: false,
-            windowWidth: 0
+            windowWidth: 500
         }
     );
   });
@@ -145,5 +145,33 @@ describe('modalHelpers fire appropriately', () => {
 
     expect(window.alert).toHaveBeenCalledWith('success!')
     expect(component.state().entries).toEqual([0,5,2,3])
+  });
+
+  test('updateWindowDimensions case 1', () => {
+    const component = mount(<Table {...props} />);
+
+    expect(component.state().windowWidth).toEqual(0)
+    component.instance().updateWindowDimensions();
+    component.update();
+    expect(component.state().windowWidth).toEqual(500)
+  });
+
+  test('updateWindowDimensions case 2', () => {
+    window.orientation = 0
+    const component = mount(<Table {...props} />);
+
+    expect(component.state().windowWidth).toEqual(0)
+    component.instance().updateWindowDimensions();
+    component.update();
+    expect(component.state().windowWidth).toEqual(100)
+  });
+
+  test('unformatMoney', () => {
+    jest.spyOn(TableHelpers, "updateWindowDimensions")
+      .mockImplementationOnce({}) //This is all messed up...
+    const component = mount(<Table {...props} />);
+
+    const method = component.instance().unformatMoney;
+    expect(method('$1,000.00')).toEqual(1000)
   });
 });
