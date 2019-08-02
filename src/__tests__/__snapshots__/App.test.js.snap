@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Snapshots renders a <App/> snapshot with load 1`] = `
+<div
+  id="home"
+>
+  <div
+    id="home2"
+  >
+    Navbar
+  </div>
+</div>
+`;
+
+exports[`Snapshots renders a <App/> snapshot with no user 1`] = `
+<div
+  id="home"
+/>
+`;
+
+exports[`Snapshots renders a <App/> snapshot with user, dashboard 1`] = `
+<div
+  id="home"
+>
+  <div
+    id="home2"
+  >
+    Navbar
+    Dashboard
+  </div>
+</div>
+`;
+
+exports[`Snapshots renders a <App/> snapshot with user, home 1`] = `
+<div
+  id="home"
+>
+  <div
+    id="home2"
+  >
+    Navbar
+    Home
+  </div>
+</div>
+`;

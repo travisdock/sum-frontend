@@ -31,7 +31,7 @@ export function unformatMoney(dollars) {
 
 export function averageEntries(data) {
     let sum = data.reduce((prev, cur) => {
-    return prev + this.unformatMoney(cur.amount)
+    return prev + unformatMoney(cur.amount)
     }, 0);
     return formatMoney(sum/data.length)
 }

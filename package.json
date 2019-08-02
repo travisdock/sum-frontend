@@ -3,10 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "billboard.js": "^1.9.0",
+    "billboard.js": "^1.9.5",
     "connected-react-router": "^4.5.0",
-    "coveralls": "^3.0.4",
-    "match-sorter": "^3.1.1",
+    "coveralls": "^3.0.5",
+    "match-sorter": "^4.0.1",
     "mathjs-expression-parser": "^1.0.2",
     "merge": "^1.2.1",
     "node-pre-gyp": "^0.13.0",
@@ -17,8 +17,8 @@
     "react-scripts": "^3.0.1",
     "react-spinners": "^0.5.4",
     "react-table": "^6.10.0",
-    "reactjs-popup": "^1.4.1",
-    "redux": "^4.0.1"
+    "reactjs-popup": "^1.4.2",
+    "redux": "^4.0.4"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -35,8 +35,8 @@
     "test:updateSnapshots": "react-scripts test --updateSnapshot"
   },
   "devDependencies": {
-    "@babel/plugin-proposal-class-properties": "^7.4.4",
-    "@babel/preset-env": "^7.4.5",
+    "@babel/plugin-proposal-class-properties": "^7.5.0",
+    "@babel/preset-env": "^7.5.5",
     "@babel/preset-react": "^7.0.0",
     "babel-core": "^7.0.0-bridge.0",
     "enzyme": "^3.10.0",
@@ -56,6 +56,11 @@
   "jest": {
     "snapshotSerializers": [
       "enzyme-to-json/serializer"
+    ],
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx}",
+      "!<rootDir>/node_modules/",
+      "!<rootDir>/src/registerServiceWorker.js"
     ]
   }
 }

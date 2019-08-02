@@ -2,10 +2,10 @@ import React from 'react';
 import { PulseLoader } from 'react-spinners';
 import { connect } from 'react-redux';
 import { updateUser } from '../actions/UserActions';
-class ImportPage extends React.Component {
+
+export class ImportPage extends React.Component {
     constructor() {
         super();
-
         this.handleSubmit = this.handleSubmit.bind(this);
     };
 
@@ -22,11 +22,11 @@ class ImportPage extends React.Component {
         formPackage.append('file', e.target['0'].files['0'])
         formPackage.append('user_id', this.props.current_user.user_id)
         const options = {
-        method: 'POST',
-        headers: {
-            'Authorization': token
-        },
-        body: formPackage
+            method: 'POST',
+            headers: {
+                'Authorization': token
+            },
+            body: formPackage
         }
         fetch(url, options)
             .then(resp => resp.json())
@@ -81,4 +81,3 @@ const mapStateToProps = state => ({
     current_user: state.current_user
 });
 export default connect(mapStateToProps, { updateUser })(ImportPage);
-export const nakedImportPage = ImportPage;

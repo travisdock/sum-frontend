@@ -14,8 +14,8 @@ class EntryInfo extends React.Component {
                 <p>Category: {this.props.category_name}</p>
                 <p>Date: {this.props.date}</p>
                 <p>Notes: {this.props.notes}</p>
-                <button onClick={this.props.askIfSure}>Delete Entry</button>
-                <button onClick={this.props.openUpdateModal}>Update Entry</button>
+                <button className="delete" onClick={this.props.askIfSure}>Delete Entry</button>
+                <button className="update" onClick={this.props.openUpdateModal}>Update Entry</button>
             </div>
             </Popup>
         )

@@ -1,0 +1,103 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snapshots renders an closed <UpdateEntry /> 1`] = `null`;
+
+exports[`snapshots renders an open <UpdateEntry /> snapshot 1`] = `
+Array [
+  <div
+    style={
+      Object {
+        "left": "0px",
+        "position": "absolute",
+        "top": "0px",
+      }
+    }
+  />,
+  <div
+    className="popup-overlay "
+    onClick={[Function]}
+    style={
+      Object {
+        "background": "rgba(0, 0, 0,0.5)",
+        "bottom": "0",
+        "display": "flex",
+        "left": "0",
+        "position": "fixed",
+        "right": "0",
+        "top": "0",
+        "zIndex": "999",
+      }
+    }
+  >
+    <div
+      className="popup-content "
+      onClick={[Function]}
+      style={
+        Object {
+          "background": "rgb(255, 255, 255)",
+          "border": "1px solid rgb(187, 187, 187)",
+          "margin": "auto",
+          "padding": "5px",
+          "position": "relative",
+          "width": "50%",
+        }
+      }
+    >
+      <div
+        className="table-popup"
+      >
+        <p>
+          Update Entry
+        </p>
+        <form
+          onSubmit={[MockFunction]}
+        >
+          <select
+            name="category_name"
+            onChange={[MockFunction]}
+            value="categoryOne"
+          >
+            <option
+              value="categoryOne"
+            >
+              categoryOne
+            </option>
+            <option
+              value="categoryTwo"
+            >
+              categoryTwo
+            </option>
+          </select>
+          <input
+            name="date"
+            onChange={[MockFunction]}
+            type="date"
+            value="12/22/16"
+          />
+          <input
+            name="amount"
+            onBlur={[MockFunction]}
+            onChange={[MockFunction]}
+            placeholder="0.00"
+            value="122.22"
+          />
+          <textarea
+            cols="55"
+            name="notes"
+            onChange={[MockFunction]}
+            placeholder="Entry details..."
+            rows="5"
+            value="This is the notes"
+          />
+          <button
+            className="button"
+            type="submit"
+          >
+            Submit
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>,
+]
+`;

@@ -5,7 +5,7 @@ import { withRouter } from 'react-router';
 import { connect } from 'react-redux';
 import { logout } from '../actions/UserActions'
 
-class MoreMenu extends React.Component {
+export class MoreMenu extends React.Component {
     constructor() {
         super();
         this.handleLogout = this.handleLogout.bind(this);
@@ -62,4 +62,3 @@ const mapStateToProps = state => ({
     current_user: state.current_user
   });
 export default withRouter(connect(mapStateToProps, { logout })(MoreMenu))
-export const NakedMoreMenu = MoreMenu;

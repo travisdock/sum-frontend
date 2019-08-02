@@ -23,7 +23,7 @@ import {
   evaluateAmount
 } from './helpers/inputFormHelpers'
 
-class Table extends React.Component {
+export class Table extends React.Component {
   constructor() {
     super();
     this.state = {
