@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "billboard.js": "^1.9.5",
+    "billboard.js": "^1.10.0",
     "connected-react-router": "^4.5.0",
     "coveralls": "^3.0.5",
     "match-sorter": "^4.0.1",
