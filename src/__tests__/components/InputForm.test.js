@@ -38,7 +38,7 @@ const noCategoriesUserProps = {
 
 describe('snapshots', () => {
     beforeEach(() => {
-        let date = new Date('1993')
+        let date = new Date(1992, 11, 31)
         global.Date = jest.fn(() => date)
     })
     
