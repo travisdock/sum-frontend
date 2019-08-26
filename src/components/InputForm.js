@@ -13,7 +13,7 @@ export class InputForm extends React.Component {
     this.state = {
       form: {
         category_name: '',
-        date: new Date().toISOString({timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone}).substr(0, 10),
+        date: new Date().getFullYear()+'-'+('0' + (new Date().getMonth()+1)).slice(-2)+'-'+new Date().getDate(),
         amount: '',
         notes: '',
         income: false,
