@@ -15,7 +15,7 @@
 <img src="https://user-images.githubusercontent.com/36681963/46574153-5a653300-c96d-11e8-92be-113930d0a4e4.png" alt="react" title="Built with React">
 <img src="https://user-images.githubusercontent.com/36681963/47617023-27a8e900-da9a-11e8-945e-5c409a0bf4a6.png" alt="jest" title="Tested with Jest">
 <img src="https://user-images.githubusercontent.com/36681963/63767481-6878b680-c893-11e9-8b58-82797d1e5070.png" alt="travisCI" title="Continuous Integration with Travis CI">
-<img src="https://user-images.githubusercontent.com/36681963/46583298-b63dc380-ca22-11e8-8d35-e77738726561.jpg" alt="firebase" title="Deployed using Firebase">
+<img src="https://user-images.githubusercontent.com/36681963/63767589-b2619c80-c893-11e9-91a1-8a9d77fbd185.png" alt="firebase" title="Deployed using Firebase">
 </p>
 
 ## Description
