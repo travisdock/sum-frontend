@@ -13,7 +13,7 @@ export class InputForm extends React.Component {
     this.state = {
       form: {
         category_name: '',
-        date: new Date().getFullYear()+'-'+('0' + (new Date().getMonth()+1)).slice(-2)+'-'+new Date().getDate(),
+        date: new Date().getFullYear()+'-'+('0' + (new Date().getMonth()+1)).slice(-2)+'-'+('0' + new Date().getDate()).slice(-2),
         amount: '',
         notes: '',
         income: false,
