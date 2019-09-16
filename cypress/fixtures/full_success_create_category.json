@@ -1,0 +1,17 @@
+{
+    "username":"test1",
+    "id":103,
+    "categories":[
+        {
+            "id":46,
+            "name":"New One",
+            "income":false,
+            "untracked":false,
+            "created_at":"2019-09-13T23:44:00.171Z",
+            "updated_at":"2019-09-13T23:44:00.171Z",
+            "year":2019
+        }
+    ],
+    "year_view":2019,
+    "years":[2019]
+}
