@@ -91,7 +91,8 @@ export function openModal(entry, entry_index) {
             entries: newEntries,
             form: {}
           }
-        }, alert("success!"))
+        })
+        alert("success!")
       }}, this.closeModal())
     }
   };
