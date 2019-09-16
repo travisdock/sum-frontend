@@ -1,3 +1,6 @@
+// This was very helpful when creating fixtures:
+// https://chipcullen.com/how-to-create-and-use-fixtures-in-cypress-tests/
+
 describe('full success', function() {
     it('creates a new user', function() {
       // Set up stub
