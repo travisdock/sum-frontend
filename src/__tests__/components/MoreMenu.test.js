@@ -57,6 +57,7 @@ describe('correct functions fire on button clicks', () => {
         menu.setState({open: true})
 
         expect(menu.state()).toEqual({open:true})
+        component.update()
         component.find('[href="/dashboard/import"]').at(0).simulate('click')
         expect(menu.state()).toEqual({open:false})
     });
@@ -72,6 +73,7 @@ describe('correct functions fire on button clicks', () => {
         menu.setState({open: true})
 
         expect(menu.state()).toEqual({open:true})
+        component.update()
         component.find('[href="/dashboard/settings"]').at(0).simulate('click')
         expect(menu.state()).toEqual({open:false})
     });
@@ -86,6 +88,7 @@ describe('correct functions fire on button clicks', () => {
         const menu = component.find('MoreMenu').at(0)
         menu.setState({open: true})
 
+        component.update()
         component.find('button.more').at(1).simulate('click');
         expect(props.logout).toHaveBeenCalled();
         expect(props.history.push).toHaveBeenCalled();
