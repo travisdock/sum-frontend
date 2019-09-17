@@ -40,10 +40,12 @@ describe('snapshots', () => {
     beforeEach(() => {
         let date = new Date(1992, 11, 31)
         global.Date = jest.fn(() => date)
+        Date.now = jest.fn(() => new Date(1992, 11, 31))
     })
     
     afterAll(() => {
         global.Date = Date
+        Date.now.mockRestore();
     })
 
     it('renders an <InputForm /> with select category snapshot', () => {
