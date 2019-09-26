@@ -16,6 +16,7 @@ class EntryInfo extends React.Component {
                 <p>Notes: {this.props.notes}</p>
                 <button className="delete" onClick={this.props.askIfSure}>Delete Entry</button>
                 <button className="update" onClick={this.props.openUpdateModal}>Update Entry</button>
+                <button className="copy" onClick={() => this.props.copyEntry(this.props)}>Copy Entry</button>
             </div>
             </Popup>
         )

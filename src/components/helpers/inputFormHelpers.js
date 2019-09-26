@@ -57,7 +57,7 @@ export function handleChange(e) {
           })
         }
       })
-  }
+  };
 
   export function toggleCategory() {
     this.setState((prevState) => {
@@ -85,7 +85,8 @@ export function handleChange(e) {
         }
       }
     })
-  }
+  };
+
   export function toggleUntracked() {
     this.setState((prevState) => {
       return {
@@ -97,7 +98,8 @@ export function handleChange(e) {
         }
       }
     })
-  }
+  };
+
   export function evaluateAmount(e) {
       if (e.target.value) {
           try {
@@ -108,4 +110,21 @@ export function handleChange(e) {
               alert(`There was an error: ${err.message}`)
           }
         }
+  };
+
+  export function copyEntry(e) {
+    this.props.history.push({
+      pathname:"/dashboard",
+      state:{
+        form: {
+          category_name: e.category_name,
+          date: new Date().getFullYear()+'-'+('0' + (new Date().getMonth()+1)).slice(-2)+'-'+('0' + new Date().getDate()).slice(-2),
+          amount: e.amount,
+          notes: e.notes,
+          income: e.income,
+          untracked: e.untracked
+        },
+        new_category: false
+       }
+    })
   };
