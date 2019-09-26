@@ -10,17 +10,22 @@ import {
 export class InputForm extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {
-      form: {
-        category_name: '',
-        date: new Date().getFullYear()+'-'+('0' + (new Date().getMonth()+1)).slice(-2)+'-'+('0' + new Date().getDate()).slice(-2),
-        amount: '',
-        notes: '',
-        income: false,
-        untracked: false
-      },
-      new_category: false
-    };
+    if (props.location.state)
+      this.state = props.location.state
+    else {
+      this.state = {
+        form: {
+          category_name: '',
+          date: new Date().getFullYear()+'-'+('0' + (new Date().getMonth()+1)).slice(-2)+'-'+('0' + new Date().getDate()).slice(-2),
+          amount: '',
+          notes: '',
+          income: false,
+          untracked: false
+        },
+        new_category: false
+      };
+    }
+    
     // Imported functions
     this.handleChange = handleChange.bind(this);
     this.handleSubmit = handleSubmit.bind(this);

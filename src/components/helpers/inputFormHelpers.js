@@ -109,3 +109,21 @@ export function handleChange(e) {
           }
         }
   };
+
+  export function copyEntry(e) {
+    console.log(e)
+    this.props.history.push({
+      pathname:"/dashboard",
+      state:{
+        form: {
+          category_name: e.category_name,
+          date: new Date().getFullYear()+'-'+('0' + (new Date().getMonth()+1)).slice(-2)+'-'+('0' + new Date().getDate()).slice(-2),
+          amount: e.amount,
+          notes: e.notes,
+          income: e.income,
+          untracked: e.untracked
+        },
+        new_category: false
+       }
+    });
+  }

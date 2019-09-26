@@ -12,7 +12,8 @@ const openProps = {
     amount: "123.12",
     notes: "These are notes",
     askIfSure: jest.fn(),
-    openUpdateModal: jest.fn()
+    openUpdateModal: jest.fn(),
+    copyEntry: jest.fn()
 }
 
 it('renders a snapshot', () => {
@@ -31,6 +32,11 @@ describe('correct functions fire on button clicks', () => {
         const component = shallow(<EntryInfo {...openProps} />);
         component.find('button.update').simulate('click')
         expect(openProps.openUpdateModal).toHaveBeenCalled();
+    });
+    test('closeModal fires on button click', () => {
+        const component = shallow(<EntryInfo {...openProps} />);
+        component.find('button.copy').simulate('click')
+        expect(openProps.copyEntry).toHaveBeenCalled();
     });
 });
 
