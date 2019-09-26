@@ -15,6 +15,7 @@ function mockFetch(data) {
   }
 
 const props = {
+    location: {},
     updateUser: jest.fn(),
     current_user: {
         user_id: 1,
@@ -30,10 +31,42 @@ const props = {
         ]
     }
 };
+
+const copyCategoryProps = {
+    updateUser: jest.fn(),
+    current_user: {
+        user_id: 1,
+        categories: [
+            {
+                id: 1,
+                name: "categoryOne"
+            },
+            {
+                id: 2,
+                name: "categoryTwo"
+            }
+        ]
+    },
+    location: {
+        state: {
+            form: {
+                category_name: 'Copied Category',
+                date: '1992-12-31',
+                amount: '100',
+                notes: 'This is a copied category',
+                income: false,
+                untracked: false
+            },
+            new_category: false
+        }
+    }
+};
+
 const noCategoriesUserProps = {
     current_user: {
         user_id: 1
-    }
+    },
+    location: {}
 }
 
 describe('snapshots', () => {
@@ -64,6 +97,12 @@ describe('snapshots', () => {
         const component = renderer.create(<InputForm {...props} />);
         component.root.instance.setState({new_category: true})
         
+        let tree = component.toJSON();
+        expect(tree).toMatchSnapshot();
+    });
+
+    it('renders an <InputForm /> with a copied category', () => {
+        const component = renderer.create(<InputForm {...copyCategoryProps} />);
         let tree = component.toJSON();
         expect(tree).toMatchSnapshot();
     });

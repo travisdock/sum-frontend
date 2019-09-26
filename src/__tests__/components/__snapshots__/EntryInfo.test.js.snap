@@ -72,6 +72,12 @@ Array [
         >
           Update Entry
         </button>
+        <button
+          className="copy"
+          onClick={[Function]}
+        >
+          Copy Entry
+        </button>
       </div>
     </div>
   </div>,
