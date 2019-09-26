@@ -2,7 +2,6 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import { shallow } from 'enzyme';
 import EntryInfo from '../../components/EntryInfo';
-import { jsxOpeningElement, jsxEmptyExpression } from '@babel/types';
 
 const openProps = {
     open: "info",

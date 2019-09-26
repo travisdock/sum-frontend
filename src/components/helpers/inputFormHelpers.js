@@ -57,7 +57,7 @@ export function handleChange(e) {
           })
         }
       })
-  }
+  };
 
   export function toggleCategory() {
     this.setState((prevState) => {
@@ -85,7 +85,8 @@ export function handleChange(e) {
         }
       }
     })
-  }
+  };
+
   export function toggleUntracked() {
     this.setState((prevState) => {
       return {
@@ -97,7 +98,8 @@ export function handleChange(e) {
         }
       }
     })
-  }
+  };
+
   export function evaluateAmount(e) {
       if (e.target.value) {
           try {
@@ -111,7 +113,6 @@ export function handleChange(e) {
   };
 
   export function copyEntry(e) {
-    console.log(e)
     this.props.history.push({
       pathname:"/dashboard",
       state:{
@@ -125,5 +126,5 @@ export function handleChange(e) {
         },
         new_category: false
        }
-    });
-  }
+    })
+  };
