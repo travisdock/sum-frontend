@@ -31,34 +31,41 @@ exports[`renders snapshots renders a <Chart/> snapshot 1`] = `
       id="chart"
     />
     <div>
-      <h2>
-        Stats
-      </h2>
-      <h3>
-        an_income
-        : 
-        $123.00
-      </h3>
-      <h3>
-        an_expense
-        : 
-        $123.00
-      </h3>
-      <h3>
-        Total Income
-        : 
-        $123.00
-      </h3>
-      <h3>
-        Total Expense
-        : 
-        $123.00
-      </h3>
-      <h3>
-        Profit/Loss
-        : 
-        $0.00
-      </h3>
+      <div>
+        <h2>
+          Stats
+        </h2>
+        <h3>
+          Profit/Loss
+          : 
+          $0.00
+        </h3>
+        <h3>
+          Total Expense
+          : 
+          $123.00
+        </h3>
+        <h3>
+          Total Income
+          : 
+          $123.00
+        </h3>
+      </div>
+      <div>
+        <h2>
+          Totals
+        </h2>
+        <h3>
+          an_expense
+          : 
+          $123.00
+        </h3>
+        <h3>
+          an_income
+          : 
+          $123.00
+        </h3>
+      </div>
     </div>
   </div>
 </div>
@@ -82,13 +89,13 @@ exports[`renders snapshots renders loader 1`] = `
     className="css-0"
   >
     <div
-      className="css-zk09k7"
+      className="css-zdf5pk-style"
     />
     <div
-      className="css-aisv07"
+      className="css-mym47v-style"
     />
     <div
-      className="css-bydlqq"
+      className="css-1moxn8g-style"
     />
   </div>
 </div>

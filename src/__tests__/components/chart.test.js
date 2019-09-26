@@ -41,21 +41,27 @@ const newState = {
     load: true,
     stats: {
         "2019": {
-            "Annual Profit/Loss": "0.0",
-            "Average Expense per Month": "not enough data",
-            "Average Income per Month": "not enough data",
-            "Estimated Annual Expense": "not enough data",
-            "Estimated Annual Income": "not enough data",
-            "Total Expenses": "123.0",
-            "Total Income": "123.0",
-            "avg_cat_month": {"an_expense": "not enough data"}
+            "Stats": {
+                "Annual Profit/Loss": "0.0",
+                "Average Expense per Month": "not enough data",
+                "Average Income per Month": "not enough data",
+                "Estimated Annual Expense": "not enough data",
+                "Estimated Annual Income": "not enough data",
+                "Total Expenses": "123.0",
+                "Total Income": "123.0"   
+            },
+            "Monthly Averages": {"an_expense": "not enough data"}
         },
         "December": {
-            "an_income": "123.0",
-            "an_expense": "123.0",
-            "Total Income": "123.0",
-            "Total Expense": "123.0",
-            "Profit/Loss": "0.0"
+            "Stats": {
+                "Total Income": "123.0",
+                "Total Expense": "123.0",
+                "Profit/Loss": "0.0"
+            },
+            "Totals": {
+                "an_income": "123.0",
+                "an_expense": "123.0"
+            }
         }
     }
 }

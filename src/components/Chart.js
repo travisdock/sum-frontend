@@ -25,13 +25,13 @@ export class Chart extends React.Component {
       }
     }
 
-    fetch(`${process.env.REACT_APP_API}/api/v1/charts/${id}`, options)
+    fetch(`${process.env.REACT_APP_API}/api/v2/charts/${id}`, options)
       .then(resp => resp.json())
       .then(resp => {if (resp.error) {
         this.setState({error: resp.error})
       } else {
         const titles = Object.keys(resp.charts)
-        const lastMonth = titles[titles.length - 1]
+        const lastMonth = titles[titles.length - 1]        
         this.setState({
           charts: resp.charts,
           stats: resp.stats,
@@ -118,13 +118,8 @@ export class Chart extends React.Component {
               </select>
               <div id="chart" />
               <div>
-                <h2>Stats</h2>
-                {Object.keys(stats[this.state.currentTitle]).map( title => {
-                  if (title === "avg_cat_month") {
-                    return <div key={title}><h2>Monthly Averages</h2>{Object.keys(stats[this.state.currentTitle][title]).map( title => <h3 key={title}>{title}: {formatMoney(stats[this.state.currentTitle]["avg_cat_month"][title])}</h3>)}</div>
-                  } else {
-                    return ( <h3 key={title}>{title}: {formatMoney(stats[this.state.currentTitle][title])}</h3> )
-                  }
+                {Object.keys(stats[this.state.currentTitle]).sort().map( title => {
+                  return <div key={title}><h2>{title}</h2>{Object.keys(stats[this.state.currentTitle][title]).sort().map( subtitle => <h3 key={subtitle}>{subtitle}: {formatMoney(stats[this.state.currentTitle][title][subtitle])}</h3>)}</div>
                 })
                 }
               </div>
