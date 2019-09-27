@@ -1,0 +1,9 @@
+{
+  "id": 103,
+  "username": "test1",
+  "password_digest": "$2a$12$dBtMFo61sFw5zTiD0WlKR.rxlYxBeiI7CgxHPvhHu9bA20VHA33wG",
+  "email": "test1@mail.com",
+  "created_at": "2019-09-11T11:20:33.529Z",
+  "updated_at": "2019-09-11T11:20:33.529Z",
+  "year_view": 2018
+}

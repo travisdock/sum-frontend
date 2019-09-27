@@ -20,7 +20,7 @@ import {
   mobileColumns, desktopColumns
 } from './helpers/tableHelpers'
 import {
-  evaluateAmount
+  evaluateAmount, copyEntry
 } from './helpers/inputFormHelpers'
 
 export class Table extends React.Component {
@@ -49,6 +49,7 @@ export class Table extends React.Component {
     this.sumEntries = sumEntries.bind(this);
     this.mobileColumns = mobileColumns.bind(this)
     this.desktopColumns = desktopColumns.bind(this)
+    this.copyEntry = copyEntry.bind(this)
   }
   
   componentDidMount() {
@@ -126,6 +127,7 @@ export class Table extends React.Component {
           notes={this.state.form.notes}
           askIfSure={this.askIfSure}
           openUpdateModal={this.openUpdateModal}
+          copyEntry={this.copyEntry}
         />
         {/* UPDATE MODAL */}
         <UpdateEntry

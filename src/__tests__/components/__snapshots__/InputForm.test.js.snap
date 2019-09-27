@@ -1,5 +1,79 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`snapshots renders an <InputForm /> with a copied category 1`] = `
+<div
+  className="input_form"
+>
+  <form
+    onSubmit={[Function]}
+  >
+    <label>
+      <input
+        checked={false}
+        name="newcategory"
+        onChange={[Function]}
+        type="checkbox"
+      />
+      New Category?
+    </label>
+    <div
+      className="ui field"
+    >
+      <select
+        name="category_name"
+        onChange={[Function]}
+        value="Copied Category"
+      >
+        <option
+          disabled={true}
+          value=""
+        >
+          Select Category
+        </option>
+        <option
+          value="categoryOne"
+        >
+          categoryOne
+        </option>
+        <option
+          value="categoryTwo"
+        >
+          categoryTwo
+        </option>
+      </select>
+    </div>
+    <input
+      name="date"
+      onChange={[Function]}
+      type="date"
+      value="1992-12-31"
+    />
+    <input
+      name="amount"
+      onBlur={[Function]}
+      onChange={[Function]}
+      placeholder="0.00"
+      type="text"
+      value="100"
+    />
+    <textarea
+      cols="55"
+      name="notes"
+      onChange={[Function]}
+      placeholder="Entry details..."
+      rows="5"
+      value="This is a copied category"
+    />
+    <button
+      className="button"
+      type="submit"
+    >
+      Submit
+    </button>
+  </form>
+</div>
+`;
+
 exports[`snapshots renders an <InputForm /> with new category snapshot 1`] = `
 <div
   className="input_form"
