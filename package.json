@@ -10,7 +10,7 @@
     "match-sorter": "^4.0.2",
     "mathjs-expression-parser": "^1.0.2",
     "merge": "^1.2.1",
-    "node-pre-gyp": "^0.13.0",
+    "node-pre-gyp": "^0.14.0",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
     "react-redux": "^5.1.2",
