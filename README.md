@@ -24,7 +24,7 @@ The [backend](https://github.com/travisdock/sum-backend) is a Rails API hosted o
 
 ## Try It Out
 Click "login" and use the username "test" with password "test" to see functionality. Feel free to add and remove entries, categories, etc.
-https://sumfinance-b89c6.firebaseapp.com/
+https://sum-finance.web.app/
    
 <p align="center">
   <kbd>
