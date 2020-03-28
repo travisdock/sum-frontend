@@ -6,7 +6,7 @@
     "billboard.js": "^1.11.1",
     "connected-react-router": "^4.5.0",
     "coveralls": "^3.0.9",
-    "cypress": "^3.8.1",
+    "cypress": "^4.2.0",
     "match-sorter": "^4.1.0",
     "mathjs-expression-parser": "^1.0.2",
     "merge": "^1.2.1",
