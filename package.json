@@ -37,7 +37,7 @@
     "cypress:open": "cypress open"
   },
   "devDependencies": {
-    "@babel/plugin-proposal-class-properties": "^7.8.3",
+    "@babel/plugin-proposal-class-properties": "^7.12.13",
     "@babel/preset-env": "^7.12.1",
     "@babel/preset-react": "^7.10.4",
     "babel-core": "^7.0.0-bridge.0",
