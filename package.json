@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "billboard.js": "^1.11.1",
+    "billboard.js": "^3.0.3",
     "connected-react-router": "^4.5.0",
     "coveralls": "^3.1.0",
     "cypress": "^7.4.0",
