@@ -5,7 +5,7 @@
   "dependencies": {
     "billboard.js": "^1.11.1",
     "connected-react-router": "^4.5.0",
-    "coveralls": "^3.1.0",
+    "coveralls": "^3.1.1",
     "cypress": "^7.5.0",
     "match-sorter": "^6.3.0",
     "mathjs-expression-parser": "^1.0.2",
